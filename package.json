@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "express": "^4.21.2",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "@mercadopago/sdk-nodejs": "latest"
   }
 }
