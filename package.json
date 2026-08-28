@@ -1,0 +1,9 @@
+{
+  "name": "veloriantech",
+  "version": "1.0.0",
+  "description": "Loja VelorianTech com Checkout Pro do Mercado Pago",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {"start": "node server.js", "dev": "node --watch server.js"},
+  "dependencies": {"@mercadopago/sdk-nodejs": "latest", "dotenv": "latest", "express": "latest"}
+}
