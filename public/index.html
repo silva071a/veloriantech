@@ -1,0 +1,428 @@
+	<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VelorianTech — Eletrônicos</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#101828;--muted:#667085;--primary:#635bff;--primary2:#7c3aed;--border:#e4e7ec;--green:#12b76a;--danger:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+body.modal-open{overflow:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer;border:0}
+.top{background:#111827;color:#fff;text-align:center;padding:9px;font-size:13px}
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.nav{max-width:1200px;margin:auto;height:72px;display:flex;align-items:center;gap:28px;padding:0 20px}
+.logo{font-size:24px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--primary)}
+.search{flex:1;position:relative}.search input{width:100%;padding:13px 45px 13px 16px;border:1px solid var(--border);border-radius:12px;outline:0;background:#f9fafb}.search input:focus{border-color:var(--primary)}
+.search button{position:absolute;right:5px;top:5px;background:var(--primary);color:#fff;border-radius:8px;width:35px;height:35px}
+.navlinks{display:flex;gap:18px;color:#475467;font-size:14px}
+.cart{position:relative;font-size:21px;background:none}
+.badge{position:absolute;right:-9px;top:-9px;background:#ef4444;color:#fff;border-radius:20px;font-size:10px;padding:3px 6px;min-width:19px;text-align:center}
+.hero{max-width:1200px;margin:28px auto;padding:0 20px}.hero-box{background:linear-gradient(120deg,#111827,#312e81 65%,#635bff);border-radius:24px;min-height:360px;padding:55px;color:#fff;display:flex;align-items:center;overflow:hidden;position:relative}.hero-box:after{content:"";position:absolute;width:390px;height:390px;border-radius:50%;background:rgba(255,255,255,.08);right:60px;top:-80px}.hero-text{max-width:570px;position:relative;z-index:1}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;color:#c4b5fd;font-weight:800;margin-bottom:14px}.hero h1{font-size:48px;line-height:1.04;letter-spacing:-2px;margin-bottom:18px}.hero p{font-size:17px;color:#e5e7eb;line-height:1.6;margin-bottom:25px}.cta{background:#fff;color:#312e81;padding:13px 20px;border-radius:10px;font-weight:800;display:inline-block}
+.section{max-width:1200px;margin:38px auto;padding:0 20px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.section h2{font-size:28px;letter-spacing:-1px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter{padding:9px 14px;border:1px solid var(--border);background:#fff;border-radius:999px;color:#475467}.filter.active{background:#111827;color:#fff;border-color:#111827}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:.2s;position:relative}.product:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(16,24,40,.08)}.pic{height:190px;background:#f2f4f7;display:flex;align-items:center;justify-content:center;font-size:80px}.info{padding:16px}.tag{font-size:11px;color:var(--primary);font-weight:800;text-transform:uppercase}.product h3{font-size:16px;margin:6px 0 8px}.stars{color:#f79009;font-size:13px}.price{font-size:21px;font-weight:900;margin:10px 0}.old{font-size:12px;color:#98a2b3;text-decoration:line-through;margin-left:5px;font-weight:400}.add{width:100%;background:#111827;color:#fff;padding:11px;border-radius:9px;font-weight:700}.discount{position:absolute;top:12px;left:12px;background:#ecfdf3;color:#027a48;padding:5px 8px;border-radius:8px;font-size:11px;font-weight:800}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{background:#fff;border:1px solid var(--border);padding:20px;border-radius:14px}.feature b{display:block;margin:8px 0 5px}.feature p{font-size:13px;color:var(--muted)}
+footer{margin-top:60px;background:#111827;color:#d0d5dd}.footer{max-width:1200px;margin:auto;padding:42px 20px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.footer h3{color:#fff;margin-bottom:12px}.footer p,.footer a{display:block;color:#98a2b3;font-size:14px;margin:7px 0}.copy{border-top:1px solid #344054;text-align:center;padding:18px;font-size:12px;color:#98a2b3}
+.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:14px 18px;border-radius:12px;opacity:0;transform:translateY(15px);transition:.25s;z-index:100}.toast.show{opacity:1;transform:none}
+
+/* Carrinho e checkout */
+.overlay{position:fixed;inset:0;background:rgba(15,23,42,.62);backdrop-filter:blur(3px);display:none;z-index:50}
+.overlay.show{display:block}
+.cart-panel{position:absolute;right:0;top:0;height:100%;width:min(460px,100%);background:#fff;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+.panel-head{display:flex;align-items:center;justify-content:space-between;padding:20px;border-bottom:1px solid var(--border)}
+.panel-head h2{font-size:22px}.close{background:#f2f4f7;width:36px;height:36px;border-radius:10px;font-size:20px}
+.cart-items{flex:1;overflow:auto;padding:18px}
+.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
+.cart-icon{width:64px;height:64px;border-radius:12px;background:#f2f4f7;display:flex;align-items:center;justify-content:center;font-size:30px;flex:none}
+.cart-info{flex:1}.cart-info b{font-size:14px;display:block;line-height:1.35}.cart-price{font-weight:800;margin-top:5px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{width:27px;height:27px;border-radius:7px;background:#f2f4f7}.remove{color:var(--danger);font-size:12px;background:none;margin-left:8px}
+.empty{padding:50px 15px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--text);font-size:18px;margin-bottom:7px}
+.cart-footer{padding:18px;border-top:1px solid var(--border);background:#fff}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;margin-bottom:12px}.checkout-btn{width:100%;background:var(--primary);color:#fff;padding:14px;border-radius:10px;font-weight:800}.checkout-btn:disabled{opacity:.45;cursor:not-allowed}
+.checkout-panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(650px,94%);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;box-shadow:0 20px 70px rgba(0,0,0,.25)}
+.checkout-content{padding:22px}.checkout-content h3{font-size:20px;margin-bottom:5px}.subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700}.field input,.field select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;outline:none;background:#fff}.field input:focus,.field select:focus{border-color:var(--primary)}
+.payment-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}.payment-option{border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;font-size:13px;font-weight:700;background:#fff}.payment-option.selected{border-color:var(--primary);background:#f4f2ff;color:#4f46e5}.payment-option input{display:none}
+.order-summary{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:14px;margin:18px 0}.summary-row{display:flex;justify-content:space-between;gap:15px;padding:5px 0;font-size:13px}.summary-total{border-top:1px solid var(--border);margin-top:8px;padding-top:10px;font-size:18px;font-weight:900}.secure-note{font-size:12px;color:var(--muted);line-height:1.5;margin:12px 0}.finalize{width:100%;background:#111827;color:#fff;padding:14px;border-radius:10px;font-weight:800}.back-cart{width:100%;margin-top:8px;padding:11px;background:#f2f4f7;border-radius:10px;font-weight:700}
+.success{display:none;text-align:center;padding:35px 20px}.success.show{display:block}.success-icon{font-size:55px;margin-bottom:12px}.success h2{margin-bottom:8px}.success p{color:var(--muted);line-height:1.5}.success button{margin-top:20px;background:#111827;color:#fff;padding:12px 18px;border-radius:10px;font-weight:700}
+
+@media(max-width:850px){.navlinks{display:none}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}.hero-box{padding:38px 28px}.footer{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.payment-options{grid-template-columns:1fr}.checkout-panel{max-height:96vh}}
+@media(max-width:520px){.nav{gap:12px}.logo{font-size:20px}.products{grid-template-columns:1fr}.features{grid-template-columns:1fr}.hero h1{font-size:32px}.hero-box{min-height:330px}.search{display:none}}
+</style>
+</head>
+<body>
+
+<div class="top">🚚 Frete grátis acima de R$ 49,90 • Pagamento seguro</div>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#">Velorian<span>Tech</span></a>
+    <div class="search">
+      <input id="search" placeholder="Buscar produtos..." autocomplete="off">
+      <button onclick="filterProducts()">⌕</button>
+    </div>
+    <div class="navlinks">
+      <a href="#produtos">Produtos</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <button class="cart" onclick="openCart()" aria-label="Abrir carrinho">
+      🛒<span class="badge" id="count">0</span>
+    </button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-box">
+    <div class="hero-text">
+      <div class="eyebrow">Tecnologia que combina com você</div>
+      <h1>Seu próximo eletrônico está aqui.</h1>
+      <p>Produtos selecionados, preços competitivos e uma experiência de compra simples e segura.</p>
+      <a class="cta" href="#produtos">Comprar agora →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="produtos">
+  <div class="section-head">
+    <div><h2>Produtos em destaque</h2><p style="color:#667085;margin-top:5px">Escolha seus favoritos</p></div>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" onclick="category('Todos',this)">Todos</button>
+    <button class="filter" onclick="category('Celulares',this)">Celulares</button>
+    <button class="filter" onclick="category('Informática',this)">Informática</button>
+    <button class="filter" onclick="category('Áudio',this)">Áudio</button>
+    <button class="filter" onclick="category('Acessórios',this)">Acessórios</button>
+  </div>
+
+  <div class="products" id="grid"></div>
+</section>
+
+<section class="section" id="vantagens">
+  <div class="section-head"><h2>Por que comprar na VelorianTech?</h2></div>
+  <div class="features">
+    <div class="feature">🔒<b>Compra segura</b><p>Seus dados protegidos em todo o processo.</p></div>
+    <div class="feature">🚚<b>Frete grátis</b><p>Ofertas com envio grátis conforme as condições da loja.</p></div>
+    <div class="feature">💳<b>Pagamento facilitado</b><p>Pix, cartão de crédito ou débito.</p></div>
+    <div class="feature">🛡️<b>Produtos selecionados</b><p>Qualidade e confiança em cada compra.</p></div>
+  </div>
+</section>
+</main>
+
+<footer id="contato">
+  <div class="footer">
+    <div><h3 class="logo">Velorian<span>Tech</span></h3><p>Sua loja online de eletrônicos e tecnologia.</p></div>
+    <div><h3>Loja</h3><a href="#produtos">Produtos</a><a href="#produtos">Ofertas</a><a href="#produtos">Lançamentos</a></div>
+    <div><h3>Atendimento</h3><p>Seg–Sex: 9h às 18h</p><p>WhatsApp: (71) 99234-6351</p><p>acaua8767@gmail.com</p></div>
+    <div><h3>Redes sociais</h3><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Facebook</a></div>
+  </div>
+  <div class="copy">© 2026 VelorianTech. Todos os direitos reservados.</div>
+</footer>
+
+<div class="toast" id="toast">Produto adicionado ao carrinho!</div>
+
+<!-- CARRINHO -->
+<div class="overlay" id="cartOverlay" onclick="closeCart(event)">
+  <aside class="cart-panel" onclick="event.stopPropagation()">
+    <div class="panel-head">
+      <h2>🛒 Seu carrinho</h2>
+      <button class="close" onclick="closeCart()">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()">Ir para o checkout →</button>
+    </div>
+  </aside>
+</div>
+
+<!-- CHECKOUT -->
+<div class="overlay" id="checkoutOverlay" onclick="closeCheckout(event)">
+  <section class="checkout-panel" onclick="event.stopPropagation()">
+    <div class="panel-head">
+      <h2>Finalizar compra</h2>
+      <button class="close" onclick="closeCheckout()">×</button>
+    </div>
+
+    <div class="checkout-content" id="checkoutFormArea">
+      <h3>Dados para entrega</h3>
+      <p class="subtitle">Preencha seus dados para enviar o pedido.</p>
+
+      <form id="checkoutForm" onsubmit="finishOrder(event)">
+        <div class="form-grid">
+          <div class="field full">
+            <label for="fullName">Nome completo *</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Digite seu nome completo" required>
+          </div>
+
+          <div class="field full">
+            <label for="address">Endereço completo *</label>
+            <input id="address" name="address" type="text" placeholder="Rua, número, bairro, cidade e CEP" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Número de telefone *</label>
+            <input id="phone" name="phone" type="tel" placeholder="(00) 00000-0000" required>
+          </div>
+
+          <div class="field">
+            <label for="payment">Forma de pagamento *</label>
+            <select id="payment" name="payment" required>
+              <option value="">Selecione</option>
+              <option value="Pix">Pix</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <div class="summary-row"><span>Itens</span><strong id="summaryItems">0</strong></div>
+          <div class="summary-row"><span>Frete</span><strong>Grátis</strong></div>
+          <div class="summary-row summary-total"><span>Total</span><span id="summaryTotal">R$ 0,00</span></div>
+        </div>
+
+        <p class="secure-note">🔒 Seus dados são usados para preparar o pedido. Os dados completos do cartão não são coletados por este formulário; o pagamento com cartão deve ser concluído através de um gateway de pagamento seguro.</p>
+
+        <button class="finalize" type="submit">Confirmar pedido</button>
+        <button class="back-cart" type="button" onclick="closeCheckout();openCart()">← Voltar ao carrinho</button>
+      </form>
+    </div>
+
+    <div class="success" id="successArea">
+      <div class="success-icon">✅</div>
+      <h2>Pedido preparado!</h2>
+      <p id="successText"></p>
+      <button onclick="closeAllModals()">Voltar para a loja</button>
+    </div>
+  </section>
+</div>
+
+<script>
+const products=[
+  {id:1,name:"Power Bank Turbo 20000mAh 66W Premium",cat:"Acessórios",price:149.90,old:199.90,icon:"⚡",stars:"★★★★★"},
+  {id:2,name:"Fone De Ouvido Bluetooth Sem Fio Estéreo",cat:"Áudio",price:79.90,old:99.90,icon:"🎶",stars:"★★★★★"},
+  {id:3,name:"Smartwatch 6 Em 1 Tela AMOLED 2.02",cat:"Acessórios",price:99.90,old:149.90,icon:"⌚",stars:"★★★★☆"}
+];
+
+let cart=[];
+let current="Todos";
+
+function money(value){
+  return value.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+}
+
+function saveCart(){
+  localStorage.setItem("velorian_cart",JSON.stringify(cart));
+}
+
+function loadCart(){
+  try{cart=JSON.parse(localStorage.getItem("velorian_cart"))||[]}
+  catch(e){cart=[]}
+  updateCartCount();
+}
+
+function render(){
+  const q=document.getElementById("search").value.toLowerCase().trim();
+  const list=products.filter(p=>
+    (current==="Todos"||p.cat===current)&&
+    p.name.toLowerCase().includes(q)
+  );
+
+  document.getElementById("grid").innerHTML=list.map(p=>`
+    <article class="product">
+      <span class="discount">OFERTA</span>
+      <div class="pic">${p.icon}</div>
+      <div class="info">
+        <span class="tag">${p.cat}</span>
+        <h3>${p.name}</h3>
+        <div class="stars">${p.stars}</div>
+        <div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div>
+        <button class="add" onclick="addToCart(${p.id})">Adicionar ao carrinho</button>
+      </div>
+    </article>
+  `).join("") || "<p>Nenhum produto encontrado.</p>";
+}
+
+function addToCart(id){
+  const item=cart.find(x=>x.id===id);
+  if(item)item.qty++;
+  else{
+    const p=products.find(x=>x.id===id);
+    cart.push({id:p.id,name:p.name,price:p.price,icon:p.icon,qty:1});
+  }
+  saveCart();
+  updateCartCount();
+  renderCart();
+  const t=document.getElementById("toast");
+  t.textContent="Produto adicionado ao carrinho!";
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),1800);
+}
+
+function updateCartCount(){
+  const total=cart.reduce((sum,item)=>sum+item.qty,0);
+  document.getElementById("count").textContent=total;
+}
+
+function cartTotal(){
+  return cart.reduce((sum,item)=>sum+(item.price*item.qty),0);
+}
+
+function renderCart(){
+  const area=document.getElementById("cartItems");
+  const btn=document.getElementById("checkoutBtn");
+
+  if(!cart.length){
+    area.innerHTML=`<div class="empty"><strong>Seu carrinho está vazio</strong><span>Adicione produtos para continuar sua compra.</span></div>`;
+    btn.disabled=true;
+  }else{
+    area.innerHTML=cart.map(item=>`
+      <div class="cart-item">
+        <div class="cart-icon">${item.icon}</div>
+        <div class="cart-info">
+          <b>${item.name}</b>
+          <div class="cart-price">${money(item.price*item.qty)}</div>
+          <div class="qty">
+            <button onclick="changeQty(${item.id},-1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty(${item.id},1)">+</button>
+            <button class="remove" onclick="removeFromCart(${item.id})">Remover</button>
+          </div>
+        </div>
+      </div>
+    `).join("");
+    btn.disabled=false;
+  }
+
+  document.getElementById("cartTotal").textContent=money(cartTotal());
+}
+
+function changeQty(id,delta){
+  const item=cart.find(x=>x.id===id);
+  if(!item)return;
+  item.qty+=delta;
+  if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+  saveCart();
+  updateCartCount();
+  renderCart();
+}
+
+function removeFromCart(id){
+  cart=cart.filter(x=>x.id!==id);
+  saveCart();
+  updateCartCount();
+  renderCart();
+}
+
+function openCart(){
+  renderCart();
+  document.getElementById("cartOverlay").classList.add("show");
+  document.body.classList.add("modal-open");
+}
+
+function closeCart(e){
+  if(e && e.target!==document.getElementById("cartOverlay"))return;
+  document.getElementById("cartOverlay").classList.remove("show");
+  document.body.classList.remove("modal-open");
+}
+
+function openCheckout(){
+  if(!cart.length)return;
+  closeCart();
+  updateCheckoutSummary();
+  document.getElementById("checkoutFormArea").style.display="block";
+  document.getElementById("successArea").classList.remove("show");
+  document.getElementById("checkoutOverlay").classList.add("show");
+  document.body.classList.add("modal-open");
+}
+
+function closeCheckout(e){
+  if(e && e.target!==document.getElementById("checkoutOverlay"))return;
+  document.getElementById("checkoutOverlay").classList.remove("show");
+  document.body.classList.remove("modal-open");
+}
+
+function updateCheckoutSummary(){
+  document.getElementById("summaryItems").textContent=cart.reduce((s,i)=>s+i.qty,0)+" item(ns)";
+  document.getElementById("summaryTotal").textContent=money(cartTotal());
+}
+
+function finishOrder(event){
+  event.preventDefault();
+  if(!cart.length)return;
+
+  const data=new FormData(event.target);
+  const name=data.get("fullName").trim();
+  const address=data.get("address").trim();
+  const phone=data.get("phone").trim();
+  const payment=data.get("payment");
+
+  const items=cart.map(i=>`${i.qty}x ${i.name}`).join(", ");
+  const orderText=
+    `Olá, VelorianTech! Quero finalizar um pedido.%0A%0A`+
+    `*Cliente:* ${encodeURIComponent(name)}%0A`+
+    `*Endereço:* ${encodeURIComponent(address)}%0A`+
+    `*Telefone:* ${encodeURIComponent(phone)}%0A`+
+    `*Pagamento:* ${encodeURIComponent(payment)}%0A`+
+    `*Produtos:* ${encodeURIComponent(items)}%0A`+
+    `*Total:* ${encodeURIComponent(money(cartTotal()))}`;
+
+  /*
+    O número abaixo é o WhatsApp de atendimento informado no site.
+    O pedido é enviado para o WhatsApp com os dados preenchidos.
+  */
+  const whatsapp="5571992346351";
+  const whatsappUrl=`https://wa.me/${whatsapp}?text=${orderText}`;
+
+  document.getElementById("checkoutFormArea").style.display="none";
+  document.getElementById("successArea").classList.add("show");
+  document.getElementById("successText").innerHTML=
+    `Obrigado, <strong>${escapeHtml(name)}</strong>! Seu pedido foi preparado com pagamento em <strong>${escapeHtml(payment)}</strong>.<br><br>`+
+    `Clique no botão abaixo para enviar os dados do pedido pelo WhatsApp e continuar o atendimento.`;
+
+  const success=document.getElementById("successArea");
+  success.querySelector("button").onclick=()=>{
+    window.open(whatsappUrl,"_blank");
+    cart=[];
+    saveCart();
+    updateCartCount();
+    closeAllModals();
+  };
+}
+
+function escapeHtml(text){
+  return text.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
+
+function closeAllModals(){
+  document.getElementById("cartOverlay").classList.remove("show");
+  document.getElementById("checkoutOverlay").classList.remove("show");
+  document.body.classList.remove("modal-open");
+  document.getElementById("checkoutFormArea").style.display="block";
+  document.getElementById("successArea").classList.remove("show");
+  document.getElementById("checkoutForm").reset();
+}
+
+function category(c,el){
+  current=c;
+  document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+  el.classList.add("active");
+  render();
+}
+
+function filterProducts(){
+  render();
+  document.getElementById("produtos").scrollIntoView({behavior:"smooth"});
+}
+
+document.getElementById("search").addEventListener("input",render);
+loadCart();
+render();
+</script>
+</body>
+</html>
