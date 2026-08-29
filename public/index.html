@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +10,7 @@
 <title>VelorianTech — Eletrônicos</title>
 
 <style>
+
 :root{
   --bg:#f5f7fb;
   --card:#ffffff;
@@ -775,6 +778,92 @@ footer{
   display:none;
 }
 
+.pix-area{
+  display:none;
+  margin-top:15px;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#f8fafc;
+  text-align:center;
+}
+
+.pix-area.show{
+  display:block;
+}
+
+.pix-title{
+  font-size:18px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.pix-description{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:15px;
+}
+
+.pix-qr{
+  width:220px;
+  height:220px;
+  margin:0 auto 15px;
+  background:#fff;
+  padding:10px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 15px rgba(16,24,40,.06);
+}
+
+.pix-qr img{
+  width:200px;
+  height:200px;
+  display:block;
+}
+
+.pix-copy-label{
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.pix-payload{
+  width:100%;
+  min-height:90px;
+  resize:none;
+  padding:10px;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  font-size:11px;
+  background:#fff;
+  outline:none;
+  font-family:Arial,sans-serif;
+}
+
+.pix-copy-btn{
+  width:100%;
+  margin-top:8px;
+  padding:11px;
+  border-radius:9px;
+  background:#111827;
+  color:#fff;
+  font-weight:800;
+}
+
+.pix-copy-btn:hover{
+  background:#273244;
+}
+
+.pix-note{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:10px;
+  line-height:1.4;
+}
+
 .order-summary{
   background:#f8fafc;
   border:1px solid var(--border);
@@ -877,74 +966,6 @@ footer{
   display:block;
 }
 
-/* PIX */
-
-.pix-area{
-  display:none;
-  margin-top:16px;
-  padding:18px;
-  background:#f8fafc;
-  border:1px solid var(--border);
-  border-radius:14px;
-  text-align:center;
-}
-
-.pix-area.show{
-  display:block;
-}
-
-.pix-area h4{
-  margin-bottom:7px;
-  font-size:17px;
-}
-
-.pix-area p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:12px;
-}
-
-.pix-qr{
-  width:220px;
-  height:220px;
-  display:block;
-  margin:12px auto;
-  border-radius:10px;
-  background:#fff;
-  padding:8px;
-  border:1px solid var(--border);
-}
-
-.pix-code{
-  width:100%;
-  min-height:80px;
-  resize:none;
-  padding:10px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  font-size:11px;
-  background:#fff;
-  color:#344054;
-  margin-top:8px;
-}
-
-.copy-pix{
-  width:100%;
-  margin-top:8px;
-  padding:11px;
-  background:#12b76a;
-  color:#fff;
-  border-radius:9px;
-  font-weight:800;
-}
-
-.copy-pix:hover{
-  background:#0e9f5b;
-}
-
-/* RESPONSIVO */
-
 @media(max-width:850px){
 
   .navlinks{
@@ -970,6 +991,7 @@ footer{
   .footer{
     grid-template-columns:1fr 1fr;
   }
+
 }
 
 @media(max-width:600px){
@@ -1025,6 +1047,7 @@ footer{
   .product-actions{
     grid-template-columns:1fr;
   }
+
 }
 
 @media(max-width:400px){
@@ -1040,7 +1063,9 @@ footer{
   .hero{
     padding:0 14px;
   }
+
 }
+
 </style>
 </head>
 
@@ -1051,168 +1076,197 @@ footer{
 </div>
 
 <header>
-  <nav class="nav">
 
-    <a class="logo" href="#">
-      Velorian<span>Tech</span>
-    </a>
+<nav class="nav">
 
-    <div class="search">
-      <input
-        id="search"
-        placeholder="Buscar produtos..."
-        autocomplete="off"
-      >
-      <button onclick="filterProducts()">⌕</button>
-    </div>
+<a class="logo" href="#">
+  Velorian<span>Tech</span>
+</a>
 
-    <div class="navlinks">
-      <a href="#produtos">Produtos</a>
-      <a href="#vantagens">Vantagens</a>
-      <a href="#contato">Contato</a>
-    </div>
+<div class="search">
 
-    <button
-      class="cart"
-      onclick="openCart()"
-      aria-label="Abrir carrinho"
-    >
-      🛒
-      <span class="badge" id="count">0</span>
-    </button>
+<input
+  id="search"
+  placeholder="Buscar produtos..."
+  autocomplete="off"
+>
 
-  </nav>
+<button onclick="filterProducts()">
+  ⌕
+</button>
+
+</div>
+
+<div class="navlinks">
+
+<a href="#produtos">Produtos</a>
+<a href="#vantagens">Vantagens</a>
+<a href="#contato">Contato</a>
+
+</div>
+
+<button
+  class="cart"
+  onclick="openCart()"
+  aria-label="Abrir carrinho"
+>
+
+  🛒
+
+  <span
+    class="badge"
+    id="count"
+  >
+    0
+  </span>
+
+</button>
+
+</nav>
+
 </header>
 
 <main>
 
 <section class="hero">
 
-  <div class="hero-box">
+<div class="hero-box">
 
-    <div class="hero-text">
+<div class="hero-text">
 
-      <div class="eyebrow">
-        Tecnologia que combina com você
-      </div>
+<div class="eyebrow">
+  Tecnologia que combina com você
+</div>
 
-      <h1>
-        Seu próximo eletrônico está aqui.
-      </h1>
+<h1>
+  Seu próximo eletrônico está aqui.
+</h1>
 
-      <p>
-        Produtos selecionados, preços competitivos e uma experiência
-        de compra simples, moderna e segura.
-      </p>
+<p>
+  Produtos selecionados, preços competitivos e uma experiência
+  de compra simples, moderna e segura.
+</p>
 
-      <a class="cta" href="#produtos">
-        Comprar agora →
-      </a>
+<a
+  class="cta"
+  href="#produtos"
+>
+  Comprar agora →
+</a>
 
-    </div>
+</div>
 
-  </div>
-
-</section>
-
-<section class="section" id="produtos">
-
-  <div class="section-head">
-
-    <div>
-      <h2>Produtos em destaque</h2>
-
-      <p style="color:#667085;margin-top:5px">
-        Escolha seus favoritos
-      </p>
-    </div>
-
-  </div>
-
-  <div class="filters">
-
-    <button
-      class="filter active"
-      onclick="category('Todos',this)"
-    >
-      Todos
-    </button>
-
-    <button
-      class="filter"
-      onclick="category('Celulares',this)"
-    >
-      Celulares
-    </button>
-
-    <button
-      class="filter"
-      onclick="category('Informática',this)"
-    >
-      Informática
-    </button>
-
-    <button
-      class="filter"
-      onclick="category('Áudio',this)"
-    >
-      Áudio
-    </button>
-
-    <button
-      class="filter"
-      onclick="category('Acessórios',this)"
-    >
-      Acessórios
-    </button>
-
-  </div>
-
-  <div class="products" id="grid"></div>
+</div>
 
 </section>
 
-<section class="section" id="vantagens">
+<section
+  class="section"
+  id="produtos"
+>
 
-  <div class="section-head">
-    <h2>Por que comprar na VelorianTech?</h2>
-  </div>
+<div class="section-head">
 
-  <div class="features">
+<div>
 
-    <div class="feature">
-      🔒
-      <b>Compra segura</b>
-      <p>
-        Seus dados são utilizados apenas para preparar seu pedido.
-      </p>
-    </div>
+<h2>
+  Produtos em destaque
+</h2>
 
-    <div class="feature">
-      🚚
-      <b>Frete grátis</b>
-      <p>
-        Ofertas com envio grátis conforme as condições da loja.
-      </p>
-    </div>
+<p style="color:#667085;margin-top:5px">
+  Escolha seus favoritos
+</p>
 
-    <div class="feature">
-      💳
-      <b>Pagamento facilitado</b>
-      <p>
-        Pix, cartão de crédito ou débito.
-      </p>
-    </div>
+</div>
 
-    <div class="feature">
-      🛡️
-      <b>Produtos selecionados</b>
-      <p>
-        Qualidade e confiança em cada compra.
-      </p>
-    </div>
+</div>
 
-  </div>
+<div class="filters">
+
+<button
+  class="filter active"
+  onclick="category('Todos',this)"
+>
+  Todos
+</button>
+
+<button
+  class="filter"
+  onclick="category('Celulares',this)"
+>
+  Celulares
+</button>
+
+<button
+  class="filter"
+  onclick="category('Informática',this)"
+>
+  Informática
+</button>
+
+<button
+  class="filter"
+  onclick="category('Áudio',this)"
+>
+  Áudio
+</button>
+
+<button
+  class="filter"
+  onclick="category('Acessórios',this)"
+>
+  Acessórios
+</button>
+
+</div>
+
+<div
+  class="products"
+  id="grid"
+></div>
+
+</section>
+
+<section
+  class="section"
+  id="vantagens"
+>
+
+<div class="section-head">
+
+<h2>
+  Por que comprar na VelorianTech?
+</h2>
+
+</div>
+
+<div class="features">
+
+<div class="feature">
+  🔒
+  <b>Compra segura</b>
+  <p>Seus dados são utilizados apenas para preparar seu pedido.</p>
+</div>
+
+<div class="feature">
+  🚚
+  <b>Frete grátis</b>
+  <p>Ofertas com envio grátis conforme as condições da loja.</p>
+</div>
+
+<div class="feature">
+  💳
+  <b>Pagamento facilitado</b>
+  <p>Pix, cartão de crédito ou débito.</p>
+</div>
+
+<div class="feature">
+  🛡️
+  <b>Produtos selecionados</b>
+  <p>Qualidade e confiança em cada compra.</p>
+</div>
+
+</div>
 
 </section>
 
@@ -1220,48 +1274,62 @@ footer{
 
 <footer id="contato">
 
-  <div class="footer">
+<div class="footer">
 
-    <div>
-      <h3 class="logo">
-        Velorian<span>Tech</span>
-      </h3>
+<div>
 
-      <p>
-        Sua loja online de eletrônicos e tecnologia.
-      </p>
-    </div>
+<h3 class="logo">
+  Velorian<span>Tech</span>
+</h3>
 
-    <div>
-      <h3>Loja</h3>
-      <a href="#produtos">Produtos</a>
-      <a href="#produtos">Ofertas</a>
-      <a href="#produtos">Lançamentos</a>
-    </div>
+<p>
+  Sua loja online de eletrônicos e tecnologia.
+</p>
 
-    <div>
-      <h3>Atendimento</h3>
-      <p>Seg–Sex: 9h às 18h</p>
-      <p>WhatsApp: (71) 99234-6351</p>
-      <p>acaua8767@gmail.com</p>
-    </div>
+</div>
 
-    <div>
-      <h3>Redes sociais</h3>
-      <a href="#">Instagram</a>
-      <a href="#">TikTok</a>
-      <a href="#">Facebook</a>
-    </div>
+<div>
 
-  </div>
+<h3>Loja</h3>
 
-  <div class="copy">
-    © 2026 VelorianTech. Todos os direitos reservados.
-  </div>
+<a href="#produtos">Produtos</a>
+<a href="#produtos">Ofertas</a>
+<a href="#produtos">Lançamentos</a>
+
+</div>
+
+<div>
+
+<h3>Atendimento</h3>
+
+<p>Seg–Sex: 9h às 18h</p>
+<p>WhatsApp: (71) 99234-6351</p>
+<p>acaua8767@gmail.com</p>
+
+</div>
+
+<div>
+
+<h3>Redes sociais</h3>
+
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+<a href="#">Facebook</a>
+
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 VelorianTech. Todos os direitos reservados.
+</div>
 
 </footer>
 
-<div class="toast" id="toast">
+<div
+  class="toast"
+  id="toast"
+>
   Produto adicionado ao carrinho!
 </div>
 
@@ -1273,52 +1341,52 @@ footer{
   onclick="closeCart(event)"
 >
 
-  <aside
-    class="cart-panel"
-    onclick="event.stopPropagation()"
-  >
+<aside
+  class="cart-panel"
+  onclick="event.stopPropagation()"
+>
 
-    <div class="panel-head">
+<div class="panel-head">
 
-      <h2>🛒 Seu carrinho</h2>
+<h2>🛒 Seu carrinho</h2>
 
-      <button
-        class="close"
-        onclick="closeCart()"
-      >
-        ×
-      </button>
+<button
+  class="close"
+  onclick="closeCart()"
+>
+  ×
+</button>
 
-    </div>
+</div>
 
-    <div
-      class="cart-items"
-      id="cartItems"
-    ></div>
+<div
+  class="cart-items"
+  id="cartItems"
+></div>
 
-    <div class="cart-footer">
+<div class="cart-footer">
 
-      <div class="total">
+<div class="total">
 
-        <span>Total</span>
+<span>Total</span>
 
-        <span id="cartTotal">
-          R$ 0,00
-        </span>
+<span id="cartTotal">
+  R$ 0,00
+</span>
 
-      </div>
+</div>
 
-      <button
-        class="checkout-btn"
-        id="checkoutBtn"
-        onclick="openCheckout()"
-      >
-        Ir para o checkout →
-      </button>
+<button
+  class="checkout-btn"
+  id="checkoutBtn"
+  onclick="openCheckout()"
+>
+  Ir para o checkout →
+</button>
 
-    </div>
+</div>
 
-  </aside>
+</aside>
 
 </div>
 
@@ -1330,467 +1398,515 @@ footer{
   onclick="closeCheckout(event)"
 >
 
-  <section
-    class="checkout-panel"
-    onclick="event.stopPropagation()"
-  >
-
-    <div class="panel-head">
-
-      <h2>Finalizar compra</h2>
-
-      <button
-        class="close"
-        onclick="closeCheckout()"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <div
-      class="checkout-content"
-      id="checkoutFormArea"
-    >
-
-      <h3>Dados para entrega</h3>
-
-      <p class="subtitle">
-        Preencha corretamente seus dados para preparar o pedido.
-      </p>
-
-      <div
-        class="validation-summary"
-        id="validationSummary"
-      >
-        Confira os campos obrigatórios antes de continuar.
-      </div>
-
-      <form
-        id="checkoutForm"
-        onsubmit="finishOrder(event)"
-        novalidate
-      >
-
-        <div class="form-section-title">
-          👤 Dados pessoais
-        </div>
-
-        <div class="form-grid">
-
-          <div class="field full">
-            <label for="fullName">
-              Nome completo *
-            </label>
-
-            <input
-              id="fullName"
-              name="fullName"
-              type="text"
-              placeholder="Digite seu nome completo"
-              autocomplete="name"
-            >
-
-            <span class="error-message">
-              Informe seu nome completo.
-            </span>
-          </div>
-
-          <div class="field">
-            <label for="phone">
-              Número de telefone *
-            </label>
-
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              placeholder="(00) 00000-0000"
-              maxlength="15"
-              autocomplete="tel"
-            >
-
-            <span class="error-message">
-              Informe um telefone válido.
-            </span>
-          </div>
-
-          <div class="field">
-            <label for="cep">
-              CEP *
-            </label>
-
-            <input
-              id="cep"
-              name="cep"
-              type="text"
-              placeholder="00000-000"
-              maxlength="9"
-              autocomplete="postal-code"
-            >
-
-            <span class="error-message">
-              Informe um CEP válido.
-            </span>
-          </div>
-
-        </div>
-
-        <div class="form-section-title">
-          📍 Endereço de entrega
-        </div>
-
-        <div class="form-grid">
-
-          <div class="field">
-            <label for="state">
-              Estado *
-            </label>
-
-            <select
-              id="state"
-              name="state"
-            >
-
-              <option value="">
-                Selecione o estado
-              </option>
-
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option>
-              <option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option>
-              <option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
-
-            </select>
-
-            <span class="error-message">
-              Selecione seu estado.
-            </span>
-
-          </div>
-
-          <div class="field">
-            <label for="city">
-              Cidade *
-            </label>
-
-            <input
-              id="city"
-              name="city"
-              type="text"
-              placeholder="Digite sua cidade"
-              autocomplete="address-level2"
-            >
-
-            <span class="error-message">
-              Informe sua cidade.
-            </span>
-          </div>
-
-          <div class="field">
-            <label for="neighborhood">
-              Bairro *
-            </label>
-
-            <input
-              id="neighborhood"
-              name="neighborhood"
-              type="text"
-              placeholder="Digite seu bairro"
-              autocomplete="address-level3"
-            >
-
-            <span class="error-message">
-              Informe seu bairro.
-            </span>
-          </div>
-
-          <div class="field">
-            <label for="street">
-              Rua / Avenida *
-            </label>
-
-            <input
-              id="street"
-              name="street"
-              type="text"
-              placeholder="Nome da rua ou avenida"
-              autocomplete="street-address"
-            >
-
-            <span class="error-message">
-              Informe sua rua ou avenida.
-            </span>
-          </div>
-
-          <div class="field">
-            <label for="number">
-              Número *
-            </label>
-
-            <input
-              id="number"
-              name="number"
-              type="text"
-              placeholder="Ex.: 123"
-              autocomplete="address-line2"
-            >
-
-            <span class="error-message">
-              Informe o número.
-            </span>
-          </div>
-
-          <div class="field">
-            <label for="complement">
-              Complemento
-            </label>
-
-            <input
-              id="complement"
-              name="complement"
-              type="text"
-              placeholder="Apartamento, casa, bloco..."
-            >
-          </div>
-
-        </div>
-
-        <div class="form-section-title">
-          💳 Forma de pagamento
-        </div>
-
-        <div class="payment-options">
-
-          <label class="payment-option">
-            <input
-              type="radio"
-              name="payment"
-              value="Pix"
-            >
-            💠 Pix
-          </label>
-
-          <label class="payment-option">
-            <input
-              type="radio"
-              name="payment"
-              value="Cartão de crédito"
-            >
-            💳 Crédito
-          </label>
-
-          <label class="payment-option">
-            <input
-              type="radio"
-              name="payment"
-              value="Cartão de débito"
-            >
-            💳 Débito
-          </label>
-
-        </div>
-
-        <div
-          class="field"
-          id="paymentField"
-          style="margin-top:8px"
-        >
-          <span
-            class="error-message"
-            id="paymentError"
-          >
-            Selecione uma forma de pagamento.
-          </span>
-        </div>
-
-        <!-- PIX -->
-
-        <div
-          class="pix-area"
-          id="pixArea"
-        >
-
-          <h4>💠 Pague com Pix</h4>
-
-          <p>
-            Escaneie o QR Code com o aplicativo do seu banco
-            ou copie o código Pix abaixo.
-          </p>
-
-          <img
-            id="pixQr"
-            class="pix-qr"
-            alt="QR Code Pix"
-          >
-
-          <textarea
-            id="pixCode"
-            class="pix-code"
-            readonly
-          ></textarea>
-
-          <button
-            type="button"
-            class="copy-pix"
-            onclick="copyPix()"
-          >
-            📋 Copiar código Pix
-          </button>
-
-        </div>
-
-        <div class="order-summary">
-
-          <div class="summary-row">
-            <span>Itens</span>
-            <strong id="summaryItems">
-              0
-            </strong>
-          </div>
-
-          <div class="summary-row">
-            <span>Frete</span>
-            <strong>Grátis</strong>
-          </div>
-
-          <div class="summary-row summary-total">
-            <span>Total</span>
-            <span id="summaryTotal">
-              R$ 0,00
-            </span>
-          </div>
-
-        </div>
-
-        <p class="secure-note">
-          🔒 Seus dados são utilizados para preparar o pedido.
-          Não informe senhas ou dados bancários neste formulário.
-        </p>
-
-        <button
-          class="finalize"
-          type="submit"
-        >
-          Confirmar pedido →
-        </button>
-
-        <button
-          class="back-cart"
-          type="button"
-          onclick="closeCheckout();openCart()"
-        >
-          ← Voltar ao carrinho
-        </button>
-
-      </form>
-
-    </div>
-
-    <div
-      class="success"
-      id="successArea"
-    >
-
-      <div class="success-icon">
-        ✅
-      </div>
-
-      <h2>
-        Pedido preparado!
-      </h2>
-
-      <p id="successText"></p>
-
-      <button
-        onclick="sendWhatsAppAndFinish()"
-      >
-        Enviar pedido pelo WhatsApp
-      </button>
-
-    </div>
-
-  </section>
+<section
+  class="checkout-panel"
+  onclick="event.stopPropagation()"
+>
+
+<div class="panel-head">
+
+<h2>Finalizar compra</h2>
+
+<button
+  class="close"
+  onclick="closeCheckout()"
+>
+  ×
+</button>
 
 </div>
 
+<div
+  class="checkout-content"
+  id="checkoutFormArea"
+>
+
+<h3>Dados para entrega</h3>
+
+<p class="subtitle">
+  Preencha corretamente seus dados para preparar o pedido.
+</p>
+
+<div
+  class="validation-summary"
+  id="validationSummary"
+>
+  Confira os campos obrigatórios antes de continuar.
+</div>
+
+<form
+  id="checkoutForm"
+  onsubmit="finishOrder(event)"
+  novalidate
+>
+
+<div class="form-section-title">
+  👤 Dados pessoais
+</div>
+
+<div class="form-grid">
+
+<div class="field full">
+
+<label for="fullName">
+  Nome completo *
+</label>
+
+<input
+  id="fullName"
+  name="fullName"
+  type="text"
+  placeholder="Digite seu nome completo"
+  autocomplete="name"
+>
+
+<span class="error-message">
+  Informe seu nome completo.
+</span>
+
+</div>
+
+<div class="field">
+
+<label for="phone">
+  Número de telefone *
+</label>
+
+<input
+  id="phone"
+  name="phone"
+  type="tel"
+  placeholder="(00) 00000-0000"
+  maxlength="15"
+  autocomplete="tel"
+>
+
+<span class="error-message">
+  Informe um telefone válido.
+</span>
+
+</div>
+
+<div class="field">
+
+<label for="cep">
+  CEP *
+</label>
+
+<input
+  id="cep"
+  name="cep"
+  type="text"
+  placeholder="00000-000"
+  maxlength="9"
+  autocomplete="postal-code"
+>
+
+<span class="error-message">
+  Informe um CEP válido.
+</span>
+
+</div>
+
+</div>
+
+<div class="form-section-title">
+  📍 Endereço de entrega
+</div>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label for="state">Estado *</label>
+
+<select
+  id="state"
+  name="state"
+>
+
+<option value="">Selecione o estado</option>
+
+<option value="AC">Acre</option>
+<option value="AL">Alagoas</option>
+<option value="AP">Amapá</option>
+<option value="AM">Amazonas</option>
+<option value="BA">Bahia</option>
+<option value="CE">Ceará</option>
+<option value="DF">Distrito Federal</option>
+<option value="ES">Espírito Santo</option>
+<option value="GO">Goiás</option>
+<option value="MA">Maranhão</option>
+<option value="MT">Mato Grosso</option>
+<option value="MS">Mato Grosso do Sul</option>
+<option value="MG">Minas Gerais</option>
+<option value="PA">Pará</option>
+<option value="PB">Paraíba</option>
+<option value="PR">Paraná</option>
+<option value="PE">Pernambuco</option>
+<option value="PI">Piauí</option>
+<option value="RJ">Rio de Janeiro</option>
+<option value="RN">Rio Grande do Norte</option>
+<option value="RS">Rio Grande do Sul</option>
+<option value="RO">Rondônia</option>
+<option value="RR">Roraima</option>
+<option value="SC">Santa Catarina</option>
+<option value="SP">São Paulo</option>
+<option value="SE">Sergipe</option>
+<option value="TO">Tocantins</option>
+
+</select>
+
+<span class="error-message">
+  Selecione seu estado.
+</span>
+
+</div>
+
+<div class="field">
+
+<label for="city">Cidade *</label>
+
+<input
+  id="city"
+  name="city"
+  type="text"
+  placeholder="Digite sua cidade"
+  autocomplete="address-level2"
+>
+
+<span class="error-message">
+  Informe sua cidade.
+</span>
+
+</div>
+
+<div class="field">
+
+<label for="neighborhood">Bairro *</label>
+
+<input
+  id="neighborhood"
+  name="neighborhood"
+  type="text"
+  placeholder="Digite seu bairro"
+  autocomplete="address-level3"
+>
+
+<span class="error-message">
+  Informe seu bairro.
+</span>
+
+</div>
+
+<div class="field">
+
+<label for="street">Rua / Avenida *</label>
+
+<input
+  id="street"
+  name="street"
+  type="text"
+  placeholder="Nome da rua ou avenida"
+  autocomplete="street-address"
+>
+
+<span class="error-message">
+  Informe sua rua ou avenida.
+</span>
+
+</div>
+
+<div class="field">
+
+<label for="number">Número *</label>
+
+<input
+  id="number"
+  name="number"
+  type="text"
+  placeholder="Ex.: 123"
+  autocomplete="address-line2"
+>
+
+<span class="error-message">
+  Informe o número.
+</span>
+
+</div>
+
+<div class="field">
+
+<label for="complement">Complemento</label>
+
+<input
+  id="complement"
+  name="complement"
+  type="text"
+  placeholder="Apartamento, casa, bloco..."
+>
+
+</div>
+
+</div>
+
+<div class="form-section-title">
+  💳 Forma de pagamento
+</div>
+
+<div class="payment-options">
+
+<label class="payment-option">
+
+<input
+  type="radio"
+  name="payment"
+  value="Pix"
+>
+
+💠 Pix
+
+</label>
+
+<label class="payment-option">
+
+<input
+  type="radio"
+  name="payment"
+  value="Cartão de crédito"
+>
+
+💳 Crédito
+
+</label>
+
+<label class="payment-option">
+
+<input
+  type="radio"
+  name="payment"
+  value="Cartão de débito"
+>
+
+💳 Débito
+
+</label>
+
+</div>
+
+<div
+  class="field"
+  id="paymentField"
+  style="margin-top:8px"
+>
+
+<span
+  class="error-message"
+  id="paymentError"
+>
+  Selecione uma forma de pagamento.
+</span>
+
+</div>
+
+<!-- PIX -->
+
+<div
+  class="pix-area"
+  id="pixArea"
+>
+
+<div class="pix-title">
+  💠 Pague com Pix
+</div>
+
+<p class="pix-description">
+  O QR Code abaixo já está configurado com o valor
+  total do seu pedido.
+</p>
+
+<div
+  class="pix-qr"
+  id="pixQRCode"
+>
+</div>
+
+<div class="pix-copy-label">
+  Ou copie o Pix Copia e Cola:
+</div>
+
+<textarea
+  class="pix-payload"
+  id="pixPayload"
+  readonly
+></textarea>
+
+<button
+  type="button"
+  class="pix-copy-btn"
+  onclick="copyPix()"
+>
+  📋 Copiar Pix Copia e Cola
+</button>
+
+<p class="pix-note">
+  Após realizar o pagamento, envie o comprovante
+  pelo WhatsApp para confirmar o pedido.
+</p>
+
+</div>
+
+<div class="order-summary">
+
+<div class="summary-row">
+
+<span>Itens</span>
+
+<strong id="summaryItems">
+  0
+</strong>
+
+</div>
+
+<div class="summary-row">
+
+<span>Frete</span>
+
+<strong>Grátis</strong>
+
+</div>
+
+<div class="summary-row summary-total">
+
+<span>Total</span>
+
+<span id="summaryTotal">
+  R$ 0,00
+</span>
+
+</div>
+
+</div>
+
+<p class="secure-note">
+  🔒 Seus dados são utilizados para preparar o pedido.
+  Não informe senhas ou dados bancários neste formulário.
+  O pagamento deve ser concluído através de um meio de
+  pagamento seguro.
+</p>
+
+<button
+  class="finalize"
+  type="submit"
+>
+  Confirmar pedido →
+</button>
+
+<button
+  class="back-cart"
+  type="button"
+  onclick="closeCheckout();openCart()"
+>
+  ← Voltar ao carrinho
+</button>
+
+</form>
+
+</div>
+
+<div
+  class="success"
+  id="successArea"
+>
+
+<div class="success-icon">
+  ✅
+</div>
+
+<h2>
+  Pedido preparado!
+</h2>
+
+<p id="successText"></p>
+
+<button
+  onclick="sendWhatsAppAndFinish()"
+>
+  Enviar pedido pelo WhatsApp
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- BIBLIOTECA QR CODE -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <script>
+
 /* =========================
    PRODUTOS
 ========================= */
 
 const products = [
 
-  {
-    id:1,
-    name:"Power Bank Turbo 20000mAh 66W Premium",
-    cat:"Acessórios",
-    price:149.90,
-    old:199.90,
-    image:"https://down-br.img.susercontent.com/file/cn-11134207-820l4-mr74v4q13tae09.webp",
-    stars:"★★★★★"
-  },
+{
+  id:1,
+  name:"Power Bank Turbo 20000mAh 66W Premium",
+  cat:"Acessórios",
+  price:149.90,
+  old:199.90,
+  image:"https://down-br.img.susercontent.com/file/cn-11134207-820l4-mr74v4q13tae09.webp",
+  stars:"★★★★★"
+},
 
-  {
-    id:2,
-    name:"Fone De Ouvido Bluetooth Sem Fio Estéreo",
-    cat:"Áudio",
-    price:79.90,
-    old:99.90,
-    image:"https://down-br.img.susercontent.com/file/br-11134207-820lp-mq4lwphung8w0b.webp",
-    stars:"★★★★★"
-  },
+/*
+  CORREÇÃO:
+  As imagens do FONE e do RELÓGIO foram
+  trocadas entre si para voltar à associação correta.
+*/
 
-  {
-    id:3,
-    name:"Smartwatch 6 Em 1 Tela AMOLED 2.02",
-    cat:"Acessórios",
-    price:99.90,
-    old:149.90,
-    image:"https://down-br.img.susercontent.com/file/br-11134207-81z1k-mebnptt1m48y0c.webp",
-    stars:"★★★★☆"
-  }
+{
+  id:2,
+  name:"Fone De Ouvido Bluetooth Sem Fio Estéreo",
+  cat:"Áudio",
+  price:79.90,
+  old:99.90,
+  image:"https://down-br.img.susercontent.com/file/br-11134207-81z1k-mebnptt1m48y0c.webp",
+  stars:"★★★★★"
+},
+
+{
+  id:3,
+  name:"Smartwatch 6 Em 1 Tela AMOLED 2.02",
+  cat:"Acessórios",
+  price:99.90,
+  old:149.90,
+  image:"https://down-br.img.susercontent.com/file/br-11134207-820lp-mq4lwphung8w0b.webp",
+  stars:"★★★★☆"
+}
 
 ];
 
-let cart = [];
-let current = "Todos";
-let pendingWhatsAppUrl = "";
+let cart=[];
+let current="Todos";
+let pendingWhatsAppUrl="";
 
-/*
-  CHAVE PIX ALEATÓRIA
-*/
+/* =========================
+   CONFIGURAÇÃO PIX
+========================= */
+
 const PIX_KEY =
-  "81d76e62-edce-4de0-80b0-82ac8610662d";
+"81d76e62-edce-4de0-80b0-82ac8610662d";
 
-const PIX_MERCHANT_NAME =
-  "VELORIAN TECH";
+const PIX_NAME =
+"VELORIAN TECH";
 
-const PIX_MERCHANT_CITY =
-  "SALVADOR";
+const PIX_CITY =
+"SALVADOR";
 
 /* =========================
    FORMATAÇÃO
@@ -1798,13 +1914,32 @@ const PIX_MERCHANT_CITY =
 
 function money(value){
 
-  return value.toLocaleString(
-    "pt-BR",
-    {
-      style:"currency",
-      currency:"BRL"
-    }
-  );
+return value.toLocaleString(
+"pt-BR",
+{
+style:"currency",
+currency:"BRL"
+}
+);
+
+}
+
+/* =========================
+   ESCAPAR HTML
+========================= */
+
+function escapeHtml(text){
+
+return String(text).replace(
+/[&<>"']/g,
+m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m])
+);
 
 }
 
@@ -1814,188 +1949,218 @@ function money(value){
 
 function saveCart(){
 
-  localStorage.setItem(
-    "velorian_cart",
-    JSON.stringify(cart)
-  );
+localStorage.setItem(
+"velorian_cart",
+JSON.stringify(cart)
+);
 
 }
 
 function loadCart(){
 
-  try{
+try{
 
-    cart =
-      JSON.parse(
-        localStorage.getItem("velorian_cart")
-      ) || [];
+cart=
+JSON.parse(
+localStorage.getItem("velorian_cart")
+)||[];
 
-  }catch(e){
+}catch(e){
 
-    cart=[];
+cart=[];
 
-  }
+}
 
-  updateCartCount();
+updateCartCount();
 
 }
 
 function updateCartCount(){
 
-  const total =
-    cart.reduce(
-      (sum,item)=>sum+item.qty,
-      0
-    );
+const total=
+cart.reduce(
+(sum,item)=>sum+item.qty,
+0
+);
 
-  document.getElementById("count").textContent =
-    total;
+document.getElementById(
+"count"
+).textContent=total;
 
 }
 
 function cartTotal(){
 
-  return cart.reduce(
-    (sum,item)=>
-      sum+(item.price*item.qty),
-    0
-  );
+return cart.reduce(
+(sum,item)=>
+sum+(item.price*item.qty),
+0
+);
 
 }
 
 /* =========================
-   PRODUTOS
+   RENDER PRODUTOS
 ========================= */
 
 function render(){
 
-  const searchElement =
-    document.getElementById("search");
+const searchElement=
+document.getElementById("search");
 
-  const q =
-    searchElement
-      ? searchElement.value.toLowerCase().trim()
-      : "";
+const q=
+searchElement
+.value
+.toLowerCase()
+.trim();
 
-  const list =
-    products.filter(p=>
+const list=
+products.filter(p=>
 
-      (current==="Todos" || p.cat===current)
+(current==="Todos"||p.cat===current)
+&&
+p.name
+.toLowerCase()
+.includes(q)
 
-      &&
+);
 
-      p.name
-        .toLowerCase()
-        .includes(q)
+document.getElementById("grid").innerHTML=
+list.map(p=>`
 
-    );
+<article class="product">
 
-  document.getElementById("grid").innerHTML =
-    list.map(p=>`
+<span class="discount">
+  OFERTA
+</span>
 
-      <article class="product">
+<div class="pic">
 
-        <span class="discount">
-          OFERTA
-        </span>
+<img
+src="${p.image}"
+alt="${escapeHtml(p.name)}"
+loading="lazy"
+onerror="this.style.display='none'"
+>
 
-        <div class="pic">
+</div>
 
-          <img
-            src="${escapeHtml(p.image)}"
-            alt="${escapeHtml(p.name)}"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
+<div class="info">
 
-        </div>
+<span class="tag">
+${p.cat}
+</span>
 
-        <div class="info">
+<h3>
+${escapeHtml(p.name)}
+</h3>
 
-          <span class="tag">
-            ${escapeHtml(p.cat)}
-          </span>
+<div class="stars">
+${p.stars}
+</div>
 
-          <h3>
-            ${escapeHtml(p.name)}
-          </h3>
+<div class="price">
+${money(p.price)}
 
-          <div class="stars">
-            ${p.stars}
-          </div>
+<span class="old">
+${money(p.old)}
+</span>
 
-          <div class="price">
-            ${money(p.price)}
-            <span class="old">
-              ${money(p.old)}
-            </span>
-          </div>
+</div>
 
-          <div class="product-actions">
+<div class="product-actions">
 
-            <button
-              class="add"
-              onclick="addToCart(${p.id})"
-            >
-              🛒 Adicionar
-            </button>
+<button
+class="add"
+onclick="addToCart(${p.id})"
+>
+🛒 Adicionar
+</button>
 
-            <button
-              class="buy-now"
-              onclick="buyNow(${p.id})"
-            >
-              ⚡ Comprar agora
-            </button>
+<button
+class="buy-now"
+onclick="buyNow(${p.id})"
+>
+⚡ Comprar agora
+</button>
 
-          </div>
+</div>
 
-        </div>
+</div>
 
-      </article>
+</article>
 
-    `).join("")
+`).join("")
 
-    ||
+||
 
-    "<p>Nenhum produto encontrado.</p>";
+"<p>Nenhum produto encontrado.</p>";
 
 }
 
+/* =========================
+   FILTRO
+========================= */
+
+function filterProducts(){
+  render();
+}
+
+function category(cat,button){
+
+current=cat;
+
+document
+.querySelectorAll(".filter")
+.forEach(
+x=>x.classList.remove("active")
+);
+
+button.classList.add("active");
+
+render();
+
+}
+
+/* =========================
+   ADICIONAR
+========================= */
+
 function addToCart(id){
 
-  const item =
-    cart.find(x=>x.id===id);
+const item=
+cart.find(x=>x.id===id);
 
-  if(item){
+if(item){
 
-    item.qty++;
+item.qty++;
 
-  }else{
+}else{
 
-    const p =
-      products.find(x=>x.id===id);
+const p=
+products.find(x=>x.id===id);
 
-    if(!p)return;
+if(!p)return;
 
-    cart.push({
+cart.push({
 
-      id:p.id,
-      name:p.name,
-      price:p.price,
-      image:p.image,
-      qty:1
+id:p.id,
+name:p.name,
+price:p.price,
+image:p.image,
+qty:1
 
-    });
+});
 
-  }
+}
 
-  saveCart();
-  updateCartCount();
-  renderCart();
+saveCart();
+updateCartCount();
+renderCart();
 
-  showToast(
-    "Produto adicionado ao carrinho!"
-  );
+showToast(
+"Produto adicionado ao carrinho!"
+);
 
 }
 
@@ -2005,36 +2170,36 @@ function addToCart(id){
 
 function buyNow(id){
 
-  const existing =
-    cart.find(x=>x.id===id);
+const existing=
+cart.find(x=>x.id===id);
 
-  if(existing){
+if(existing){
 
-    existing.qty++;
+existing.qty++;
 
-  }else{
+}else{
 
-    const p =
-      products.find(x=>x.id===id);
+const p=
+products.find(x=>x.id===id);
 
-    if(!p)return;
+if(!p)return;
 
-    cart.push({
+cart.push({
 
-      id:p.id,
-      name:p.name,
-      price:p.price,
-      image:p.image,
-      qty:1
+id:p.id,
+name:p.name,
+price:p.price,
+image:p.image,
+qty:1
 
-    });
+});
 
-  }
+}
 
-  saveCart();
-  updateCartCount();
+saveCart();
+updateCartCount();
 
-  openCheckout();
+openCheckout();
 
 }
 
@@ -2044,166 +2209,184 @@ function buyNow(id){
 
 function renderCart(){
 
-  const area =
-    document.getElementById("cartItems");
+const area=
+document.getElementById("cartItems");
 
-  const btn =
-    document.getElementById("checkoutBtn");
+const btn=
+document.getElementById("checkoutBtn");
 
-  if(!cart.length){
+if(!cart.length){
 
-    area.innerHTML=`
+area.innerHTML=`
 
-      <div class="empty">
+<div class="empty">
 
-        <strong>
-          Seu carrinho está vazio
-        </strong>
+<strong>
+Seu carrinho está vazio
+</strong>
 
-        <span>
-          Adicione produtos para continuar sua compra.
-        </span>
+<span>
+Adicione produtos para continuar sua compra.
+</span>
 
-      </div>
+</div>
 
-    `;
+`;
 
-    btn.disabled=true;
+btn.disabled=true;
 
-  }else{
+}else{
 
-    area.innerHTML =
-      cart.map(item=>`
+area.innerHTML=
+cart.map(item=>`
 
-        <div class="cart-item">
+<div class="cart-item">
 
-          <div class="cart-icon">
+<div class="cart-icon">
 
-            <img
-              src="${escapeHtml(item.image)}"
-              alt="${escapeHtml(item.name)}"
-            >
+<img
+src="${item.image}"
+alt="${escapeHtml(item.name)}"
+>
 
-          </div>
+</div>
 
-          <div class="cart-info">
+<div class="cart-info">
 
-            <b>
-              ${escapeHtml(item.name)}
-            </b>
+<b>
+${escapeHtml(item.name)}
+</b>
 
-            <div class="cart-price">
-              ${money(item.price*item.qty)}
-            </div>
+<div class="cart-price">
+${money(item.price*item.qty)}
+</div>
 
-            <div class="qty">
+<div class="qty">
 
-              <button
-                onclick="changeQty(${item.id},-1)"
-              >
-                −
-              </button>
+<button
+onclick="changeQty(${item.id},-1)"
+>
+−
+</button>
 
-              <span>
-                ${item.qty}
-              </span>
+<span>
+${item.qty}
+</span>
 
-              <button
-                onclick="changeQty(${item.id},1)"
-              >
-                +
-              </button>
+<button
+onclick="changeQty(${item.id},1)"
+>
++
+</button>
 
-              <button
-                class="remove"
-                onclick="removeFromCart(${item.id})"
-              >
-                Remover
-              </button>
+<button
+class="remove"
+onclick="removeFromCart(${item.id})"
+>
+Remover
+</button>
 
-            </div>
+</div>
 
-          </div>
+</div>
 
-        </div>
+</div>
 
-      `).join("");
+`).join("");
 
-    btn.disabled=false;
-
-  }
-
-  document.getElementById("cartTotal").textContent =
-    money(cartTotal());
+btn.disabled=false;
 
 }
+
+document.getElementById(
+"cartTotal"
+).textContent=
+money(cartTotal());
+
+}
+
+/* =========================
+   QUANTIDADE
+========================= */
 
 function changeQty(id,delta){
 
-  const item =
-    cart.find(x=>x.id===id);
+const item=
+cart.find(x=>x.id===id);
 
-  if(!item)return;
+if(!item)return;
 
-  item.qty+=delta;
+item.qty+=delta;
 
-  if(item.qty<=0){
+if(item.qty<=0){
 
-    cart =
-      cart.filter(
-        x=>x.id!==id
-      );
-
-  }
-
-  saveCart();
-  updateCartCount();
-  renderCart();
+cart=
+cart.filter(
+x=>x.id!==id
+);
 
 }
+
+saveCart();
+updateCartCount();
+renderCart();
+
+}
+
+/* =========================
+   REMOVER
+========================= */
 
 function removeFromCart(id){
 
-  cart =
-    cart.filter(
-      x=>x.id!==id
-    );
+cart=
+cart.filter(
+x=>x.id!==id
+);
 
-  saveCart();
-  updateCartCount();
-  renderCart();
+saveCart();
+updateCartCount();
+renderCart();
 
 }
+
+/* =========================
+   ABRIR CARRINHO
+========================= */
 
 function openCart(){
 
-  renderCart();
+renderCart();
 
-  document
-    .getElementById("cartOverlay")
-    .classList.add("show");
+document
+.getElementById("cartOverlay")
+.classList.add("show");
 
-  document.body.classList.add(
-    "modal-open"
-  );
+document.body.classList.add(
+"modal-open"
+);
 
 }
 
+/* =========================
+   FECHAR CARRINHO
+========================= */
+
 function closeCart(e){
 
-  if(
-    e &&
-    e.target !==
-      document.getElementById("cartOverlay")
-  )return;
+if(
+e &&
+e.target!==
+document.getElementById("cartOverlay")
+)return;
 
-  document
-    .getElementById("cartOverlay")
-    .classList.remove("show");
+document
+.getElementById("cartOverlay")
+.classList.remove("show");
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+document.body.classList.remove(
+"modal-open"
+);
 
 }
 
@@ -2213,67 +2396,458 @@ function closeCart(e){
 
 function openCheckout(){
 
-  if(!cart.length)return;
+if(!cart.length){
 
-  closeCart();
+showToast(
+"Seu carrinho está vazio."
+);
 
-  updateCheckoutSummary();
+return;
 
-  document
-    .getElementById("checkoutFormArea")
-    .style.display="block";
+}
 
-  document
-    .getElementById("successArea")
-    .classList.remove("show");
+closeCart();
 
-  document
-    .getElementById("pixArea")
-    .classList.remove("show");
+updateCheckoutSummary();
 
-  document
-    .getElementById("checkoutOverlay")
-    .classList.add("show");
+document
+.getElementById("checkoutFormArea")
+.style.display="block";
 
-  document.body.classList.add(
-    "modal-open"
-  );
+document
+.getElementById("successArea")
+.classList.remove("show");
+
+hidePix();
+
+document
+.getElementById("checkoutOverlay")
+.classList.add("show");
+
+document.body.classList.add(
+"modal-open"
+);
 
 }
 
 function closeCheckout(e){
 
-  if(
-    e &&
-    e.target !==
-      document.getElementById("checkoutOverlay")
-  )return;
+if(
+e &&
+e.target!==
+document.getElementById("checkoutOverlay")
+)return;
 
-  document
-    .getElementById("checkoutOverlay")
-    .classList.remove("show");
+document
+.getElementById("checkoutOverlay")
+.classList.remove("show");
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+document.body.classList.remove(
+"modal-open"
+);
 
 }
 
+/* =========================
+   RESUMO
+========================= */
+
 function updateCheckoutSummary(){
 
-  document.getElementById(
-    "summaryItems"
-  ).textContent =
+document.getElementById(
+"summaryItems"
+).textContent=
 
-    cart.reduce(
-      (s,i)=>s+i.qty,
-      0
-    ) + " item(ns)";
+cart.reduce(
+(s,i)=>s+i.qty,
+0
+)+" item(ns)";
 
-  document.getElementById(
-    "summaryTotal"
-  ).textContent =
-    money(cartTotal());
+document.getElementById(
+"summaryTotal"
+).textContent=
+money(cartTotal());
+
+}
+
+/* =========================
+   PIX - CRC16
+========================= */
+
+function crc16(payload){
+
+let crc=0xFFFF;
+
+for(
+let i=0;
+i<payload.length;
+i++
+){
+
+crc^=
+payload.charCodeAt(i)<<8;
+
+for(
+let j=0;
+j<8;
+j++
+){
+
+if(crc&0x8000){
+
+crc=
+(crc<<1)^0x1021;
+
+}else{
+
+crc<<=1;
+
+}
+
+crc&=0xFFFF;
+
+}
+
+}
+
+return crc
+.toString(16)
+.toUpperCase()
+.padStart(4,"0");
+
+}
+
+/* =========================
+   PIX - CAMPO
+========================= */
+
+function pixField(id,value){
+
+return(
+id+
+String(value.length)
+.padStart(2,"0")+
+value
+);
+
+}
+
+/* =========================
+   GERAR PIX
+========================= */
+
+function generatePixPayload(amount){
+
+const merchantName=
+PIX_NAME
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+.substring(0,25)
+.toUpperCase();
+
+const merchantCity=
+PIX_CITY
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+.substring(0,15)
+.toUpperCase();
+
+const amountFormatted=
+Number(amount).toFixed(2);
+
+const merchantAccountInfo=
+
+pixField(
+"00",
+"BR.GOV.BCB.PIX"
+)+
+
+pixField(
+"01",
+PIX_KEY
+);
+
+let payload="";
+
+payload+=
+pixField(
+"00",
+"01"
+);
+
+payload+=
+pixField(
+"26",
+merchantAccountInfo
+);
+
+payload+=
+pixField(
+"52",
+"0000"
+);
+
+payload+=
+pixField(
+"53",
+"986"
+);
+
+payload+=
+pixField(
+"54",
+amountFormatted
+);
+
+payload+=
+pixField(
+"58",
+"BR"
+);
+
+payload+=
+pixField(
+"59",
+merchantName
+);
+
+payload+=
+pixField(
+"60",
+merchantCity
+);
+
+payload+=
+pixField(
+"62",
+pixField(
+"05",
+"***"
+)
+);
+
+payload+="6304";
+
+payload+=crc16(payload);
+
+return payload;
+
+}
+
+/* =========================
+   GERAR QR CODE
+========================= */
+
+function generatePixQRCode(){
+
+const pixArea=
+document.getElementById(
+"pixArea"
+);
+
+const qr=
+document.getElementById(
+"pixQRCode"
+);
+
+const payload=
+generatePixPayload(
+cartTotal()
+);
+
+document.getElementById(
+"pixPayload"
+).value=payload;
+
+qr.innerHTML="";
+
+if(
+typeof QRCode===
+"undefined"
+){
+
+qr.innerHTML=`
+
+<div style="
+color:#ef4444;
+font-size:13px;
+text-align:center;
+padding:20px;
+">
+
+Não foi possível carregar
+o gerador do QR Code.
+
+<br><br>
+
+Verifique sua conexão com a internet
+e recarregue a página.
+
+</div>
+
+`;
+
+pixArea.classList.add("show");
+
+return;
+
+}
+
+new QRCode(
+qr,
+{
+text:payload,
+width:200,
+height:200,
+correctLevel:
+QRCode.CorrectLevel.M
+}
+);
+
+pixArea.classList.add("show");
+
+}
+
+/* =========================
+   ESCONDER PIX
+========================= */
+
+function hidePix(){
+
+const pixArea=
+document.getElementById(
+"pixArea"
+);
+
+if(pixArea){
+
+pixArea.classList.remove(
+"show"
+);
+
+}
+
+}
+
+/* =========================
+   COPIAR PIX
+========================= */
+
+function copyPix(){
+
+const input=
+document.getElementById(
+"pixPayload"
+);
+
+if(!input.value){
+
+showToast(
+"Selecione Pix primeiro."
+);
+
+return;
+
+}
+
+if(
+navigator.clipboard &&
+window.isSecureContext
+){
+
+navigator.clipboard
+.writeText(input.value)
+.then(()=>{
+
+showToast(
+"Pix Copia e Cola copiado!"
+);
+
+})
+.catch(()=>{
+
+fallbackCopyPix();
+
+});
+
+}else{
+
+fallbackCopyPix();
+
+}
+
+}
+
+function fallbackCopyPix(){
+
+const input=
+document.getElementById(
+"pixPayload"
+);
+
+input.focus();
+input.select();
+
+try{
+
+document.execCommand(
+"copy"
+);
+
+showToast(
+"Pix Copia e Cola copiado!"
+);
+
+}catch(e){
+
+showToast(
+"Selecione e copie o código manualmente."
+);
+
+}
+
+}
+
+/* =========================
+   ERRO DE CAMPO
+========================= */
+
+function setFieldError(
+id,
+hasError
+){
+
+const element=
+document.getElementById(id);
+
+if(!element)return;
+
+const field=
+element.closest(".field");
+
+if(!field)return;
+
+if(hasError){
+
+field.classList.add(
+"has-error"
+);
+
+element.classList.add(
+"invalid"
+);
+
+}else{
+
+field.classList.remove(
+"has-error"
+);
+
+element.classList.remove(
+"invalid"
+);
+
+}
 
 }
 
@@ -2281,417 +2855,177 @@ function updateCheckoutSummary(){
    VALIDAÇÃO
 ========================= */
 
-function setFieldError(
-  id,
-  hasError
-){
-
-  const element =
-    document.getElementById(id);
-
-  if(!element)return;
-
-  const field =
-    element.closest(".field");
-
-  if(!field)return;
-
-  if(hasError){
-
-    field.classList.add(
-      "has-error"
-    );
-
-    element.classList.add(
-      "invalid"
-    );
-
-  }else{
-
-    field.classList.remove(
-      "has-error"
-    );
-
-    element.classList.remove(
-      "invalid"
-    );
-
-  }
-
-}
-
 function validateCheckout(){
 
-  let valid=true;
+let valid=true;
 
-  const summary =
-    document.getElementById(
-      "validationSummary"
-    );
+const summary=
+document.getElementById(
+"validationSummary"
+);
 
-  const name =
-    document.getElementById(
-      "fullName"
-    ).value.trim();
+const name=
+document.getElementById(
+"fullName"
+).value.trim();
 
-  const phone =
-    document.getElementById(
-      "phone"
-    ).value.trim();
+const phone=
+document.getElementById(
+"phone"
+).value.trim();
 
-  const cep =
-    document.getElementById(
-      "cep"
-    ).value.trim();
+const cep=
+document.getElementById(
+"cep"
+).value.trim();
 
-  const state =
-    document.getElementById(
-      "state"
-    ).value;
+const state=
+document.getElementById(
+"state"
+).value;
 
-  const city =
-    document.getElementById(
-      "city"
-    ).value.trim();
+const city=
+document.getElementById(
+"city"
+).value.trim();
 
-  const neighborhood =
-    document.getElementById(
-      "neighborhood"
-    ).value.trim();
+const neighborhood=
+document.getElementById(
+"neighborhood"
+).value.trim();
 
-  const street =
-    document.getElementById(
-      "street"
-    ).value.trim();
+const street=
+document.getElementById(
+"street"
+).value.trim();
 
-  const number =
-    document.getElementById(
-      "number"
-    ).value.trim();
+const number=
+document.getElementById(
+"number"
+).value.trim();
 
-  setFieldError(
-    "fullName",
-    name.length < 5
-  );
+setFieldError(
+"fullName",
+name.length<5
+);
 
-  if(name.length < 5){
-    valid=false;
-  }
+if(name.length<5){
+valid=false;
+}
 
-  const phoneDigits =
-    phone.replace(/\D/g,"");
+const phoneDigits=
+phone.replace(/\D/g,"");
 
-  setFieldError(
-    "phone",
-    phoneDigits.length < 10
-  );
+setFieldError(
+"phone",
+phoneDigits.length<10
+);
 
-  if(phoneDigits.length < 10){
-    valid=false;
-  }
+if(phoneDigits.length<10){
+valid=false;
+}
 
-  const cepDigits =
-    cep.replace(/\D/g,"");
+const cepDigits=
+cep.replace(/\D/g,"");
 
-  setFieldError(
-    "cep",
-    cepDigits.length !== 8
-  );
+setFieldError(
+"cep",
+cepDigits.length!==8
+);
 
-  if(cepDigits.length !== 8){
-    valid=false;
-  }
+if(cepDigits.length!==8){
+valid=false;
+}
 
-  setFieldError(
-    "state",
-    !state
-  );
+setFieldError(
+"state",
+!state
+);
 
-  if(!state){
-    valid=false;
-  }
+if(!state){
+valid=false;
+}
 
-  setFieldError(
-    "city",
-    city.length < 2
-  );
+setFieldError(
+"city",
+city.length<2
+);
 
-  if(city.length < 2){
-    valid=false;
-  }
+if(city.length<2){
+valid=false;
+}
 
-  setFieldError(
-    "neighborhood",
-    neighborhood.length < 2
-  );
+setFieldError(
+"neighborhood",
+neighborhood.length<2
+);
 
-  if(neighborhood.length < 2){
-    valid=false;
-  }
+if(neighborhood.length<2){
+valid=false;
+}
 
-  setFieldError(
-    "street",
-    street.length < 2
-  );
+setFieldError(
+"street",
+street.length<2
+);
 
-  if(street.length < 2){
-    valid=false;
-  }
+if(street.length<2){
+valid=false;
+}
 
-  setFieldError(
-    "number",
-    number.length < 1
-  );
+setFieldError(
+"number",
+number.length<1
+);
 
-  if(number.length < 1){
-    valid=false;
-  }
+if(number.length<1){
+valid=false;
+}
 
-  const payment =
-    document.querySelector(
-      'input[name="payment"]:checked'
-    );
+const payment=
+document.querySelector(
+'input[name="payment"]:checked'
+);
 
-  const paymentError =
-    document.getElementById(
-      "paymentError"
-    );
+const paymentError=
+document.getElementById(
+"paymentError"
+);
 
-  if(!payment){
+if(!payment){
 
-    paymentError.style.display =
-      "block";
+paymentError.style.display=
+"block";
 
-    valid=false;
+valid=false;
 
-  }else{
+}else{
 
-    paymentError.style.display =
-      "none";
-
-  }
-
-  if(!valid){
-
-    summary.classList.add(
-      "show"
-    );
-
-    summary.scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
-
-  }else{
-
-    summary.classList.remove(
-      "show"
-    );
-
-  }
-
-  return valid;
+paymentError.style.display=
+"none";
 
 }
 
-/* =========================
-   PIX
-========================= */
+if(!valid){
 
-function crc16(payload){
+summary.classList.add(
+"show"
+);
 
-  let crc = 0xFFFF;
+summary.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
 
-  for(let i=0;i<payload.length;i++){
+}else{
 
-    crc ^= payload.charCodeAt(i) << 8;
-
-    for(let j=0;j<8;j++){
-
-      if(crc & 0x8000){
-
-        crc =
-          (crc << 1) ^
-          0x1021;
-
-      }else{
-
-        crc =
-          crc << 1;
-
-      }
-
-      crc &= 0xFFFF;
-
-    }
-
-  }
-
-  return crc
-    .toString(16)
-    .toUpperCase()
-    .padStart(4,"0");
+summary.classList.remove(
+"show"
+);
 
 }
 
-function pixField(id,value){
-
-  const text =
-    String(value);
-
-  return (
-    id +
-    text.length.toString().padStart(2,"0") +
-    text
-  );
-
-}
-
-function generatePixPayload(amount){
-
-  const merchantName =
-    PIX_MERCHANT_NAME
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g,"")
-      .substring(0,25);
-
-  const merchantCity =
-    PIX_MERCHANT_CITY
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g,"")
-      .substring(0,15);
-
-  const gui =
-    pixField(
-      "00",
-      "BR.GOV.BCB.PIX"
-    );
-
-  const key =
-    pixField(
-      "01",
-      PIX_KEY
-    );
-
-  const merchantAccount =
-    pixField(
-      "26",
-      gui + key
-    );
-
-  const payloadWithoutCRC =
-
-    pixField("00","01") +
-
-    merchantAccount +
-
-    pixField("52","0000") +
-
-    pixField("53","986") +
-
-    pixField(
-      "54",
-      Number(amount)
-        .toFixed(2)
-    ) +
-
-    pixField("58","BR") +
-
-    pixField(
-      "59",
-      merchantName
-    ) +
-
-    pixField(
-      "60",
-      merchantCity
-    ) +
-
-    pixField(
-      "62",
-      pixField(
-        "05",
-        "***"
-      )
-    ) +
-
-    "6304";
-
-  return (
-    payloadWithoutCRC +
-    crc16(payloadWithoutCRC)
-  );
-
-}
-
-function showPix(){
-
-  const total =
-    cartTotal();
-
-  if(total <= 0)return;
-
-  const payload =
-    generatePixPayload(total);
-
-  document.getElementById(
-    "pixCode"
-  ).value = payload;
-
-  /*
-    Gera a imagem do QR Code a partir
-    do payload Pix.
-  */
-  const qrUrl =
-    "https://api.qrserver.com/v1/create-qr-code/?" +
-    "size=220x220&data=" +
-    encodeURIComponent(payload);
-
-  document.getElementById(
-    "pixQr"
-  ).src = qrUrl;
-
-  document
-    .getElementById("pixArea")
-    .classList.add("show");
-
-}
-
-async function copyPix(){
-
-  const field =
-    document.getElementById(
-      "pixCode"
-    );
-
-  const value =
-    field.value;
-
-  if(!value)return;
-
-  try{
-
-    await navigator.clipboard.writeText(
-      value
-    );
-
-    showToast(
-      "Código Pix copiado!"
-    );
-
-  }catch(e){
-
-    field.select();
-
-    document.execCommand(
-      "copy"
-    );
-
-    showToast(
-      "Código Pix copiado!"
-    );
-
-  }
+return valid;
 
 }
 
@@ -2701,98 +3035,81 @@ async function copyPix(){
 
 function finishOrder(event){
 
-  event.preventDefault();
+event.preventDefault();
 
-  if(!cart.length){
+if(!cart.length){
 
-    showToast(
-      "Seu carrinho está vazio."
-    );
+showToast(
+"Seu carrinho está vazio."
+);
 
-    return;
+return;
 
-  }
+}
 
-  if(!validateCheckout()){
+if(!validateCheckout()){
 
-    return;
+return;
 
-  }
+}
 
-  const form =
-    document.getElementById(
-      "checkoutForm"
-    );
+const form=
+document.getElementById(
+"checkoutForm"
+);
 
-  const data =
-    new FormData(form);
+const data=
+new FormData(form);
 
-  const name =
-    String(
-      data.get("fullName") || ""
-    ).trim();
+const name=
+data.get("fullName").trim();
 
-  const phone =
-    String(
-      data.get("phone") || ""
-    ).trim();
+const phone=
+data.get("phone").trim();
 
-  const cep =
-    String(
-      data.get("cep") || ""
-    ).trim();
+const cep=
+data.get("cep").trim();
 
-  const state =
-    String(
-      data.get("state") || ""
-    );
+const state=
+data.get("state");
 
-  const city =
-    String(
-      data.get("city") || ""
-    ).trim();
+const city=
+data.get("city").trim();
 
-  const neighborhood =
-    String(
-      data.get("neighborhood") || ""
-    ).trim();
+const neighborhood=
+data.get("neighborhood").trim();
 
-  const street =
-    String(
-      data.get("street") || ""
-    ).trim();
+const street=
+data.get("street").trim();
 
-  const number =
-    String(
-      data.get("number") || ""
-    ).trim();
+const number=
+data.get("number").trim();
 
-  const complement =
-    String(
-      data.get("complement") || ""
-    ).trim();
+const complement=
+data.get("complement").trim();
 
-  const payment =
-    String(
-      data.get("payment") || ""
-    );
+const payment=
+data.get("payment");
 
-  const items =
-    cart
-      .map(
-        i =>
-          `${i.qty}x ${i.name} - ${money(i.price*i.qty)}`
-      )
-      .join("\n");
+const items=
+cart
+.map(
+i=>
+`${i.qty}x ${i.name}`
+)
+.join("\n");
 
-  const address =
-    `${street}, ${number}` +
-    `${complement ? " - "+complement : ""}` +
-    ` - ${neighborhood}` +
-    ` - ${city}/${state}` +
-    ` - CEP: ${cep}`;
+const address=
+`${street}, ${number}`+
+`${complement ? " - "+complement : ""}`+
+` - ${neighborhood}`+
+` - ${city}/${state}`+
+` - CEP: ${cep}`;
 
-  const message =
+const total=
+cartTotal();
+
+const message=
 `Olá, VelorianTech!
 
 Quero finalizar um pedido.
@@ -2813,73 +3130,40 @@ PRODUTOS:
 ${items}
 
 TOTAL:
-${money(cartTotal())}`;
+${money(total)}`;
 
-  const whatsapp =
-    "5571992346351";
+const whatsapp=
+"5571992346351";
 
-  pendingWhatsAppUrl =
-    "https://wa.me/" +
-    whatsapp +
-    "?text=" +
-    encodeURIComponent(message);
+pendingWhatsAppUrl=
+"https://wa.me/"+
+whatsapp+
+"?text="+
+encodeURIComponent(message);
 
-  /*
-    Se Pix foi escolhido, mostra o QR Code
-    antes da tela de confirmação.
-  */
-  if(payment === "Pix"){
+document.getElementById(
+"checkoutFormArea"
+).style.display="none";
 
-    showPix();
+document
+.getElementById("successArea")
+.classList.add("show");
 
-  }else{
+document.getElementById(
+"successText"
+).innerHTML=
 
-    document
-      .getElementById("pixArea")
-      .classList.remove("show");
+`Obrigado, <strong>${escapeHtml(name)}</strong>!<br><br>`+
 
-  }
+`Seu pedido foi preparado com sucesso.<br><br>`+
 
-  document.getElementById(
-    "checkoutFormArea"
-  ).style.display="none";
+`Forma de pagamento selecionada: `+
 
-  document
-    .getElementById("successArea")
-    .classList.add("show");
+`<strong>${escapeHtml(payment)}</strong>.<br><br>`+
 
-  let paymentText =
-    escapeHtml(payment);
+`Clique no botão abaixo para enviar `+
 
-  let extra =
-    "";
-
-  if(payment === "Pix"){
-
-    extra =
-      "<br><br>O QR Code e o código Pix foram gerados para este pedido.";
-
-  }
-
-  document.getElementById(
-    "successText"
-  ).innerHTML =
-
-    `Obrigado, <strong>${escapeHtml(name)}</strong>!<br><br>` +
-
-    `Seu pedido foi preparado com sucesso. ` +
-
-    `Forma de pagamento selecionada: ` +
-
-    `<strong>${paymentText}</strong>.` +
-
-    extra +
-
-    `<br><br>` +
-
-    `Clique no botão abaixo para enviar ` +
-
-    `os dados do pedido pelo WhatsApp.`;
+`os dados do pedido pelo WhatsApp.`;
 
 }
 
@@ -2889,313 +3173,188 @@ ${money(cartTotal())}`;
 
 function sendWhatsAppAndFinish(){
 
-  if(!pendingWhatsAppUrl)return;
+if(!pendingWhatsAppUrl)return;
 
-  window.open(
-    pendingWhatsAppUrl,
-    "_blank"
-  );
+window.open(
+pendingWhatsAppUrl,
+"_blank"
+);
 
-  cart=[];
+cart=[];
 
-  saveCart();
+saveCart();
 
-  updateCartCount();
+updateCartCount();
 
-  closeAllModals();
+closeAllModals();
 
 }
 
 /* =========================
-   UTILIDADES
+   TOAST
 ========================= */
-
-function escapeHtml(text){
-
-  return String(text).replace(
-    /[&<>"']/g,
-    m => ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-    }[m])
-  );
-
-}
 
 function showToast(message){
 
-  const t =
-    document.getElementById(
-      "toast"
-    );
+const t=
+document.getElementById(
+"toast"
+);
 
-  t.textContent =
-    message;
+t.textContent=
+message;
 
-  t.classList.add(
-    "show"
-  );
+t.classList.add(
+"show"
+);
 
-  setTimeout(
-    ()=>{
-      t.classList.remove(
-        "show"
-      );
-    },
-    1800
-  );
+setTimeout(
+()=>{
+t.classList.remove(
+"show"
+);
+},
+1800
+);
 
 }
+
+/* =========================
+   FECHAR TUDO
+========================= */
 
 function closeAllModals(){
 
-  document
-    .getElementById("cartOverlay")
-    .classList.remove("show");
+document
+.getElementById("cartOverlay")
+.classList.remove("show");
 
-  document
-    .getElementById("checkoutOverlay")
-    .classList.remove("show");
+document
+.getElementById("checkoutOverlay")
+.classList.remove("show");
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+document.body.classList.remove(
+"modal-open"
+);
 
-  document.getElementById(
-    "checkoutFormArea"
-  ).style.display="block";
+document.getElementById(
+"checkoutFormArea"
+).style.display="block";
 
-  document
-    .getElementById("successArea")
-    .classList.remove("show");
+document
+.getElementById("successArea")
+.classList.remove("show");
 
-  document
-    .getElementById("pixArea")
-    .classList.remove("show");
+document
+.getElementById("checkoutForm")
+.reset();
 
-  document
-    .getElementById("checkoutForm")
-    .reset();
+document
+.getElementById("validationSummary")
+.classList.remove("show");
 
-  document
-    .getElementById("validationSummary")
-    .classList.remove("show");
+document
+.querySelectorAll(
+".field.has-error"
+)
+.forEach(
+x=>x.classList.remove(
+"has-error"
+)
+);
 
-  document
-    .querySelectorAll(
-      ".field.has-error"
-    )
-    .forEach(
-      x=>x.classList.remove(
-        "has-error"
-      )
-    );
+document
+.querySelectorAll(
+".invalid"
+)
+.forEach(
+x=>x.classList.remove(
+"invalid"
+)
+);
 
-  document
-    .querySelectorAll(
-      ".invalid"
-    )
-    .forEach(
-      x=>x.classList.remove(
-        "invalid"
-      )
-    );
+document
+.querySelectorAll(
+".payment-option"
+)
+.forEach(
+x=>x.classList.remove(
+"selected"
+)
+);
 
-  document
-    .querySelectorAll(
-      ".payment-option"
-    )
-    .forEach(
-      x=>x.classList.remove(
-        "selected"
-      )
-    );
+document.getElementById(
+"paymentError"
+).style.display=
+"none";
 
-  pendingWhatsAppUrl="";
+hidePix();
 
 }
-
-/* =========================
-   CATEGORIAS
-========================= */
-
-function category(c,el){
-
-  current=c;
-
-  document
-    .querySelectorAll(".filter")
-    .forEach(
-      x=>x.classList.remove(
-        "active"
-      )
-    );
-
-  el.classList.add(
-    "active"
-  );
-
-  render();
-
-}
-
-function filterProducts(){
-
-  render();
-
-  document
-    .getElementById("produtos")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-/* =========================
-   MÁSCARAS
-========================= */
-
-document
-  .getElementById("phone")
-  .addEventListener(
-    "input",
-    function(){
-
-      let value =
-        this.value
-          .replace(/\D/g,"")
-          .slice(0,11);
-
-      if(value.length <= 10){
-
-        if(value.length >= 7){
-
-          value =
-            value.replace(
-              /^(\d{2})(\d{4})(\d{0,4})$/,
-              "($1) $2-$3"
-            );
-
-        }else if(value.length >= 3){
-
-          value =
-            value.replace(
-              /^(\d{2})(\d+)/,
-              "($1) $2"
-            );
-
-        }
-
-      }else{
-
-        value =
-          value.replace(
-            /^(\d{2})(\d{5})(\d{0,4})$/,
-            "($1) $2-$3"
-          );
-
-      }
-
-      this.value=value;
-
-    }
-  );
-
-document
-  .getElementById("cep")
-  .addEventListener(
-    "input",
-    function(){
-
-      let value =
-        this.value
-          .replace(/\D/g,"")
-          .slice(0,8);
-
-      if(value.length > 5){
-
-        value =
-          value.slice(0,5) +
-          "-" +
-          value.slice(5);
-
-      }
-
-      this.value=value;
-
-    }
-  );
-
-/* =========================
-   PAGAMENTO VISUAL
-========================= */
-
-document
-  .querySelectorAll(
-    '.payment-option input'
-  )
-  .forEach(
-    input=>{
-
-      input.addEventListener(
-        "change",
-        ()=>{
-
-          document
-            .querySelectorAll(
-              ".payment-option"
-            )
-            .forEach(
-              option =>
-                option.classList.remove(
-                  "selected"
-                )
-            );
-
-          input
-            .closest(
-              ".payment-option"
-            )
-            .classList.add(
-              "selected"
-            );
-
-          /*
-            Não mostra o Pix antes de
-            o cliente confirmar o pedido.
-          */
-          document
-            .getElementById("pixArea")
-            .classList.remove("show");
-
-        }
-      );
-
-    }
-  );
-
-/* =========================
-   BUSCA
-========================= */
-
-document
-  .getElementById("search")
-  .addEventListener(
-    "input",
-    render
-  );
 
 /* =========================
    INICIALIZAÇÃO
 ========================= */
 
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
 loadCart();
 render();
+
+document
+.getElementById("search")
+.addEventListener(
+"input",
+render
+);
+
+/*
+  Mostra/esconde o QR Code automaticamente
+  quando o cliente escolhe Pix.
+*/
+
+document
+.querySelectorAll(
+'input[name="payment"]'
+)
+.forEach(input=>{
+
+input.addEventListener(
+"change",
+function(){
+
+document
+.querySelectorAll(".payment-option")
+.forEach(
+option=>
+option.classList.remove("selected")
+);
+
+this.closest(".payment-option")
+.classList.add("selected");
+
+if(this.value==="Pix"){
+
+generatePixQRCode();
+
+}else{
+
+hidePix();
+
+}
+
+}
+);
+
+});
+
+}
+);
 
 </script>
 
 </body>
 </html>
+```
