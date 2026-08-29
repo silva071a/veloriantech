@@ -4,23 +4,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111827">
+<meta name="description" content="VelorianTech — Eletrônicos, acessórios e tecnologia.">
 <title>VelorianTech — Eletrônicos</title>
 
 <style>
 :root{
   --bg:#f5f7fb;
-  --card:#fff;
+  --card:#ffffff;
   --text:#101828;
   --muted:#667085;
   --primary:#635bff;
-  --primary2:#7c3aed;
+  --primary-dark:#4f46e5;
+  --dark:#111827;
   --border:#e4e7ec;
   --green:#12b76a;
   --danger:#ef4444;
-  --warning:#f79009;
+  --shadow:0 10px 35px rgba(16,24,40,.08);
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Inter,Arial,sans-serif;
@@ -28,10 +39,20 @@ body{
   color:var(--text);
 }
 
-body.modal-open{overflow:hidden}
+body.modal-open{
+  overflow:hidden;
+}
 
-a{text-decoration:none;color:inherit}
-button{font:inherit;cursor:pointer;border:0}
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+  border:0;
+}
 
 .top{
   background:#111827;
@@ -52,10 +73,10 @@ header{
 .nav{
   max-width:1200px;
   margin:auto;
-  height:72px;
+  min-height:72px;
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:25px;
   padding:0 20px;
 }
 
@@ -63,9 +84,12 @@ header{
   font-size:24px;
   font-weight:900;
   letter-spacing:-1px;
+  white-space:nowrap;
 }
 
-.logo span{color:var(--primary)}
+.logo span{
+  color:var(--primary);
+}
 
 .search{
   flex:1;
@@ -74,14 +98,19 @@ header{
 
 .search input{
   width:100%;
-  padding:13px 45px 13px 16px;
+  padding:13px 48px 13px 16px;
   border:1px solid var(--border);
   border-radius:12px;
   outline:0;
   background:#f9fafb;
+  transition:.2s;
 }
 
-.search input:focus{border-color:var(--primary)}
+.search input:focus{
+  border-color:var(--primary);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(99,91,255,.1);
+}
 
 .search button{
   position:absolute;
@@ -99,6 +128,10 @@ header{
   gap:18px;
   color:#475467;
   font-size:14px;
+}
+
+.navlinks a:hover{
+  color:var(--primary);
 }
 
 .cart{
@@ -127,15 +160,18 @@ header{
 }
 
 .hero-box{
-  background:linear-gradient(120deg,#111827,#312e81 65%,#635bff);
+  background:
+    radial-gradient(circle at 85% 30%,rgba(124,58,237,.45),transparent 28%),
+    linear-gradient(120deg,#111827,#312e81 65%,#635bff);
   border-radius:24px;
-  min-height:360px;
+  min-height:380px;
   padding:55px;
   color:#fff;
   display:flex;
   align-items:center;
   overflow:hidden;
   position:relative;
+  box-shadow:0 20px 50px rgba(49,46,129,.2);
 }
 
 .hero-box:after{
@@ -150,7 +186,7 @@ header{
 }
 
 .hero-text{
-  max-width:570px;
+  max-width:600px;
   position:relative;
   z-index:1;
 }
@@ -184,6 +220,12 @@ header{
   padding:13px 20px;
   border-radius:10px;
   font-weight:800;
+  display:inline-block;
+  transition:.2s;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
 }
 
 .section{
@@ -217,6 +259,11 @@ header{
   background:#fff;
   border-radius:999px;
   color:#475467;
+  transition:.2s;
+}
+
+.filter:hover{
+  border-color:var(--primary);
 }
 
 .filter.active{
@@ -227,41 +274,49 @@ header{
 
 .products{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
 .product{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:16px;
+  border-radius:18px;
   overflow:hidden;
-  transition:.2s;
+  transition:.25s;
   position:relative;
+  box-shadow:0 4px 18px rgba(16,24,40,.04);
 }
 
 .product:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px rgba(16,24,40,.08);
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
 }
 
 .pic{
-  height:190px;
-  background:#f2f4f7;
+  height:250px;
+  background:linear-gradient(145deg,#f8fafc,#eef2f7);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:80px;
   overflow:hidden;
+  padding:15px;
 }
 
 .pic img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
+  transition:.3s;
 }
 
-.info{padding:16px}
+.product:hover .pic img{
+  transform:scale(1.05);
+}
+
+.info{
+  padding:18px;
+}
 
 .tag{
   font-size:11px;
@@ -272,7 +327,9 @@ header{
 
 .product h3{
   font-size:16px;
-  margin:6px 0 8px;
+  margin:7px 0 8px;
+  line-height:1.35;
+  min-height:43px;
 }
 
 .stars{
@@ -281,9 +338,9 @@ header{
 }
 
 .price{
-  font-size:21px;
+  font-size:22px;
   font-weight:900;
-  margin:10px 0;
+  margin:10px 0 4px;
 }
 
 .old{
@@ -292,15 +349,6 @@ header{
   text-decoration:line-through;
   margin-left:5px;
   font-weight:400;
-}
-
-.add{
-  width:100%;
-  background:#111827;
-  color:#fff;
-  padding:11px;
-  border-radius:9px;
-  font-weight:700;
 }
 
 .discount{
@@ -316,6 +364,41 @@ header{
   z-index:2;
 }
 
+.product-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:13px;
+}
+
+.add{
+  width:100%;
+  background:#111827;
+  color:#fff;
+  padding:11px;
+  border-radius:9px;
+  font-weight:700;
+  transition:.2s;
+}
+
+.add:hover{
+  background:#273244;
+}
+
+.buy-now{
+  width:100%;
+  background:var(--primary);
+  color:#fff;
+  padding:11px;
+  border-radius:9px;
+  font-weight:800;
+  transition:.2s;
+}
+
+.buy-now:hover{
+  background:var(--primary-dark);
+}
+
 .features{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -327,6 +410,12 @@ header{
   border:1px solid var(--border);
   padding:20px;
   border-radius:14px;
+  transition:.2s;
+}
+
+.feature:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
 }
 
 .feature b{
@@ -337,6 +426,7 @@ header{
 .feature p{
   font-size:13px;
   color:var(--muted);
+  line-height:1.5;
 }
 
 footer{
@@ -367,6 +457,10 @@ footer{
   margin:7px 0;
 }
 
+.footer a:hover{
+  color:#fff;
+}
+
 .copy{
   border-top:1px solid #344054;
   text-align:center;
@@ -387,6 +481,7 @@ footer{
   transform:translateY(15px);
   transition:.25s;
   z-index:100;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 .toast.show{
@@ -394,7 +489,7 @@ footer{
   transform:none;
 }
 
-/* CARRINHO */
+/* OVERLAYS */
 
 .overlay{
   position:fixed;
@@ -405,7 +500,11 @@ footer{
   z-index:50;
 }
 
-.overlay.show{display:block}
+.overlay.show{
+  display:block;
+}
+
+/* CARRINHO */
 
 .cart-panel{
   position:absolute;
@@ -427,7 +526,9 @@ footer{
   border-bottom:1px solid var(--border);
 }
 
-.panel-head h2{font-size:22px}
+.panel-head h2{
+  font-size:22px;
+}
 
 .close{
   background:#f2f4f7;
@@ -435,6 +536,10 @@ footer{
   height:36px;
   border-radius:10px;
   font-size:20px;
+}
+
+.close:hover{
+  background:#e4e7ec;
 }
 
 .cart-items{
@@ -451,25 +556,26 @@ footer{
 }
 
 .cart-icon{
-  width:64px;
-  height:64px;
+  width:70px;
+  height:70px;
   border-radius:12px;
   background:#f2f4f7;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
-  flex:none;
   overflow:hidden;
+  flex:none;
 }
 
 .cart-icon img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
 }
 
-.cart-info{flex:1}
+.cart-info{
+  flex:1;
+}
 
 .cart-info b{
   font-size:14px;
@@ -494,6 +600,10 @@ footer{
   height:27px;
   border-radius:7px;
   background:#f2f4f7;
+}
+
+.qty button:hover{
+  background:#e4e7ec;
 }
 
 .remove{
@@ -539,6 +649,10 @@ footer{
   font-weight:800;
 }
 
+.checkout-btn:hover{
+  background:var(--primary-dark);
+}
+
 .checkout-btn:disabled{
   opacity:.45;
   cursor:not-allowed;
@@ -551,8 +665,8 @@ footer{
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  width:min(700px,94%);
-  max-height:92vh;
+  width:min(720px,94%);
+  max-height:94vh;
   overflow:auto;
   background:#fff;
   border-radius:20px;
@@ -572,6 +686,14 @@ footer{
   color:var(--muted);
   font-size:13px;
   margin-bottom:20px;
+}
+
+.form-section-title{
+  font-size:14px;
+  font-weight:900;
+  margin:20px 0 12px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
 }
 
 .form-grid{
@@ -612,8 +734,8 @@ footer{
   box-shadow:0 0 0 3px rgba(99,91,255,.1);
 }
 
-.field input.error,
-.field select.error{
+.field input.invalid,
+.field select.invalid{
   border-color:var(--danger);
   background:#fff8f8;
 }
@@ -622,26 +744,10 @@ footer{
   display:none;
   color:var(--danger);
   font-size:11px;
-  font-weight:600;
 }
 
-.error-message.show{
+.field.has-error .error-message{
   display:block;
-}
-
-.required-note{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:4px;
-}
-
-.address-title{
-  grid-column:1/-1;
-  font-size:16px;
-  font-weight:800;
-  margin-top:4px;
-  padding-top:6px;
-  border-top:1px solid var(--border);
 }
 
 .payment-options{
@@ -659,6 +765,11 @@ footer{
   font-size:13px;
   font-weight:700;
   background:#fff;
+  transition:.2s;
+}
+
+.payment-option:hover{
+  border-color:var(--primary);
 }
 
 .payment-option.selected{
@@ -702,26 +813,6 @@ footer{
   margin:12px 0;
 }
 
-.validation-box{
-  display:none;
-  background:#fff1f2;
-  border:1px solid #fecdd3;
-  color:#be123c;
-  border-radius:10px;
-  padding:12px;
-  font-size:13px;
-  margin-bottom:14px;
-}
-
-.validation-box.show{
-  display:block;
-}
-
-.validation-box strong{
-  display:block;
-  margin-bottom:5px;
-}
-
 .finalize{
   width:100%;
   background:#111827;
@@ -729,11 +820,11 @@ footer{
   padding:14px;
   border-radius:10px;
   font-weight:800;
+  transition:.2s;
 }
 
-.finalize:disabled{
-  opacity:.6;
-  cursor:not-allowed;
+.finalize:hover{
+  background:#273244;
 }
 
 .back-cart{
@@ -751,14 +842,18 @@ footer{
   padding:35px 20px;
 }
 
-.success.show{display:block}
+.success.show{
+  display:block;
+}
 
 .success-icon{
   font-size:55px;
   margin-bottom:12px;
 }
 
-.success h2{margin-bottom:8px}
+.success h2{
+  margin-bottom:8px;
+}
 
 .success p{
   color:var(--muted);
@@ -774,31 +869,118 @@ footer{
   font-weight:700;
 }
 
+.validation-summary{
+  display:none;
+  background:#fff1f2;
+  color:#b42318;
+  border:1px solid #fecdca;
+  padding:12px;
+  border-radius:10px;
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.validation-summary.show{
+  display:block;
+}
+
+/* RESPONSIVO */
+
 @media(max-width:850px){
-  .navlinks{display:none}
-  .products{grid-template-columns:repeat(2,1fr)}
-  .features{grid-template-columns:repeat(2,1fr)}
-  .hero h1{font-size:38px}
-  .hero-box{padding:38px 28px}
-  .footer{grid-template-columns:1fr 1fr}
+
+  .navlinks{
+    display:none;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero-box{
+    padding:38px 28px;
+  }
+
+  .footer{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
 @media(max-width:600px){
-  .form-grid{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
-  .address-title{grid-column:auto}
-  .payment-options{grid-template-columns:1fr}
-  .checkout-panel{max-height:96vh}
+
+  .nav{
+    gap:12px;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  .search{
+    display:none;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .hero-box{
+    min-height:330px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .payment-options{
+    grid-template-columns:1fr;
+  }
+
+  .checkout-panel{
+    max-height:96vh;
+  }
+
+  .footer{
+    grid-template-columns:1fr;
+  }
+
+  .product-actions{
+    grid-template-columns:1fr;
+  }
 }
 
-@media(max-width:520px){
-  .nav{gap:12px}
-  .logo{font-size:20px}
-  .products{grid-template-columns:1fr}
-  .features{grid-template-columns:1fr}
-  .hero h1{font-size:32px}
-  .hero-box{min-height:330px}
-  .search{display:none}
+@media(max-width:400px){
+
+  .hero-box{
+    padding:30px 20px;
+  }
+
+  .section{
+    padding:0 14px;
+  }
+
+  .hero{
+    padding:0 14px;
+  }
 }
 </style>
 
@@ -811,14 +993,19 @@ footer{
 </div>
 
 <header>
-<nav class="nav">
+  <nav class="nav">
 
+```
 <a class="logo" href="#">
   Velorian<span>Tech</span>
 </a>
 
 <div class="search">
-  <input id="search" placeholder="Buscar produtos..." autocomplete="off">
+  <input
+    id="search"
+    placeholder="Buscar produtos..."
+    autocomplete="off"
+  >
   <button onclick="filterProducts()">⌕</button>
 </div>
 
@@ -828,125 +1015,156 @@ footer{
   <a href="#contato">Contato</a>
 </div>
 
-<button class="cart" onclick="openCart()" aria-label="Abrir carrinho">
+<button
+  class="cart"
+  onclick="openCart()"
+  aria-label="Abrir carrinho"
+>
   🛒
   <span class="badge" id="count">0</span>
 </button>
+```
 
-</nav>
+  </nav>
 </header>
 
 <main>
 
 <section class="hero">
 
-<div class="hero-box">
+  <div class="hero-box">
 
+```
 <div class="hero-text">
 
-<div class="eyebrow">
-  Tecnologia que combina com você
+  <div class="eyebrow">
+    Tecnologia que combina com você
+  </div>
+
+  <h1>
+    Seu próximo eletrônico está aqui.
+  </h1>
+
+  <p>
+    Produtos selecionados, preços competitivos e uma experiência
+    de compra simples, moderna e segura.
+  </p>
+
+  <a class="cta" href="#produtos">
+    Comprar agora →
+  </a>
+
 </div>
+```
 
-<h1>
-  Seu próximo eletrônico está aqui.
-</h1>
-
-<p>
-  Produtos selecionados, preços competitivos e uma experiência de compra simples e segura.
-</p>
-
-<a class="cta" href="#produtos">
-  Comprar agora →
-</a>
-
-</div>
-</div>
+  </div>
 
 </section>
 
 <section class="section" id="produtos">
 
-<div class="section-head">
+  <div class="section-head">
 
+```
 <div>
-<h2>Produtos em destaque</h2>
-<p style="color:#667085;margin-top:5px">
-  Escolha seus favoritos
-</p>
+  <h2>Produtos em destaque</h2>
+
+  <p style="color:#667085;margin-top:5px">
+    Escolha seus favoritos
+  </p>
 </div>
+```
 
-</div>
+  </div>
 
-<div class="filters">
+  <div class="filters">
 
-<button class="filter active"
-onclick="category('Todos',this)">
-Todos </button>
+```
+<button
+  class="filter active"
+  onclick="category('Todos',this)"
+>
+  Todos
+</button>
 
-<button class="filter"
-onclick="category('Celulares',this)">
-Celulares </button>
+<button
+  class="filter"
+  onclick="category('Celulares',this)"
+>
+  Celulares
+</button>
 
-<button class="filter"
-onclick="category('Informática',this)">
-Informática </button>
+<button
+  class="filter"
+  onclick="category('Informática',this)"
+>
+  Informática
+</button>
 
-<button class="filter"
-onclick="category('Áudio',this)">
-Áudio </button>
+<button
+  class="filter"
+  onclick="category('Áudio',this)"
+>
+  Áudio
+</button>
 
-<button class="filter"
-onclick="category('Acessórios',this)">
-Acessórios </button>
+<button
+  class="filter"
+  onclick="category('Acessórios',this)"
+>
+  Acessórios
+</button>
+```
 
-</div>
+  </div>
 
-<div class="products" id="grid"></div>
+  <div class="products" id="grid"></div>
 
 </section>
 
 <section class="section" id="vantagens">
 
-<div class="section-head">
-<h2>Por que comprar na VelorianTech?</h2>
-</div>
+  <div class="section-head">
+    <h2>Por que comprar na VelorianTech?</h2>
+  </div>
 
-<div class="features">
+  <div class="features">
 
+```
 <div class="feature">
-🔒
-<b>Compra segura</b>
-<p>
-Seus dados protegidos em todo o processo.
-</p>
-</div>
-
-<div class="feature">
-🚚
-<b>Frete grátis</b>
-<p>
-Ofertas com envio grátis conforme as condições da loja.
-</p>
+  🔒
+  <b>Compra segura</b>
+  <p>
+    Seus dados são utilizados apenas para preparar seu pedido.
+  </p>
 </div>
 
 <div class="feature">
-💳
-<b>Pagamento facilitado</b>
-<p>
-Pix, cartão de crédito ou débito.
-</p>
+  🚚
+  <b>Frete grátis</b>
+  <p>
+    Ofertas com envio grátis conforme as condições da loja.
+  </p>
 </div>
 
 <div class="feature">
-🛡️
-<b>Produtos selecionados</b>
-<p>
-Qualidade e confiança em cada compra.
-</p>
+  💳
+  <b>Pagamento facilitado</b>
+  <p>
+    Pix, cartão de crédito ou débito.
+  </p>
 </div>
 
+<div class="feature">
+  🛡️
+  <b>Produtos selecionados</b>
+  <p>
+    Qualidade e confiança em cada compra.
+  </p>
 </div>
+```
+
+  </div>
 
 </section>
 
@@ -954,1709 +1172,1659 @@ Qualidade e confiança em cada compra.
 
 <footer id="contato">
 
-<div class="footer">
+  <div class="footer">
 
+```
 <div>
-<h3 class="logo">
-Velorian<span>Tech</span>
-</h3>
+  <h3 class="logo">
+    Velorian<span>Tech</span>
+  </h3>
 
-<p>
-Sua loja online de eletrônicos e tecnologia.
-</p>
-</div>
-
-<div>
-<h3>Loja</h3>
-<a href="#produtos">Produtos</a>
-<a href="#produtos">Ofertas</a>
-<a href="#produtos">Lançamentos</a>
+  <p>
+    Sua loja online de eletrônicos e tecnologia.
+  </p>
 </div>
 
 <div>
-<h3>Atendimento</h3>
-<p>Seg–Sex: 9h às 18h</p>
-<p>WhatsApp: (71) 99234-6351</p>
-<p>acaua8767@gmail.com</p>
+  <h3>Loja</h3>
+  <a href="#produtos">Produtos</a>
+  <a href="#produtos">Ofertas</a>
+  <a href="#produtos">Lançamentos</a>
 </div>
 
 <div>
-<h3>Redes sociais</h3>
-<a href="#">Instagram</a>
-<a href="#">TikTok</a>
-<a href="#">Facebook</a>
+  <h3>Atendimento</h3>
+  <p>Seg–Sex: 9h às 18h</p>
+  <p>WhatsApp: (71) 99234-6351</p>
+  <p>acaua8767@gmail.com</p>
 </div>
 
+<div>
+  <h3>Redes sociais</h3>
+  <a href="#">Instagram</a>
+  <a href="#">TikTok</a>
+  <a href="#">Facebook</a>
 </div>
+```
 
-<div class="copy">
-© 2026 VelorianTech. Todos os direitos reservados.
-</div>
+  </div>
+
+  <div class="copy">
+    © 2026 VelorianTech. Todos os direitos reservados.
+  </div>
 
 </footer>
 
 <div class="toast" id="toast">
-Produto adicionado ao carrinho!
+  Produto adicionado ao carrinho!
 </div>
+
+<!-- ========================= -->
 
 <!-- CARRINHO -->
 
-<div class="overlay"
-id="cartOverlay"
-onclick="closeCart(event)">
+<!-- ========================= -->
 
-<aside class="cart-panel"
-onclick="event.stopPropagation()">
+<div
+  class="overlay"
+  id="cartOverlay"
+  onclick="closeCart(event)"
+>
 
+  <aside
+    class="cart-panel"
+    onclick="event.stopPropagation()"
+  >
+
+```
 <div class="panel-head">
 
-<h2>🛒 Seu carrinho</h2>
+  <h2>🛒 Seu carrinho</h2>
 
-<button class="close"
-onclick="closeCart()">
-× </button>
+  <button
+    class="close"
+    onclick="closeCart()"
+  >
+    ×
+  </button>
 
 </div>
 
-<div class="cart-items"
-id="cartItems">
-</div>
+<div
+  class="cart-items"
+  id="cartItems"
+></div>
 
 <div class="cart-footer">
 
-<div class="total">
+  <div class="total">
 
-<span>Total</span>
+    <span>Total</span>
 
-<span id="cartTotal">
-R$ 0,00
-</span>
+    <span id="cartTotal">
+      R$ 0,00
+    </span>
+
+  </div>
+
+  <button
+    class="checkout-btn"
+    id="checkoutBtn"
+    onclick="openCheckout()"
+  >
+    Ir para o checkout →
+  </button>
+
+</div>
+```
+
+  </aside>
 
 </div>
 
-<button
-class="checkout-btn"
-id="checkoutBtn"
-onclick="openCheckout()">
-
-Ir para o checkout →
-
-</button>
-
-</div>
-
-</aside>
-
-</div>
+<!-- ========================= -->
 
 <!-- CHECKOUT -->
 
-<div class="overlay"
-id="checkoutOverlay"
-onclick="closeCheckout(event)">
+<!-- ========================= -->
 
-<section class="checkout-panel"
-onclick="event.stopPropagation()">
+<div
+  class="overlay"
+  id="checkoutOverlay"
+  onclick="closeCheckout(event)"
+>
 
+  <section
+    class="checkout-panel"
+    onclick="event.stopPropagation()"
+  >
+
+```
 <div class="panel-head">
 
-<h2>Finalizar compra</h2>
+  <h2>Finalizar compra</h2>
 
-<button class="close"
-onclick="closeCheckout()">
-× </button>
-
-</div>
-
-<div class="checkout-content"
-id="checkoutFormArea">
-
-<h3>
-Dados para entrega
-</h3>
-
-<p class="subtitle">
-Preencha corretamente seus dados para receber o pedido.
-</p>
-
-<form id="checkoutForm"
-onsubmit="finishOrder(event)"
-novalidate>
-
-<div class="form-grid">
-
-<!-- NOME -->
-
-<div class="field full">
-
-<label for="fullName">
-Nome completo *
-</label>
-
-<input
-id="fullName"
-name="fullName"
-type="text"
-placeholder="Digite seu nome completo"
-autocomplete="name">
-
-<span class="error-message"
-id="fullNameError">
-Digite seu nome completo. </span>
+  <button
+    class="close"
+    onclick="closeCheckout()"
+  >
+    ×
+  </button>
 
 </div>
 
-<!-- TELEFONE -->
+<div
+  class="checkout-content"
+  id="checkoutFormArea"
+>
 
-<div class="field">
+  <h3>Dados para entrega</h3>
 
-<label for="phone">
-Telefone / WhatsApp *
-</label>
+  <p class="subtitle">
+    Preencha corretamente seus dados para preparar o pedido.
+  </p>
 
-<input
-id="phone"
-name="phone"
-type="tel"
-placeholder="(00) 00000-0000"
-autocomplete="tel"
-maxlength="15">
+  <div
+    class="validation-summary"
+    id="validationSummary"
+  >
+    Confira os campos obrigatórios antes de continuar.
+  </div>
 
-<span class="error-message"
-id="phoneError">
-Digite um telefone válido. </span>
+  <form
+    id="checkoutForm"
+    onsubmit="finishOrder(event)"
+    novalidate
+  >
+
+    <div class="form-section-title">
+      👤 Dados pessoais
+    </div>
+
+    <div class="form-grid">
+
+      <div class="field full">
+        <label for="fullName">
+          Nome completo *
+        </label>
+
+        <input
+          id="fullName"
+          name="fullName"
+          type="text"
+          placeholder="Digite seu nome completo"
+          autocomplete="name"
+        >
+
+        <span class="error-message">
+          Informe seu nome completo.
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="phone">
+          Número de telefone *
+        </label>
+
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          placeholder="(00) 00000-0000"
+          maxlength="15"
+          autocomplete="tel"
+        >
+
+        <span class="error-message">
+          Informe um telefone válido.
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="cep">
+          CEP *
+        </label>
+
+        <input
+          id="cep"
+          name="cep"
+          type="text"
+          placeholder="00000-000"
+          maxlength="9"
+          autocomplete="postal-code"
+        >
+
+        <span class="error-message">
+          Informe um CEP válido.
+        </span>
+      </div>
+
+    </div>
+
+    <div class="form-section-title">
+      📍 Endereço de entrega
+    </div>
+
+    <div class="form-grid">
+
+      <div class="field">
+        <label for="state">
+          Estado *
+        </label>
+
+        <select
+          id="state"
+          name="state"
+        >
+
+          <option value="">
+            Selecione o estado
+          </option>
+
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+
+        </select>
+
+        <span class="error-message">
+          Selecione seu estado.
+        </span>
+
+      </div>
+
+      <div class="field">
+        <label for="city">
+          Cidade *
+        </label>
+
+        <input
+          id="city"
+          name="city"
+          type="text"
+          placeholder="Digite sua cidade"
+          autocomplete="address-level2"
+        >
+
+        <span class="error-message">
+          Informe sua cidade.
+        </span>
+
+      </div>
+
+      <div class="field">
+        <label for="neighborhood">
+          Bairro *
+        </label>
+
+        <input
+          id="neighborhood"
+          name="neighborhood"
+          type="text"
+          placeholder="Digite seu bairro"
+          autocomplete="address-level3"
+        >
+
+        <span class="error-message">
+          Informe seu bairro.
+        </span>
+
+      </div>
+
+      <div class="field">
+        <label for="street">
+          Rua / Avenida *
+        </label>
+
+        <input
+          id="street"
+          name="street"
+          type="text"
+          placeholder="Nome da rua ou avenida"
+          autocomplete="street-address"
+        >
+
+        <span class="error-message">
+          Informe sua rua ou avenida.
+        </span>
+
+      </div>
+
+      <div class="field">
+        <label for="number">
+          Número *
+        </label>
+
+        <input
+          id="number"
+          name="number"
+          type="text"
+          placeholder="Ex.: 123"
+          autocomplete="address-line2"
+        >
+
+        <span class="error-message">
+          Informe o número.
+        </span>
+
+      </div>
+
+      <div class="field">
+        <label for="complement">
+          Complemento
+        </label>
+
+        <input
+          id="complement"
+          name="complement"
+          type="text"
+          placeholder="Apartamento, casa, bloco..."
+        >
+
+      </div>
+
+    </div>
+
+    <div class="form-section-title">
+      💳 Forma de pagamento
+    </div>
+
+    <div class="payment-options">
+
+      <label class="payment-option">
+        <input
+          type="radio"
+          name="payment"
+          value="Pix"
+        >
+        💠 Pix
+      </label>
+
+      <label class="payment-option">
+        <input
+          type="radio"
+          name="payment"
+          value="Cartão de crédito"
+        >
+        💳 Crédito
+      </label>
+
+      <label class="payment-option">
+        <input
+          type="radio"
+          name="payment"
+          value="Cartão de débito"
+        >
+        💳 Débito
+      </label>
+
+    </div>
+
+    <div
+      class="field"
+      id="paymentField"
+      style="margin-top:8px"
+    >
+      <span
+        class="error-message"
+        id="paymentError"
+      >
+        Selecione uma forma de pagamento.
+      </span>
+    </div>
+
+    <div class="order-summary">
+
+      <div class="summary-row">
+        <span>Itens</span>
+        <strong id="summaryItems">
+          0
+        </strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Frete</span>
+        <strong>Grátis</strong>
+      </div>
+
+      <div class="summary-row summary-total">
+        <span>Total</span>
+        <span id="summaryTotal">
+          R$ 0,00
+        </span>
+      </div>
+
+    </div>
+
+    <p class="secure-note">
+      🔒 Seus dados são utilizados para preparar o pedido.
+      Não informe senhas ou dados bancários neste formulário.
+      O pagamento deve ser concluído através de um meio de
+      pagamento seguro.
+    </p>
+
+    <button
+      class="finalize"
+      type="submit"
+    >
+      Confirmar pedido →
+    </button>
+
+    <button
+      class="back-cart"
+      type="button"
+      onclick="closeCheckout();openCart()"
+    >
+      ← Voltar ao carrinho
+    </button>
+
+  </form>
 
 </div>
 
-<div class="field">
+<div
+  class="success"
+  id="successArea"
+>
 
-<label for="payment">
-Forma de pagamento *
-</label>
+  <div class="success-icon">
+    ✅
+  </div>
 
-<select id="payment"
-name="payment">
+  <h2>
+    Pedido preparado!
+  </h2>
 
-<option value="">
-Selecione
-</option>
+  <p id="successText"></p>
 
-<option value="Pix">
-Pix
-</option>
-
-<option value="Cartão de crédito">
-Cartão de crédito
-</option>
-
-<option value="Cartão de débito">
-Cartão de débito
-</option>
-
-</select>
-
-<span class="error-message"
-id="paymentError">
-Selecione uma forma de pagamento. </span>
+  <button
+    onclick="sendWhatsAppAndFinish()"
+  >
+    Enviar pedido pelo WhatsApp
+  </button>
 
 </div>
+```
 
-<!-- ENDEREÇO -->
-
-<div class="address-title">
-📍 Endereço de entrega
-</div>
-
-<!-- CEP -->
-
-<div class="field">
-
-<label for="cep">
-CEP *
-</label>
-
-<input
-id="cep"
-name="cep"
-type="text"
-placeholder="00000-000"
-inputmode="numeric"
-autocomplete="postal-code"
-maxlength="9">
-
-<span class="error-message"
-id="cepError">
-Digite um CEP válido. </span>
-
-</div>
-
-<!-- ESTADO -->
-
-<div class="field">
-
-<label for="state">
-Estado (UF) *
-</label>
-
-<select id="state"
-name="state">
-
-<option value="">
-Selecione o estado
-</option>
-
-<option value="AC">Acre - AC</option>
-<option value="AL">Alagoas - AL</option>
-<option value="AP">Amapá - AP</option>
-<option value="AM">Amazonas - AM</option>
-<option value="BA">Bahia - BA</option>
-<option value="CE">Ceará - CE</option>
-<option value="DF">Distrito Federal - DF</option>
-<option value="ES">Espírito Santo - ES</option>
-<option value="GO">Goiás - GO</option>
-<option value="MA">Maranhão - MA</option>
-<option value="MT">Mato Grosso - MT</option>
-<option value="MS">Mato Grosso do Sul - MS</option>
-<option value="MG">Minas Gerais - MG</option>
-<option value="PA">Pará - PA</option>
-<option value="PB">Paraíba - PB</option>
-<option value="PR">Paraná - PR</option>
-<option value="PE">Pernambuco - PE</option>
-<option value="PI">Piauí - PI</option>
-<option value="RJ">Rio de Janeiro - RJ</option>
-<option value="RN">Rio Grande do Norte - RN</option>
-<option value="RS">Rio Grande do Sul - RS</option>
-<option value="RO">Rondônia - RO</option>
-<option value="RR">Roraima - RR</option>
-<option value="SC">Santa Catarina - SC</option>
-<option value="SP">São Paulo - SP</option>
-<option value="SE">Sergipe - SE</option>
-<option value="TO">Tocantins - TO</option>
-
-</select>
-
-<span class="error-message"
-id="stateError">
-Selecione o estado. </span>
-
-</div>
-
-<!-- RUA -->
-
-<div class="field full">
-
-<label for="street">
-Rua / Avenida *
-</label>
-
-<input
-id="street"
-name="street"
-type="text"
-placeholder="Nome da rua ou avenida"
-autocomplete="street-address">
-
-<span class="error-message"
-id="streetError">
-Digite sua rua ou avenida. </span>
-
-</div>
-
-<!-- NUMERO -->
-
-<div class="field">
-
-<label for="number">
-Número *
-</label>
-
-<input
-id="number"
-name="number"
-type="text"
-placeholder="Número"
-autocomplete="address-line2">
-
-<span class="error-message"
-id="numberError">
-Digite o número do endereço. </span>
-
-</div>
-
-<!-- COMPLEMENTO -->
-
-<div class="field">
-
-<label for="complement">
-Complemento
-</label>
-
-<input
-id="complement"
-name="complement"
-type="text"
-placeholder="Apartamento, bloco, casa..."
-autocomplete="address-line2">
-
-</div>
-
-<!-- BAIRRO -->
-
-<div class="field">
-
-<label for="neighborhood">
-Bairro *
-</label>
-
-<input
-id="neighborhood"
-name="neighborhood"
-type="text"
-placeholder="Seu bairro"
-autocomplete="address-level3">
-
-<span class="error-message"
-id="neighborhoodError">
-Digite seu bairro. </span>
-
-</div>
-
-<!-- CIDADE -->
-
-<div class="field">
-
-<label for="city">
-Cidade *
-</label>
-
-<input
-id="city"
-name="city"
-type="text"
-placeholder="Sua cidade"
-autocomplete="address-level2">
-
-<span class="error-message"
-id="cityError">
-Digite sua cidade. </span>
-
-</div>
-
-</div>
-
-<div class="order-summary">
-
-<div class="summary-row">
-<span>Itens</span>
-<strong id="summaryItems">
-0
-</strong>
-</div>
-
-<div class="summary-row">
-<span>Frete</span>
-<strong>Grátis</strong>
-</div>
-
-<div class="summary-total summary-row">
-<span>Total</span>
-<span id="summaryTotal">
-R$ 0,00
-</span>
-</div>
-
-</div>
-
-<div class="validation-box"
-id="validationBox">
-
-<strong>⚠️ Verifique seus dados</strong>
-
-<span id="validationText">
-Preencha todos os campos obrigatórios.
-</span>
-
-</div>
-
-<p class="secure-note">
-🔒 Seus dados são usados para preparar o pedido. Os dados completos do cartão não são coletados por este formulário; o pagamento com cartão deve ser concluído através de um gateway de pagamento seguro.
-</p>
-
-<button
-class="finalize"
-id="finalizeButton"
-type="submit">
-
-Confirmar pedido
-
-</button>
-
-<button
-class="back-cart"
-type="button"
-onclick="closeCheckout();openCart()">
-
-← Voltar ao carrinho
-
-</button>
-
-</form>
-
-</div>
-
-<div class="success"
-id="successArea">
-
-<div class="success-icon">
-✅
-</div>
-
-<h2>
-Pedido preparado!
-</h2>
-
-<p id="successText"></p>
-
-<button onclick="closeAllModals()">
-Voltar para a loja
-</button>
-
-</div>
-
-</section>
+  </section>
 
 </div>
 
 <script>
 
-const products=[
+/* =========================
+   PRODUTOS
+========================= */
 
-{
-id:1,
-name:"Power Bank Turbo 20000mAh 66W Premium",
-cat:"Acessórios",
-price:149.90,
-old:199.90,
-icon:"⚡",
-image:"https://down-br.img.susercontent.com/file/cn-11134207-820l4-mr74v4q13tae09.webp",
-stars:"★★★★★"
-},
+const products = [
 
-{
-id:2,
-name:"Fone De Ouvido Bluetooth Sem Fio Estéreo",
-cat:"Áudio",
-price:79.90,
-old:99.90,
-icon:"🎶",
-image:"https://down-br.img.susercontent.com/file/br-11134207-820lp-mq4lwphung8w0b.webp",
-stars:"★★★★★"
-},
+  {
+    id:1,
+    name:"Power Bank Turbo 20000mAh 66W Premium",
+    cat:"Acessórios",
+    price:149.90,
+    old:199.90,
+    image:"https://down-br.img.susercontent.com/file/cn-11134207-820l4-mr74v4q13tae09.webp",
+    stars:"★★★★★"
+  },
 
-{
-id:3,
-name:"Smartwatch 6 Em 1 Tela AMOLED 2.02",
-cat:"Acessórios",
-price:99.90,
-old:149.90,
-icon:"⌚",
-image:"https://down-br.img.susercontent.com/file/br-11134207-81z1k-mebnptt1m48y0c.webp",
-stars:"★★★★☆"
-}
+  {
+    id:2,
+    name:"Fone De Ouvido Bluetooth Sem Fio Estéreo",
+    cat:"Áudio",
+    price:79.90,
+    old:99.90,
+    image:"https://down-br.img.susercontent.com/file/br-11134207-820lp-mq4lwphung8w0b.webp",
+    stars:"★★★★★"
+  },
+
+  {
+    id:3,
+    name:"Smartwatch 6 Em 1 Tela AMOLED 2.02",
+    cat:"Acessórios",
+    price:99.90,
+    old:149.90,
+    image:"https://down-br.img.susercontent.com/file/br-11134207-81z1k-mebnptt1m48y0c.webp",
+    stars:"★★★★☆"
+  }
 
 ];
 
+let cart = [];
+let current = "Todos";
+let pendingWhatsAppUrl = "";
 
-let cart=[];
-let current="Todos";
-
+/* =========================
+   FORMATAÇÃO
+========================= */
 
 function money(value){
 
-return value.toLocaleString(
-"pt-BR",
-{
-style:"currency",
-currency:"BRL"
-}
-);
+  return value.toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
 
 }
 
+/* =========================
+   CARRINHO
+========================= */
 
 function saveCart(){
 
-localStorage.setItem(
-"velorian_cart",
-JSON.stringify(cart)
-);
+  localStorage.setItem(
+    "velorian_cart",
+    JSON.stringify(cart)
+  );
 
 }
-
 
 function loadCart(){
 
-try{
+  try{
 
-cart=
-JSON.parse(
-localStorage.getItem("velorian_cart")
-)||[];
+    cart =
+      JSON.parse(
+        localStorage.getItem("velorian_cart")
+      ) || [];
 
-}catch(e){
+  }catch(e){
 
-cart=[];
+    cart=[];
 
-}
+  }
 
-updateCartCount();
-
-}
-
-
-function render(){
-
-const searchInput=document.getElementById("search");
-
-const q=
-searchInput.value
-.toLowerCase()
-.trim();
-
-
-const list=
-products.filter(p=>
-
-(current==="Todos"||p.cat===current)&&
-p.name.toLowerCase().includes(q)
-
-);
-
-
-document.getElementById("grid").innerHTML=
-
-list.map(p=>`
-
-<article class="product">
-
-<span class="discount">
-OFERTA
-</span>
-
-<div class="pic">
-
-<img
-src="${p.image}"
-alt="${p.name}"
-loading="lazy"
-onerror="this.style.display='none';this.parentElement.innerHTML='${p.icon}'">
-
-</div>
-
-<div class="info">
-
-<span class="tag">
-${p.cat}
-</span>
-
-<h3>
-${p.name}
-</h3>
-
-<div class="stars">
-${p.stars}
-</div>
-
-<div class="price">
-
-${money(p.price)}
-
-<span class="old">
-${money(p.old)}
-</span>
-
-</div>
-
-<button
-class="add"
-onclick="addToCart(${p.id})">
-
-Adicionar ao carrinho
-
-</button>
-
-</div>
-
-</article>
-
-`).join("")
-
-||
-"<p>Nenhum produto encontrado.</p>";
+  updateCartCount();
 
 }
-
-
-function addToCart(id){
-
-const item=
-cart.find(x=>x.id===id);
-
-
-if(item){
-
-item.qty++;
-
-}else{
-
-const p=
-products.find(x=>x.id===id);
-
-cart.push({
-
-id:p.id,
-name:p.name,
-price:p.price,
-icon:p.icon,
-image:p.image,
-qty:1
-
-});
-
-}
-
-
-saveCart();
-
-updateCartCount();
-
-renderCart();
-
-
-const t=
-document.getElementById("toast");
-
-t.textContent=
-"Produto adicionado ao carrinho!";
-
-t.classList.add("show");
-
-
-setTimeout(
-()=>t.classList.remove("show"),
-1800
-);
-
-}
-
 
 function updateCartCount(){
 
-const total=
-cart.reduce(
-(sum,item)=>sum+item.qty,
-0
-);
+  const total =
+    cart.reduce(
+      (sum,item)=>sum+item.qty,
+      0
+    );
 
-document.getElementById("count")
-.textContent=total;
+  document.getElementById("count").textContent =
+    total;
 
 }
-
 
 function cartTotal(){
 
-return cart.reduce(
-(sum,item)=>
-sum+(item.price*item.qty),
-0
-);
+  return cart.reduce(
+    (sum,item)=>
+      sum+(item.price*item.qty),
+    0
+  );
 
 }
 
+/* =========================
+   PRODUTOS
+========================= */
+
+function render(){
+
+  const searchElement =
+    document.getElementById("search");
+
+  const q =
+    searchElement
+      ? searchElement.value.toLowerCase().trim()
+      : "";
+
+  const list =
+    products.filter(p=>
+
+      (current==="Todos" || p.cat===current)
+
+      &&
+
+      p.name
+        .toLowerCase()
+        .includes(q)
+
+    );
+
+  document.getElementById("grid").innerHTML =
+    list.map(p=>`
+
+      <article class="product">
+
+        <span class="discount">
+          OFERTA
+        </span>
+
+        <div class="pic">
+
+          <img
+            src="${p.image}"
+            alt="${escapeHtml(p.name)}"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          >
+
+        </div>
+
+        <div class="info">
+
+          <span class="tag">
+            ${p.cat}
+          </span>
+
+          <h3>
+            ${escapeHtml(p.name)}
+          </h3>
+
+          <div class="stars">
+            ${p.stars}
+          </div>
+
+          <div class="price">
+            ${money(p.price)}
+            <span class="old">
+              ${money(p.old)}
+            </span>
+          </div>
+
+          <div class="product-actions">
+
+            <button
+              class="add"
+              onclick="addToCart(${p.id})"
+            >
+              🛒 Adicionar
+            </button>
+
+            <button
+              class="buy-now"
+              onclick="buyNow(${p.id})"
+            >
+              ⚡ Comprar agora
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `).join("")
+
+    ||
+
+    "<p>Nenhum produto encontrado.</p>";
+
+}
+
+function addToCart(id){
+
+  const item =
+    cart.find(x=>x.id===id);
+
+  if(item){
+
+    item.qty++;
+
+  }else{
+
+    const p =
+      products.find(x=>x.id===id);
+
+    if(!p)return;
+
+    cart.push({
+
+      id:p.id,
+      name:p.name,
+      price:p.price,
+      image:p.image,
+      qty:1
+
+    });
+
+  }
+
+  saveCart();
+  updateCartCount();
+  renderCart();
+
+  showToast(
+    "Produto adicionado ao carrinho!"
+  );
+
+}
+
+/* =========================
+   COMPRAR AGORA
+========================= */
+
+function buyNow(id){
+
+  const existing =
+    cart.find(x=>x.id===id);
+
+  if(existing){
+
+    existing.qty++;
+
+  }else{
+
+    const p =
+      products.find(x=>x.id===id);
+
+    if(!p)return;
+
+    cart.push({
+
+      id:p.id,
+      name:p.name,
+      price:p.price,
+      image:p.image,
+      qty:1
+
+    });
+
+  }
+
+  saveCart();
+  updateCartCount();
+
+  openCheckout();
+
+}
+
+/* =========================
+   RENDER CARRINHO
+========================= */
 
 function renderCart(){
 
-const area=
-document.getElementById("cartItems");
+  const area =
+    document.getElementById("cartItems");
 
-const btn=
-document.getElementById("checkoutBtn");
+  const btn =
+    document.getElementById("checkoutBtn");
 
+  if(!cart.length){
 
-if(!cart.length){
+    area.innerHTML=`
 
-area.innerHTML=`
+      <div class="empty">
 
-<div class="empty">
+        <strong>
+          Seu carrinho está vazio
+        </strong>
 
-<strong>
-Seu carrinho está vazio
-</strong>
+        <span>
+          Adicione produtos para continuar sua compra.
+        </span>
 
-<span>
-Adicione produtos para continuar sua compra.
-</span>
+      </div>
 
-</div>
+    `;
 
-`;
+    btn.disabled=true;
 
-btn.disabled=true;
+  }else{
 
-}else{
+    area.innerHTML =
+      cart.map(item=>`
 
-area.innerHTML=
+        <div class="cart-item">
 
-cart.map(item=>`
+          <div class="cart-icon">
 
-<div class="cart-item">
+            <img
+              src="${item.image}"
+              alt="${escapeHtml(item.name)}"
+            >
 
-<div class="cart-icon">
+          </div>
 
-<img
-src="${item.image}"
-alt="${item.name}"
-onerror="this.style.display='none';this.parentElement.innerHTML='${item.icon}'">
+          <div class="cart-info">
 
-</div>
+            <b>
+              ${escapeHtml(item.name)}
+            </b>
 
-<div class="cart-info">
+            <div class="cart-price">
+              ${money(item.price*item.qty)}
+            </div>
 
-<b>
-${item.name}
-</b>
+            <div class="qty">
 
-<div class="cart-price">
-${money(item.price*item.qty)}
-</div>
+              <button
+                onclick="changeQty(${item.id},-1)"
+              >
+                −
+              </button>
 
-<div class="qty">
+              <span>
+                ${item.qty}
+              </span>
 
-<button onclick="changeQty(${item.id},-1)">
-−
-</button>
+              <button
+                onclick="changeQty(${item.id},1)"
+              >
+                +
+              </button>
 
-<span>
-${item.qty}
-</span>
+              <button
+                class="remove"
+                onclick="removeFromCart(${item.id})"
+              >
+                Remover
+              </button>
 
-<button onclick="changeQty(${item.id},1)">
-+
-</button>
+            </div>
 
-<button
-class="remove"
-onclick="removeFromCart(${item.id})">
+          </div>
 
-Remover
+        </div>
 
-</button>
+      `).join("");
 
-</div>
+    btn.disabled=false;
 
-</div>
+  }
 
-</div>
-
-`).join("");
-
-btn.disabled=false;
+  document.getElementById("cartTotal").textContent =
+    money(cartTotal());
 
 }
-
-
-document.getElementById("cartTotal")
-.textContent=
-money(cartTotal());
-
-}
-
 
 function changeQty(id,delta){
 
-const item=
-cart.find(x=>x.id===id);
+  const item =
+    cart.find(x=>x.id===id);
 
-if(!item)return;
+  if(!item)return;
 
-item.qty+=delta;
+  item.qty+=delta;
 
+  if(item.qty<=0){
 
-if(item.qty<=0){
+    cart =
+      cart.filter(
+        x=>x.id!==id
+      );
 
-cart=
-cart.filter(x=>x.id!==id);
+  }
 
-}
-
-
-saveCart();
-
-updateCartCount();
-
-renderCart();
+  saveCart();
+  updateCartCount();
+  renderCart();
 
 }
-
 
 function removeFromCart(id){
 
-cart=
-cart.filter(x=>x.id!==id);
+  cart =
+    cart.filter(
+      x=>x.id!==id
+    );
 
-saveCart();
-
-updateCartCount();
-
-renderCart();
+  saveCart();
+  updateCartCount();
+  renderCart();
 
 }
-
 
 function openCart(){
 
-renderCart();
+  renderCart();
 
-document
-.getElementById("cartOverlay")
-.classList.add("show");
+  document
+    .getElementById("cartOverlay")
+    .classList.add("show");
 
-document.body
-.classList.add("modal-open");
+  document.body.classList.add(
+    "modal-open"
+  );
 
 }
-
 
 function closeCart(e){
 
-if(
-e &&
-e.target!==document.getElementById("cartOverlay")
-)return;
+  if(
+    e &&
+    e.target !==
+      document.getElementById("cartOverlay")
+  )return;
 
-document
-.getElementById("cartOverlay")
-.classList.remove("show");
+  document
+    .getElementById("cartOverlay")
+    .classList.remove("show");
 
-document.body
-.classList.remove("modal-open");
+  document.body.classList.remove(
+    "modal-open"
+  );
 
 }
 
+/* =========================
+   CHECKOUT
+========================= */
 
 function openCheckout(){
 
-if(!cart.length)return;
+  if(!cart.length)return;
 
-closeCart();
+  closeCart();
 
-updateCheckoutSummary();
+  updateCheckoutSummary();
 
-document
-.getElementById("checkoutFormArea")
-.style.display="block";
+  document
+    .getElementById("checkoutFormArea")
+    .style.display="block";
 
-document
-.getElementById("successArea")
-.classList.remove("show");
+  document
+    .getElementById("successArea")
+    .classList.remove("show");
 
-document
-.getElementById("checkoutOverlay")
-.classList.add("show");
+  document
+    .getElementById("checkoutOverlay")
+    .classList.add("show");
 
-document.body
-.classList.add("modal-open");
+  document.body.classList.add(
+    "modal-open"
+  );
 
 }
-
 
 function closeCheckout(e){
 
-if(
-e &&
-e.target!==document.getElementById("checkoutOverlay")
-)return;
+  if(
+    e &&
+    e.target !==
+      document.getElementById("checkoutOverlay")
+  )return;
 
-document
-.getElementById("checkoutOverlay")
-.classList.remove("show");
+  document
+    .getElementById("checkoutOverlay")
+    .classList.remove("show");
 
-document.body
-.classList.remove("modal-open");
+  document.body.classList.remove(
+    "modal-open"
+  );
 
 }
-
 
 function updateCheckoutSummary(){
 
-document.getElementById("summaryItems")
-.textContent=
-cart.reduce(
-(s,i)=>s+i.qty,
-0
-)+" item(ns)";
+  document.getElementById(
+    "summaryItems"
+  ).textContent =
 
+    cart.reduce(
+      (s,i)=>s+i.qty,
+      0
+    ) + " item(ns)";
 
-document.getElementById("summaryTotal")
-.textContent=
-money(cartTotal());
-
-}
-
-
-/* MÁSCARA DE TELEFONE */
-
-document
-.getElementById("phone")
-.addEventListener("input",function(){
-
-let value=
-this.value.replace(/\D/g,"");
-
-if(value.length>11)
-value=value.substring(0,11);
-
-
-if(value.length<=10){
-
-value=
-value.replace(
-/^(\d{2})(\d{4})(\d{0,4}).*/,
-"($1) $2-$3"
-);
-
-}else{
-
-value=
-value.replace(
-/^(\d{2})(\d{5})(\d{0,4}).*/,
-"($1) $2-$3"
-);
+  document.getElementById(
+    "summaryTotal"
+  ).textContent =
+    money(cartTotal());
 
 }
 
-this.value=value;
+/* =========================
+   VALIDAÇÃO
+========================= */
 
-});
+function setFieldError(
+  id,
+  hasError
+){
 
+  const element =
+    document.getElementById(id);
 
-/* MÁSCARA DE CEP */
+  if(!element)return;
 
-document
-.getElementById("cep")
-.addEventListener("input",function(){
+  const field =
+    element.closest(".field");
 
-let value=
-this.value.replace(/\D/g,"");
+  if(!field)return;
 
-if(value.length>8)
-value=value.substring(0,8);
+  if(hasError){
 
-if(value.length>5){
+    field.classList.add(
+      "has-error"
+    );
 
-value=
-value.substring(0,5)
-+"-"+
-value.substring(5);
+    element.classList.add(
+      "invalid"
+    );
 
-}
+  }else{
 
-this.value=value;
+    field.classList.remove(
+      "has-error"
+    );
 
-});
+    element.classList.remove(
+      "invalid"
+    );
 
-
-/* BUSCA CEP */
-
-document
-.getElementById("cep")
-.addEventListener("blur",async function(){
-
-const cep=
-this.value.replace(/\D/g,"");
-
-if(cep.length!==8)return;
-
-
-try{
-
-const response=
-await fetch(
-`https://viacep.com.br/ws/${cep}/json/`
-);
-
-const data=
-await response.json();
-
-
-if(data.erro){
-
-showFieldError(
-"cep",
-"CEP não encontrado."
-);
-
-return;
+  }
 
 }
-
-
-document.getElementById("street")
-.value=
-data.logradouro||"";
-
-
-document.getElementById("neighborhood")
-.value=
-data.bairro||"";
-
-
-document.getElementById("city")
-.value=
-data.localidade||"";
-
-
-document.getElementById("state")
-.value=
-data.uf||"";
-
-
-clearFieldError("cep");
-
-}catch(error){
-
-console.log(
-"Não foi possível consultar o CEP."
-);
-
-}
-
-});
-
-
-/* ERROS */
-
-function showFieldError(id,message){
-
-const field=
-document.getElementById(id);
-
-const error=
-document.getElementById(id+"Error");
-
-if(field)
-field.classList.add("error");
-
-if(error){
-
-error.textContent=message;
-error.classList.add("show");
-
-}
-
-}
-
-
-function clearFieldError(id){
-
-const field=
-document.getElementById(id);
-
-const error=
-document.getElementById(id+"Error");
-
-if(field)
-field.classList.remove("error");
-
-if(error)
-error.classList.remove("show");
-
-}
-
-
-/* VALIDAÇÃO DO CHECKOUT */
 
 function validateCheckout(){
 
-let valid=true;
+  let valid=true;
 
-let errors=[];
+  const summary =
+    document.getElementById(
+      "validationSummary"
+    );
 
+  const name =
+    document.getElementById(
+      "fullName"
+    ).value.trim();
 
-/* NOME */
+  const phone =
+    document.getElementById(
+      "phone"
+    ).value.trim();
 
-const name=
-document
-.getElementById("fullName")
-.value.trim();
+  const cep =
+    document.getElementById(
+      "cep"
+    ).value.trim();
 
-if(name.length<3){
+  const state =
+    document.getElementById(
+      "state"
+    ).value;
 
-showFieldError(
-"fullName",
-"Digite seu nome completo."
-);
+  const city =
+    document.getElementById(
+      "city"
+    ).value.trim();
 
-valid=false;
+  const neighborhood =
+    document.getElementById(
+      "neighborhood"
+    ).value.trim();
 
-errors.push("Nome completo");
+  const street =
+    document.getElementById(
+      "street"
+    ).value.trim();
 
-}else{
+  const number =
+    document.getElementById(
+      "number"
+    ).value.trim();
 
-clearFieldError("fullName");
+  setFieldError(
+    "fullName",
+    name.length < 5
+  );
+
+  if(name.length < 5){
+    valid=false;
+  }
+
+  const phoneDigits =
+    phone.replace(/\D/g,"");
+
+  setFieldError(
+    "phone",
+    phoneDigits.length < 10
+  );
+
+  if(phoneDigits.length < 10){
+    valid=false;
+  }
+
+  const cepDigits =
+    cep.replace(/\D/g,"");
+
+  setFieldError(
+    "cep",
+    cepDigits.length !== 8
+  );
+
+  if(cepDigits.length !== 8){
+    valid=false;
+  }
+
+  setFieldError(
+    "state",
+    !state
+  );
+
+  if(!state){
+    valid=false;
+  }
+
+  setFieldError(
+    "city",
+    city.length < 2
+  );
+
+  if(city.length < 2){
+    valid=false;
+  }
+
+  setFieldError(
+    "neighborhood",
+    neighborhood.length < 2
+  );
+
+  if(neighborhood.length < 2){
+    valid=false;
+  }
+
+  setFieldError(
+    "street",
+    street.length < 2
+  );
+
+  if(street.length < 2){
+    valid=false;
+  }
+
+  setFieldError(
+    "number",
+    number.length < 1
+  );
+
+  if(number.length < 1){
+    valid=false;
+  }
+
+  const payment =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    );
+
+  const paymentError =
+    document.getElementById(
+      "paymentError"
+    );
+
+  if(!payment){
+
+    paymentError.style.display =
+      "block";
+
+    valid=false;
+
+  }else{
+
+    paymentError.style.display =
+      "none";
+
+  }
+
+  if(!valid){
+
+    summary.classList.add(
+      "show"
+    );
+
+    summary.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+  }else{
+
+    summary.classList.remove(
+      "show"
+    );
+
+  }
+
+  return valid;
 
 }
 
-
-/* TELEFONE */
-
-const phone=
-document
-.getElementById("phone")
-.value.replace(/\D/g,"");
-
-
-if(phone.length<10){
-
-showFieldError(
-"phone",
-"Digite um telefone válido."
-);
-
-valid=false;
-
-errors.push("Telefone");
-
-}else{
-
-clearFieldError("phone");
-
-}
-
-
-/* CEP */
-
-const cep=
-document
-.getElementById("cep")
-.value.replace(/\D/g,"");
-
-
-if(cep.length!==8){
-
-showFieldError(
-"cep",
-"Digite um CEP válido."
-);
-
-valid=false;
-
-errors.push("CEP");
-
-}else{
-
-clearFieldError("cep");
-
-}
-
-
-/* ESTADO */
-
-const state=
-document
-.getElementById("state")
-.value;
-
-
-if(!state){
-
-showFieldError(
-"state",
-"Selecione o estado."
-);
-
-valid=false;
-
-errors.push("Estado");
-
-}else{
-
-clearFieldError("state");
-
-}
-
-
-/* RUA */
-
-const street=
-document
-.getElementById("street")
-.value.trim();
-
-
-if(street.length<3){
-
-showFieldError(
-"street",
-"Digite sua rua ou avenida."
-);
-
-valid=false;
-
-errors.push("Rua");
-
-}else{
-
-clearFieldError("street");
-
-}
-
-
-/* NÚMERO */
-
-const number=
-document
-.getElementById("number")
-.value.trim();
-
-
-if(!number){
-
-showFieldError(
-"number",
-"Digite o número do endereço."
-);
-
-valid=false;
-
-errors.push("Número");
-
-}else{
-
-clearFieldError("number");
-
-}
-
-
-/* BAIRRO */
-
-const neighborhood=
-document
-.getElementById("neighborhood")
-.value.trim();
-
-
-if(neighborhood.length<2){
-
-showFieldError(
-"neighborhood",
-"Digite seu bairro."
-);
-
-valid=false;
-
-errors.push("Bairro");
-
-}else{
-
-clearFieldError("neighborhood");
-
-}
-
-
-/* CIDADE */
-
-const city=
-document
-.getElementById("city")
-.value.trim();
-
-
-if(city.length<2){
-
-showFieldError(
-"city",
-"Digite sua cidade."
-);
-
-valid=false;
-
-errors.push("Cidade");
-
-}else{
-
-clearFieldError("city");
-
-}
-
-
-/* PAGAMENTO */
-
-const payment=
-document
-.getElementById("payment")
-.value;
-
-
-if(!payment){
-
-showFieldError(
-"payment",
-"Selecione uma forma de pagamento."
-);
-
-valid=false;
-
-errors.push("Forma de pagamento");
-
-}else{
-
-clearFieldError("payment");
-
-}
-
-
-/* MENSAGEM */
-
-const box=
-document.getElementById("validationBox");
-
-const text=
-document.getElementById("validationText");
-
-
-if(!valid){
-
-box.classList.add("show");
-
-text.textContent=
-"Preencha corretamente: "+
-errors.join(", ")+
-".";
-
-}else{
-
-box.classList.remove("show");
-
-}
-
-
-return valid;
-
-}
-
-
-/* LIMPAR ERRO AO DIGITAR */
-
-[
-"fullName",
-"phone",
-"cep",
-"street",
-"number",
-"neighborhood",
-"city",
-"state",
-"payment"
-].forEach(id=>{
-
-document
-.getElementById(id)
-.addEventListener(
-"input",
-()=>clearFieldError(id)
-);
-
-document
-.getElementById(id)
-.addEventListener(
-"change",
-()=>clearFieldError(id)
-);
-
-});
-
-
-/* FINALIZAR */
+/* =========================
+   FINALIZAR PEDIDO
+========================= */
 
 function finishOrder(event){
 
-event.preventDefault();
+  event.preventDefault();
 
+  if(!cart.length){
 
-if(!cart.length){
+    showToast(
+      "Seu carrinho está vazio."
+    );
 
-alert(
-"Seu carrinho está vazio."
-);
+    return;
 
-return;
+  }
+
+  if(!validateCheckout()){
+
+    return;
+
+  }
+
+  const form =
+    document.getElementById(
+      "checkoutForm"
+    );
+
+  const data =
+    new FormData(form);
+
+  const name =
+    data.get("fullName").trim();
+
+  const phone =
+    data.get("phone").trim();
+
+  const cep =
+    data.get("cep").trim();
+
+  const state =
+    data.get("state");
+
+  const city =
+    data.get("city").trim();
+
+  const neighborhood =
+    data.get("neighborhood").trim();
+
+  const street =
+    data.get("street").trim();
+
+  const number =
+    data.get("number").trim();
+
+  const complement =
+    data.get("complement").trim();
+
+  const payment =
+    data.get("payment");
+
+  const items =
+    cart
+      .map(
+        i =>
+          `${i.qty}x ${i.name}`
+      )
+      .join("\n");
+
+  const address =
+    `${street}, ${number}` +
+    `${complement ? " - "+complement : ""}` +
+    ` - ${neighborhood}` +
+    ` - ${city}/${state}` +
+    ` - CEP: ${cep}`;
+
+  const message =
+`Olá, VelorianTech!
+
+Quero finalizar um pedido.
+
+CLIENTE:
+${name}
+
+TELEFONE:
+${phone}
+
+ENDEREÇO:
+${address}
+
+FORMA DE PAGAMENTO:
+${payment}
+
+PRODUTOS:
+${items}
+
+TOTAL:
+${money(cartTotal())}`;
+
+  const whatsapp =
+    "5571992346351";
+
+  pendingWhatsAppUrl =
+    "https://wa.me/" +
+    whatsapp +
+    "?text=" +
+    encodeURIComponent(message);
+
+  document.getElementById(
+    "checkoutFormArea"
+  ).style.display="none";
+
+  document
+    .getElementById("successArea")
+    .classList.add("show");
+
+  document.getElementById(
+    "successText"
+  ).innerHTML =
+
+    `Obrigado, <strong>${escapeHtml(name)}</strong>!<br><br>` +
+
+    `Seu pedido foi preparado com sucesso. ` +
+
+    `Forma de pagamento selecionada: ` +
+
+    `<strong>${escapeHtml(payment)}</strong>.<br><br>` +
+
+    `Clique no botão abaixo para enviar ` +
+
+    `os dados do pedido pelo WhatsApp.`;
 
 }
 
+/* =========================
+   WHATSAPP
+========================= */
 
-if(!validateCheckout()){
+function sendWhatsAppAndFinish(){
 
-const firstError=
-document.querySelector(
-".field input.error,.field select.error"
-);
+  if(!pendingWhatsAppUrl)return;
 
-if(firstError){
+  window.open(
+    pendingWhatsAppUrl,
+    "_blank"
+  );
 
-firstError.focus();
+  cart=[];
 
-firstError.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
+  saveCart();
 
-}
+  updateCartCount();
 
-return;
-
-}
-
-
-const data=
-new FormData(event.target);
-
-
-const name=
-data.get("fullName").trim();
-
-const phone=
-data.get("phone").trim();
-
-const cep=
-data.get("cep").trim();
-
-const street=
-data.get("street").trim();
-
-const number=
-data.get("number").trim();
-
-const complement=
-data.get("complement").trim();
-
-const neighborhood=
-data.get("neighborhood").trim();
-
-const city=
-data.get("city").trim();
-
-const state=
-data.get("state").trim();
-
-const payment=
-data.get("payment");
-
-
-const items=
-cart
-.map(i=>`${i.qty}x ${i.name}`)
-.join(", ");
-
-
-const fullAddress=
-`${street}, ${number}`+
-(complement?
-` - ${complement}`:"")+
-`, ${neighborhood}, ${city} - ${state}, CEP ${cep}`;
-
-
-const orderText=
-
-`Olá, VelorianTech! Quero finalizar um pedido.%0A%0A`+
-
-`*Cliente:* ${encodeURIComponent(name)}%0A`+
-
-`*Endereço:* ${encodeURIComponent(fullAddress)}%0A`+
-
-`*Telefone:* ${encodeURIComponent(phone)}%0A`+
-
-`*Pagamento:* ${encodeURIComponent(payment)}%0A`+
-
-`*Produtos:* ${encodeURIComponent(items)}%0A`+
-
-`*Total:* ${encodeURIComponent(money(cartTotal()))}`;
-
-
-/*
-Número de WhatsApp da loja.
-*/
-
-const whatsapp=
-"5571992346351";
-
-
-const whatsappUrl=
-`https://wa.me/${whatsapp}?text=${orderText}`;
-
-
-document
-.getElementById("checkoutFormArea")
-.style.display="none";
-
-
-document
-.getElementById("successArea")
-.classList.add("show");
-
-
-document
-.getElementById("successText")
-.innerHTML=
-
-`Obrigado, <strong>${escapeHtml(name)}</strong>! Seu pedido foi preparado com pagamento em <strong>${escapeHtml(payment)}</strong>.<br><br>`+
-
-`Confira os dados e clique no botão abaixo para enviar o pedido pelo WhatsApp.`;
-
-
-const success=
-document.getElementById("successArea");
-
-
-success
-.querySelector("button")
-.onclick=()=>{
-
-window.open(
-whatsappUrl,
-"_blank"
-);
-
-
-cart=[];
-
-saveCart();
-
-updateCartCount();
-
-closeAllModals();
-
-};
+  closeAllModals();
 
 }
 
-
-/* SEGURANÇA HTML */
+/* =========================
+   UTILIDADES
+========================= */
 
 function escapeHtml(text){
 
-return text.replace(
-/[&<>"']/g,
-m=>({
-
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-
-}[m])
-);
+  return String(text).replace(
+    /[&<>"']/g,
+    m => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m])
+  );
 
 }
 
+function showToast(message){
+
+  const t =
+    document.getElementById(
+      "toast"
+    );
+
+  t.textContent =
+    message;
+
+  t.classList.add(
+    "show"
+  );
+
+  setTimeout(
+    ()=>{
+      t.classList.remove(
+        "show"
+      );
+    },
+    1800
+  );
+
+}
 
 function closeAllModals(){
 
-document
-.getElementById("cartOverlay")
-.classList.remove("show");
+  document
+    .getElementById("cartOverlay")
+    .classList.remove("show");
 
+  document
+    .getElementById("checkoutOverlay")
+    .classList.remove("show");
 
-document
-.getElementById("checkoutOverlay")
-.classList.remove("show");
+  document.body.classList.remove(
+    "modal-open"
+  );
 
+  document.getElementById(
+    "checkoutFormArea"
+  ).style.display="block";
 
-document.body
-.classList.remove("modal-open");
+  document
+    .getElementById("successArea")
+    .classList.remove("show");
 
+  document
+    .getElementById("checkoutForm")
+    .reset();
 
-document
-.getElementById("checkoutFormArea")
-.style.display="block";
+  document
+    .getElementById("validationSummary")
+    .classList.remove("show");
 
+  document
+    .querySelectorAll(
+      ".field.has-error"
+    )
+    .forEach(
+      x=>x.classList.remove(
+        "has-error"
+      )
+    );
 
-document
-.getElementById("successArea")
-.classList.remove("show");
-
-
-document
-.getElementById("checkoutForm")
-.reset();
-
-
-document
-.querySelectorAll(".error")
-.forEach(el=>
-el.classList.remove("error")
-);
-
-
-document
-.querySelectorAll(".error-message")
-.forEach(el=>
-el.classList.remove("show")
-);
-
-
-document
-.getElementById("validationBox")
-.classList.remove("show");
+  document
+    .querySelectorAll(
+      ".invalid"
+    )
+    .forEach(
+      x=>x.classList.remove(
+        "invalid"
+      )
+    );
 
 }
 
+/* =========================
+   CATEGORIAS
+========================= */
 
 function category(c,el){
 
-current=c;
+  current=c;
 
+  document
+    .querySelectorAll(".filter")
+    .forEach(
+      x=>x.classList.remove(
+        "active"
+      )
+    );
 
-document
-.querySelectorAll(".filter")
-.forEach(x=>
-x.classList.remove("active")
-);
+  el.classList.add(
+    "active"
+  );
 
-
-el.classList.add("active");
-
-render();
+  render();
 
 }
-
 
 function filterProducts(){
 
-render();
+  render();
 
-
-document
-.getElementById("produtos")
-.scrollIntoView({
-behavior:"smooth"
-});
+  document
+    .getElementById("produtos")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
 }
 
+/* =========================
+   MÁSCARAS
+========================= */
 
 document
-.getElementById("search")
-.addEventListener(
-"input",
-render
-);
+  .getElementById("phone")
+  .addEventListener(
+    "input",
+    function(){
 
+      let value =
+        this.value
+          .replace(/\D/g,"")
+          .slice(0,11);
+
+      if(value.length <= 10){
+
+        value =
+          value.replace(
+            /^(\d{2})(\d{4})(\d{0,4}).*/,
+            "($1) $2-$3"
+          );
+
+      }else{
+
+        value =
+          value.replace(
+            /^(\d{2})(\d{5})(\d{0,4}).*/,
+            "($1) $2-$3"
+          );
+
+      }
+
+      this.value=value;
+
+    }
+  );
+
+document
+  .getElementById("cep")
+  .addEventListener(
+    "input",
+    function(){
+
+      let value =
+        this.value
+          .replace(/\D/g,"")
+          .slice(0,8);
+
+      if(value.length > 5){
+
+        value =
+          value.slice(0,5) +
+          "-" +
+          value.slice(5);
+
+      }
+
+      this.value=value;
+
+    }
+  );
+
+/* =========================
+   PAGAMENTO VISUAL
+========================= */
+
+document
+  .querySelectorAll(
+    '.payment-option input'
+  )
+  .forEach(
+    input=>{
+
+      input.addEventListener(
+        "change",
+        ()=>{
+
+          document
+            .querySelectorAll(
+              ".payment-option"
+            )
+            .forEach(
+              option =>
+                option.classList.remove(
+                  "selected"
+                )
+            );
+
+          input
+            .closest(
+              ".payment-option"
+            )
+            .classList.add(
+              "selected"
+            );
+
+        }
+      );
+
+    }
+  );
+
+/* =========================
+   BUSCA
+========================= */
+
+document
+  .getElementById("search")
+  .addEventListener(
+    "input",
+    render
+  );
+
+/* =========================
+   INICIALIZAÇÃO
+========================= */
 
 loadCart();
-
 render();
 
 </script>
