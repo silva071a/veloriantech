@@ -17,12 +17,10 @@
   --border:#e4e7ec;
   --green:#12b76a;
   --danger:#ef4444;
-  --dark:#111827;
+  --warning:#f79009;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-
-html{scroll-behavior:smooth}
 
 body{
   font-family:Inter,Arial,sans-serif;
@@ -33,14 +31,7 @@ body{
 body.modal-open{overflow:hidden}
 
 a{text-decoration:none;color:inherit}
-
-button{
-  font:inherit;
-  cursor:pointer;
-  border:0;
-}
-
-/* TOPO */
+button{font:inherit;cursor:pointer;border:0}
 
 .top{
   background:#111827;
@@ -50,11 +41,8 @@ button{
   font-size:13px;
 }
 
-/* HEADER */
-
 header{
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
+  background:#fff;
   border-bottom:1px solid var(--border);
   position:sticky;
   top:0;
@@ -64,7 +52,7 @@ header{
 .nav{
   max-width:1200px;
   margin:auto;
-  min-height:72px;
+  height:72px;
   display:flex;
   align-items:center;
   gap:28px;
@@ -75,7 +63,6 @@ header{
   font-size:24px;
   font-weight:900;
   letter-spacing:-1px;
-  white-space:nowrap;
 }
 
 .logo span{color:var(--primary)}
@@ -94,10 +81,7 @@ header{
   background:#f9fafb;
 }
 
-.search input:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(99,91,255,.1);
-}
+.search input:focus{border-color:var(--primary)}
 
 .search button{
   position:absolute;
@@ -117,25 +101,16 @@ header{
   font-size:14px;
 }
 
-.navlinks a:hover{
-  color:var(--primary);
-}
-
 .cart{
   position:relative;
   font-size:21px;
   background:none;
-  padding:8px;
-}
-
-.cart:hover{
-  transform:scale(1.05);
 }
 
 .badge{
   position:absolute;
-  right:-5px;
-  top:-4px;
+  right:-9px;
+  top:-9px;
   background:#ef4444;
   color:#fff;
   border-radius:20px;
@@ -145,8 +120,6 @@ header{
   text-align:center;
 }
 
-/* HERO */
-
 .hero{
   max-width:1200px;
   margin:28px auto;
@@ -154,9 +127,7 @@ header{
 }
 
 .hero-box{
-  background:
-    radial-gradient(circle at 85% 20%,rgba(124,58,237,.5),transparent 25%),
-    linear-gradient(120deg,#111827,#312e81 65%,#635bff);
+  background:linear-gradient(120deg,#111827,#312e81 65%,#635bff);
   border-radius:24px;
   min-height:360px;
   padding:55px;
@@ -165,7 +136,6 @@ header{
   align-items:center;
   overflow:hidden;
   position:relative;
-  box-shadow:0 20px 50px rgba(49,46,129,.2);
 }
 
 .hero-box:after{
@@ -214,58 +184,7 @@ header{
   padding:13px 20px;
   border-radius:10px;
   font-weight:800;
-  display:inline-block;
-  transition:.2s;
 }
-
-.cta:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-/* BENEFÍCIOS RÁPIDOS */
-
-.quick-benefits{
-  max-width:1200px;
-  margin:0 auto 35px;
-  padding:0 20px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.quick{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.quick-icon{
-  width:40px;
-  height:40px;
-  border-radius:11px;
-  background:#f4f2ff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-}
-
-.quick b{
-  display:block;
-  font-size:13px;
-}
-
-.quick span{
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* SEÇÕES */
 
 .section{
   max-width:1200px;
@@ -285,13 +204,6 @@ header{
   letter-spacing:-1px;
 }
 
-.section-subtitle{
-  color:#667085;
-  margin-top:5px;
-}
-
-/* FILTROS */
-
 .filters{
   display:flex;
   gap:8px;
@@ -305,12 +217,6 @@ header{
   background:#fff;
   border-radius:999px;
   color:#475467;
-  transition:.2s;
-}
-
-.filter:hover{
-  border-color:var(--primary);
-  color:var(--primary);
 }
 
 .filter.active{
@@ -319,104 +225,54 @@ header{
   border-color:#111827;
 }
 
-/* PRODUTOS */
-
 .products{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
-
-/* CARD PREMIUM */
 
 .product{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:20px;
+  border-radius:16px;
   overflow:hidden;
-  transition:.25s;
+  transition:.2s;
   position:relative;
-  box-shadow:0 5px 18px rgba(16,24,40,.04);
 }
 
 .product:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 40px rgba(16,24,40,.12);
-  border-color:#d9d6ff;
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(16,24,40,.08);
 }
 
-.product-image{
-  height:285px;
-  background:
-    radial-gradient(circle at center,#fff 0%,#f8fafc 60%,#eef0f5 100%);
+.pic{
+  height:190px;
+  background:#f2f4f7;
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
+  font-size:80px;
   overflow:hidden;
 }
 
-.product-image img{
+.pic img{
   width:100%;
   height:100%;
-  object-fit:contain;
-  padding:22px;
-  transition:.35s ease;
+  object-fit:cover;
 }
 
-.product:hover .product-image img{
-  transform:scale(1.07);
-}
-
-.discount{
-  position:absolute;
-  top:14px;
-  left:14px;
-  z-index:2;
-  background:#ecfdf3;
-  color:#027a48;
-  padding:6px 9px;
-  border-radius:8px;
-  font-size:11px;
-  font-weight:900;
-}
-
-.favorite{
-  position:absolute;
-  right:14px;
-  top:14px;
-  z-index:2;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background:rgba(255,255,255,.95);
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-  font-size:17px;
-  transition:.2s;
-}
-
-.favorite:hover{
-  color:#ef4444;
-  transform:scale(1.08);
-}
-
-.product-info{
-  padding:18px;
-}
+.info{padding:16px}
 
 .tag{
   font-size:11px;
   color:var(--primary);
-  font-weight:900;
+  font-weight:800;
   text-transform:uppercase;
-  letter-spacing:.4px;
 }
 
 .product h3{
-  font-size:17px;
-  line-height:1.35;
-  margin:7px 0 7px;
-  min-height:46px;
+  font-size:16px;
+  margin:6px 0 8px;
 }
 
 .stars{
@@ -424,86 +280,41 @@ header{
   font-size:13px;
 }
 
-.rating{
-  color:#98a2b3;
-  font-size:11px;
-  margin-left:5px;
-}
-
-.price-area{
-  margin:12px 0;
+.price{
+  font-size:21px;
+  font-weight:900;
+  margin:10px 0;
 }
 
 .old{
-  display:block;
   font-size:12px;
   color:#98a2b3;
   text-decoration:line-through;
-  margin-bottom:2px;
-}
-
-.price{
-  font-size:25px;
-  font-weight:950;
-  letter-spacing:-.7px;
-}
-
-.installments{
-  font-size:12px;
-  color:#475467;
-  margin-top:3px;
-}
-
-.free-shipping{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  background:#ecfdf3;
-  color:#027a48;
-  border-radius:7px;
-  padding:5px 8px;
-  font-size:11px;
-  font-weight:800;
-  margin:10px 0 13px;
-}
-
-.product-buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
+  margin-left:5px;
+  font-weight:400;
 }
 
 .add{
   width:100%;
   background:#111827;
   color:#fff;
-  padding:12px 8px;
-  border-radius:10px;
+  padding:11px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.discount{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:#ecfdf3;
+  color:#027a48;
+  padding:5px 8px;
+  border-radius:8px;
+  font-size:11px;
   font-weight:800;
-  transition:.2s;
+  z-index:2;
 }
-
-.add:hover{
-  background:#232b3b;
-  transform:translateY(-1px);
-}
-
-.buy-now{
-  width:100%;
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  color:#fff;
-  padding:12px 8px;
-  border-radius:10px;
-  font-weight:800;
-  transition:.2s;
-}
-
-.buy-now:hover{
-  transform:translateY(-1px);
-  box-shadow:0 7px 18px rgba(99,91,255,.25);
-}
-
-/* VANTAGENS */
 
 .features{
   display:grid;
@@ -516,16 +327,6 @@ header{
   border:1px solid var(--border);
   padding:20px;
   border-radius:14px;
-  transition:.2s;
-}
-
-.feature:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 25px rgba(16,24,40,.07);
-}
-
-.feature-icon{
-  font-size:25px;
 }
 
 .feature b{
@@ -536,68 +337,7 @@ header{
 .feature p{
   font-size:13px;
   color:var(--muted);
-  line-height:1.45;
 }
-
-/* AVALIAÇÕES */
-
-.reviews{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.review{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:20px;
-}
-
-.review-stars{
-  color:#f79009;
-  margin-bottom:10px;
-}
-
-.review p{
-  color:#475467;
-  font-size:14px;
-  line-height:1.55;
-}
-
-.review-author{
-  margin-top:14px;
-  font-weight:800;
-  font-size:13px;
-}
-
-/* FAQ */
-
-.faq{
-  display:grid;
-  gap:10px;
-}
-
-.faq details{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:15px 18px;
-}
-
-.faq summary{
-  cursor:pointer;
-  font-weight:800;
-}
-
-.faq p{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.5;
-  margin-top:10px;
-}
-
-/* FOOTER */
 
 footer{
   margin-top:60px;
@@ -627,10 +367,6 @@ footer{
   margin:7px 0;
 }
 
-.footer a:hover{
-  color:#fff;
-}
-
 .copy{
   border-top:1px solid #344054;
   text-align:center;
@@ -638,8 +374,6 @@ footer{
   font-size:12px;
   color:#98a2b3;
 }
-
-/* TOAST */
 
 .toast{
   position:fixed;
@@ -653,7 +387,6 @@ footer{
   transform:translateY(15px);
   transition:.25s;
   z-index:100;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 .toast.show{
@@ -661,7 +394,7 @@ footer{
   transform:none;
 }
 
-/* OVERLAY */
+/* CARRINHO */
 
 .overlay{
   position:fixed;
@@ -672,11 +405,7 @@ footer{
   z-index:50;
 }
 
-.overlay.show{
-  display:block;
-}
-
-/* CARRINHO */
+.overlay.show{display:block}
 
 .cart-panel{
   position:absolute;
@@ -698,9 +427,7 @@ footer{
   border-bottom:1px solid var(--border);
 }
 
-.panel-head h2{
-  font-size:22px;
-}
+.panel-head h2{font-size:22px}
 
 .close{
   background:#f2f4f7;
@@ -708,10 +435,6 @@ footer{
   height:36px;
   border-radius:10px;
   font-size:20px;
-}
-
-.close:hover{
-  background:#e4e7ec;
 }
 
 .cart-items{
@@ -728,13 +451,14 @@ footer{
 }
 
 .cart-icon{
-  width:72px;
-  height:72px;
+  width:64px;
+  height:64px;
   border-radius:12px;
   background:#f2f4f7;
   display:flex;
   align-items:center;
   justify-content:center;
+  font-size:30px;
   flex:none;
   overflow:hidden;
 }
@@ -742,13 +466,10 @@ footer{
 .cart-icon img{
   width:100%;
   height:100%;
-  object-fit:contain;
-  padding:5px;
+  object-fit:cover;
 }
 
-.cart-info{
-  flex:1;
-}
+.cart-info{flex:1}
 
 .cart-info b{
   font-size:14px;
@@ -830,7 +551,7 @@ footer{
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  width:min(650px,94%);
+  width:min(700px,94%);
   max-height:92vh;
   overflow:auto;
   background:#fff;
@@ -882,12 +603,72 @@ footer{
   border-radius:10px;
   outline:none;
   background:#fff;
+  transition:.2s;
 }
 
 .field input:focus,
 .field select:focus{
   border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(99,91,255,.08);
+  box-shadow:0 0 0 3px rgba(99,91,255,.1);
+}
+
+.field input.error,
+.field select.error{
+  border-color:var(--danger);
+  background:#fff8f8;
+}
+
+.error-message{
+  display:none;
+  color:var(--danger);
+  font-size:11px;
+  font-weight:600;
+}
+
+.error-message.show{
+  display:block;
+}
+
+.required-note{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+
+.address-title{
+  grid-column:1/-1;
+  font-size:16px;
+  font-weight:800;
+  margin-top:4px;
+  padding-top:6px;
+  border-top:1px solid var(--border);
+}
+
+.payment-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:6px;
+}
+
+.payment-option{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+  background:#fff;
+}
+
+.payment-option.selected{
+  border-color:var(--primary);
+  background:#f4f2ff;
+  color:#4f46e5;
+}
+
+.payment-option input{
+  display:none;
 }
 
 .order-summary{
@@ -921,6 +702,26 @@ footer{
   margin:12px 0;
 }
 
+.validation-box{
+  display:none;
+  background:#fff1f2;
+  border:1px solid #fecdd3;
+  color:#be123c;
+  border-radius:10px;
+  padding:12px;
+  font-size:13px;
+  margin-bottom:14px;
+}
+
+.validation-box.show{
+  display:block;
+}
+
+.validation-box strong{
+  display:block;
+  margin-bottom:5px;
+}
+
 .finalize{
   width:100%;
   background:#111827;
@@ -928,6 +729,11 @@ footer{
   padding:14px;
   border-radius:10px;
   font-weight:800;
+}
+
+.finalize:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
 .back-cart{
@@ -939,26 +745,20 @@ footer{
   font-weight:700;
 }
 
-/* SUCESSO */
-
 .success{
   display:none;
   text-align:center;
   padding:35px 20px;
 }
 
-.success.show{
-  display:block;
-}
+.success.show{display:block}
 
 .success-icon{
   font-size:55px;
   margin-bottom:12px;
 }
 
-.success h2{
-  margin-bottom:8px;
-}
+.success h2{margin-bottom:8px}
 
 .success p{
   color:var(--muted);
@@ -974,107 +774,31 @@ footer{
   font-weight:700;
 }
 
-/* RESPONSIVO */
-
-@media(max-width:900px){
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .quick-benefits{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .features{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .reviews{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:40px;
-  }
-
-  .footer{
-    grid-template-columns:1fr 1fr;
-  }
+@media(max-width:850px){
+  .navlinks{display:none}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:38px}
+  .hero-box{padding:38px 28px}
+  .footer{grid-template-columns:1fr 1fr}
 }
 
-@media(max-width:650px){
-
-  .nav{
-    gap:12px;
-  }
-
-  .navlinks{
-    display:none;
-  }
-
-  .logo{
-    font-size:20px;
-  }
-
-  .search{
-    display:none;
-  }
-
-  .hero-box{
-    padding:38px 28px;
-  }
-
-  .hero h1{
-    font-size:34px;
-  }
-
-  .hero-box{
-    min-height:330px;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .product-image{
-    height:310px;
-  }
-
-  .quick-benefits{
-    grid-template-columns:1fr;
-  }
-
-  .features{
-    grid-template-columns:1fr;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-  .footer{
-    grid-template-columns:1fr;
-  }
+@media(max-width:600px){
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .address-title{grid-column:auto}
+  .payment-options{grid-template-columns:1fr}
+  .checkout-panel{max-height:96vh}
 }
 
-@media(max-width:450px){
-
-  .product-buttons{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:30px;
-  }
-
-  .section h2{
-    font-size:24px;
-  }
+@media(max-width:520px){
+  .nav{gap:12px}
+  .logo{font-size:20px}
+  .products{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .hero h1{font-size:32px}
+  .hero-box{min-height:330px}
+  .search{display:none}
 }
 </style>
 
@@ -1082,54 +806,37 @@ footer{
 
 <body>
 
-<!-- BARRA SUPERIOR -->
-
 <div class="top">
-  🚚 Frete grátis acima de R$ 49,90 • 🔒 Pagamento seguro
+  🚚 Frete grátis acima de R$ 49,90 • Pagamento seguro
 </div>
 
-<!-- HEADER -->
-
 <header>
-
 <nav class="nav">
 
 <a class="logo" href="#">
-Velorian<span>Tech</span>
+  Velorian<span>Tech</span>
 </a>
 
 <div class="search">
-<input
-id="search"
-placeholder="Buscar produtos..."
-autocomplete="off"
->
-<button onclick="filterProducts()">⌕</button>
+  <input id="search" placeholder="Buscar produtos..." autocomplete="off">
+  <button onclick="filterProducts()">⌕</button>
 </div>
 
 <div class="navlinks">
-<a href="#produtos">Produtos</a>
-<a href="#vantagens">Vantagens</a>
-<a href="#avaliacoes">Avaliações</a>
-<a href="#contato">Contato</a>
+  <a href="#produtos">Produtos</a>
+  <a href="#vantagens">Vantagens</a>
+  <a href="#contato">Contato</a>
 </div>
 
-<button
-class="cart"
-onclick="openCart()"
-aria-label="Abrir carrinho"
-
->
-
-🛒 <span class="badge" id="count">0</span> </button>
+<button class="cart" onclick="openCart()" aria-label="Abrir carrinho">
+  🛒
+  <span class="badge" id="count">0</span>
+</button>
 
 </nav>
-
 </header>
 
 <main>
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -1138,355 +845,106 @@ aria-label="Abrir carrinho"
 <div class="hero-text">
 
 <div class="eyebrow">
-Tecnologia que combina com você
+  Tecnologia que combina com você
 </div>
 
 <h1>
-Seu próximo eletrônico está aqui.
+  Seu próximo eletrônico está aqui.
 </h1>
 
 <p>
-Produtos selecionados, preços competitivos e uma experiência de compra simples, moderna e segura.
+  Produtos selecionados, preços competitivos e uma experiência de compra simples e segura.
 </p>
 
-<a
-class="cta"
-href="#produtos"
+<a class="cta" href="#produtos">
+  Comprar agora →
+</a>
 
->
-
-Comprar agora → </a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- BENEFÍCIOS -->
-
-<section class="quick-benefits">
-
-<div class="quick">
-<div class="quick-icon">🚚</div>
-<div>
-<b>Frete grátis</b>
-<span>Condições da loja</span>
-</div>
-</div>
-
-<div class="quick">
-<div class="quick-icon">🔒</div>
-<div>
-<b>Compra segura</b>
-<span>Pagamento protegido</span>
-</div>
-</div>
-
-<div class="quick">
-<div class="quick-icon">💳</div>
-<div>
-<b>Pagamento fácil</b>
-<span>Pix e cartões</span>
-</div>
-</div>
-
-<div class="quick">
-<div class="quick-icon">💬</div>
-<div>
-<b>Atendimento</b>
-<span>Suporte pelo WhatsApp</span>
 </div>
 </div>
 
 </section>
-
-<!-- PRODUTOS -->
 
 <section class="section" id="produtos">
 
 <div class="section-head">
 
 <div>
-
-<h2>
-Produtos em destaque
-</h2>
-
-<p class="section-subtitle">
-Escolha seus favoritos
+<h2>Produtos em destaque</h2>
+<p style="color:#667085;margin-top:5px">
+  Escolha seus favoritos
 </p>
-
 </div>
 
 </div>
 
 <div class="filters">
 
-<button
-class="filter active"
-onclick="category('Todos',this)"
-
->
-
+<button class="filter active"
+onclick="category('Todos',this)">
 Todos </button>
 
-<button
-class="filter"
-onclick="category('Celulares',this)"
-
->
-
+<button class="filter"
+onclick="category('Celulares',this)">
 Celulares </button>
 
-<button
-class="filter"
-onclick="category('Informática',this)"
-
->
-
+<button class="filter"
+onclick="category('Informática',this)">
 Informática </button>
 
-<button
-class="filter"
-onclick="category('Áudio',this)"
-
->
-
+<button class="filter"
+onclick="category('Áudio',this)">
 Áudio </button>
 
-<button
-class="filter"
-onclick="category('Acessórios',this)"
-
->
-
+<button class="filter"
+onclick="category('Acessórios',this)">
 Acessórios </button>
 
 </div>
 
-<div
-class="products"
-id="grid"
-></div>
+<div class="products" id="grid"></div>
 
 </section>
 
-<!-- VANTAGENS -->
-
-<section
-class="section"
-id="vantagens"
->
+<section class="section" id="vantagens">
 
 <div class="section-head">
-
-<h2>
-Por que comprar na VelorianTech?
-</h2>
-
+<h2>Por que comprar na VelorianTech?</h2>
 </div>
 
 <div class="features">
 
 <div class="feature">
-
-<div class="feature-icon">🔒</div>
-
-<b>
-Compra segura
-</b>
-
+🔒
+<b>Compra segura</b>
 <p>
-Seus dados são tratados com segurança durante o processo de compra.
+Seus dados protegidos em todo o processo.
 </p>
-
 </div>
 
 <div class="feature">
-
-<div class="feature-icon">🚚</div>
-
-<b>
-Frete grátis
-</b>
-
+🚚
+<b>Frete grátis</b>
 <p>
 Ofertas com envio grátis conforme as condições da loja.
 </p>
-
 </div>
 
 <div class="feature">
-
-<div class="feature-icon">💳</div>
-
-<b>
-Pagamento facilitado
-</b>
-
+💳
+<b>Pagamento facilitado</b>
 <p>
-Pix, cartão de crédito ou débito através de meios de pagamento seguros.
+Pix, cartão de crédito ou débito.
 </p>
-
 </div>
 
 <div class="feature">
-
-<div class="feature-icon">🛡️</div>
-
-<b>
-Produtos selecionados
-</b>
-
+🛡️
+<b>Produtos selecionados</b>
 <p>
-Produtos escolhidos para oferecer praticidade e tecnologia.
+Qualidade e confiança em cada compra.
 </p>
-
 </div>
-
-</div>
-
-</section>
-
-<!-- AVALIAÇÕES -->
-
-<section
-class="section"
-id="avaliacoes"
->
-
-<div class="section-head">
-
-<div>
-
-<h2>
-O que nossos clientes dizem
-</h2>
-
-<p class="section-subtitle">
-Uma experiência de compra simples e moderna.
-</p>
-
-</div>
-
-</div>
-
-<div class="reviews">
-
-<div class="review">
-
-<div class="review-stars">
-★★★★★
-</div>
-
-<p>
-"Gostei bastante do produto e a experiência de compra foi muito simples."
-</p>
-
-<div class="review-author">
-— Cliente VelorianTech
-</div>
-
-</div>
-
-<div class="review">
-
-<div class="review-stars">
-★★★★★
-</div>
-
-<p>
-"O produto chegou bem embalado e exatamente como anunciado."
-</p>
-
-<div class="review-author">
-— Cliente VelorianTech
-</div>
-
-</div>
-
-<div class="review">
-
-<div class="review-stars">
-★★★★★
-</div>
-
-<p>
-"Site bonito, fácil de usar e atendimento rápido."
-</p>
-
-<div class="review-author">
-— Cliente VelorianTech
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FAQ -->
-
-<section class="section">
-
-<div class="section-head">
-
-<h2>
-Perguntas frequentes
-</h2>
-
-</div>
-
-<div class="faq">
-
-<details>
-
-<summary>
-Quais formas de pagamento estão disponíveis?
-</summary>
-
-<p>
-Você pode selecionar Pix, cartão de crédito ou cartão de débito durante o checkout.
-</p>
-
-</details>
-
-<details>
-
-<summary>
-O frete é grátis?
-</summary>
-
-<p>
-A loja oferece frete grátis conforme as condições apresentadas no site.
-</p>
-
-</details>
-
-<details>
-
-<summary>
-Como entro em contato com a loja?
-</summary>
-
-<p>
-Você pode entrar em contato pelo WhatsApp informado na seção de atendimento.
-</p>
-
-</details>
-
-<details>
-
-<summary>
-Meus dados ficam protegidos?
-</summary>
-
-<p>
-Os dados informados são utilizados para preparar o pedido e realizar o atendimento.
-</p>
-
-</details>
 
 </div>
 
@@ -1494,14 +952,11 @@ Os dados informados são utilizados para preparar o pedido e realizar o atendime
 
 </main>
 
-<!-- FOOTER -->
-
 <footer id="contato">
 
 <div class="footer">
 
 <div>
-
 <h3 class="logo">
 Velorian<span>Tech</span>
 </h3>
@@ -1509,129 +964,69 @@ Velorian<span>Tech</span>
 <p>
 Sua loja online de eletrônicos e tecnologia.
 </p>
-
 </div>
 
 <div>
-
-<h3>
-Loja
-</h3>
-
-<a href="#produtos">
-Produtos
-</a>
-
-<a href="#produtos">
-Ofertas
-</a>
-
-<a href="#produtos">
-Lançamentos
-</a>
-
+<h3>Loja</h3>
+<a href="#produtos">Produtos</a>
+<a href="#produtos">Ofertas</a>
+<a href="#produtos">Lançamentos</a>
 </div>
 
 <div>
-
-<h3>
-Atendimento
-</h3>
-
-<p>
-Seg–Sex: 9h às 18h
-</p>
-
-<p>
-WhatsApp: (71) 99234-6351
-</p>
-
-<p>
-acaua8767@gmail.com
-</p>
-
+<h3>Atendimento</h3>
+<p>Seg–Sex: 9h às 18h</p>
+<p>WhatsApp: (71) 99234-6351</p>
+<p>acaua8767@gmail.com</p>
 </div>
 
 <div>
-
-<h3>
-Redes sociais
-</h3>
-
-<a href="#">
-Instagram
-</a>
-
-<a href="#">
-TikTok
-</a>
-
-<a href="#">
-Facebook
-</a>
-
+<h3>Redes sociais</h3>
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+<a href="#">Facebook</a>
 </div>
 
 </div>
 
 <div class="copy">
-
 © 2026 VelorianTech. Todos os direitos reservados.
-
 </div>
 
 </footer>
 
-<!-- TOAST -->
-
-<div
-class="toast"
-id="toast"
->
+<div class="toast" id="toast">
 Produto adicionado ao carrinho!
 </div>
 
 <!-- CARRINHO -->
 
-<div
-class="overlay"
+<div class="overlay"
 id="cartOverlay"
-onclick="closeCart(event)"
->
+onclick="closeCart(event)">
 
-<aside
-class="cart-panel"
-onclick="event.stopPropagation()"
->
+<aside class="cart-panel"
+onclick="event.stopPropagation()">
 
 <div class="panel-head">
 
-<h2>
-🛒 Seu carrinho
-</h2>
+<h2>🛒 Seu carrinho</h2>
 
-<button
-class="close"
-onclick="closeCart()"
-
->
-
+<button class="close"
+onclick="closeCart()">
 × </button>
 
 </div>
 
-<div
-class="cart-items"
-id="cartItems"
-></div>
+<div class="cart-items"
+id="cartItems">
+</div>
 
 <div class="cart-footer">
 
 <div class="total">
 
-<span>
-Total
-</span>
+<span>Total</span>
 
 <span id="cartTotal">
 R$ 0,00
@@ -1642,11 +1037,11 @@ R$ 0,00
 <button
 class="checkout-btn"
 id="checkoutBtn"
-onclick="openCheckout()"
+onclick="openCheckout()">
 
->
+Ir para o checkout →
 
-Ir para o checkout → </button>
+</button>
 
 </div>
 
@@ -1656,52 +1051,41 @@ Ir para o checkout → </button>
 
 <!-- CHECKOUT -->
 
-<div
-class="overlay"
+<div class="overlay"
 id="checkoutOverlay"
-onclick="closeCheckout(event)"
->
+onclick="closeCheckout(event)">
 
-<section
-class="checkout-panel"
-onclick="event.stopPropagation()"
->
+<section class="checkout-panel"
+onclick="event.stopPropagation()">
 
 <div class="panel-head">
 
-<h2>
-Finalizar compra
-</h2>
+<h2>Finalizar compra</h2>
 
-<button
-class="close"
-onclick="closeCheckout()"
-
->
-
+<button class="close"
+onclick="closeCheckout()">
 × </button>
 
 </div>
 
-<div
-class="checkout-content"
-id="checkoutFormArea"
->
+<div class="checkout-content"
+id="checkoutFormArea">
 
 <h3>
 Dados para entrega
 </h3>
 
 <p class="subtitle">
-Preencha seus dados para preparar o pedido.
+Preencha corretamente seus dados para receber o pedido.
 </p>
 
-<form
-id="checkoutForm"
+<form id="checkoutForm"
 onsubmit="finishOrder(event)"
->
+novalidate>
 
 <div class="form-grid">
+
+<!-- NOME -->
 
 <div class="field full">
 
@@ -1714,33 +1098,20 @@ id="fullName"
 name="fullName"
 type="text"
 placeholder="Digite seu nome completo"
-required
+autocomplete="name">
 
->
-
-</div>
-
-<div class="field full">
-
-<label for="address">
-Endereço completo *
-</label>
-
-<input
-id="address"
-name="address"
-type="text"
-placeholder="Rua, número, bairro, cidade e CEP"
-required
-
->
+<span class="error-message"
+id="fullNameError">
+Digite seu nome completo. </span>
 
 </div>
+
+<!-- TELEFONE -->
 
 <div class="field">
 
 <label for="phone">
-Número de telefone *
+Telefone / WhatsApp *
 </label>
 
 <input
@@ -1748,9 +1119,12 @@ id="phone"
 name="phone"
 type="tel"
 placeholder="(00) 00000-0000"
-required
+autocomplete="tel"
+maxlength="15">
 
->
+<span class="error-message"
+id="phoneError">
+Digite um telefone válido. </span>
 
 </div>
 
@@ -1760,12 +1134,8 @@ required
 Forma de pagamento *
 </label>
 
-<select
-id="payment"
-name="payment"
-required
-
->
+<select id="payment"
+name="payment">
 
 <option value="">
 Selecione
@@ -1785,6 +1155,191 @@ Cartão de débito
 
 </select>
 
+<span class="error-message"
+id="paymentError">
+Selecione uma forma de pagamento. </span>
+
+</div>
+
+<!-- ENDEREÇO -->
+
+<div class="address-title">
+📍 Endereço de entrega
+</div>
+
+<!-- CEP -->
+
+<div class="field">
+
+<label for="cep">
+CEP *
+</label>
+
+<input
+id="cep"
+name="cep"
+type="text"
+placeholder="00000-000"
+inputmode="numeric"
+autocomplete="postal-code"
+maxlength="9">
+
+<span class="error-message"
+id="cepError">
+Digite um CEP válido. </span>
+
+</div>
+
+<!-- ESTADO -->
+
+<div class="field">
+
+<label for="state">
+Estado (UF) *
+</label>
+
+<select id="state"
+name="state">
+
+<option value="">
+Selecione o estado
+</option>
+
+<option value="AC">Acre - AC</option>
+<option value="AL">Alagoas - AL</option>
+<option value="AP">Amapá - AP</option>
+<option value="AM">Amazonas - AM</option>
+<option value="BA">Bahia - BA</option>
+<option value="CE">Ceará - CE</option>
+<option value="DF">Distrito Federal - DF</option>
+<option value="ES">Espírito Santo - ES</option>
+<option value="GO">Goiás - GO</option>
+<option value="MA">Maranhão - MA</option>
+<option value="MT">Mato Grosso - MT</option>
+<option value="MS">Mato Grosso do Sul - MS</option>
+<option value="MG">Minas Gerais - MG</option>
+<option value="PA">Pará - PA</option>
+<option value="PB">Paraíba - PB</option>
+<option value="PR">Paraná - PR</option>
+<option value="PE">Pernambuco - PE</option>
+<option value="PI">Piauí - PI</option>
+<option value="RJ">Rio de Janeiro - RJ</option>
+<option value="RN">Rio Grande do Norte - RN</option>
+<option value="RS">Rio Grande do Sul - RS</option>
+<option value="RO">Rondônia - RO</option>
+<option value="RR">Roraima - RR</option>
+<option value="SC">Santa Catarina - SC</option>
+<option value="SP">São Paulo - SP</option>
+<option value="SE">Sergipe - SE</option>
+<option value="TO">Tocantins - TO</option>
+
+</select>
+
+<span class="error-message"
+id="stateError">
+Selecione o estado. </span>
+
+</div>
+
+<!-- RUA -->
+
+<div class="field full">
+
+<label for="street">
+Rua / Avenida *
+</label>
+
+<input
+id="street"
+name="street"
+type="text"
+placeholder="Nome da rua ou avenida"
+autocomplete="street-address">
+
+<span class="error-message"
+id="streetError">
+Digite sua rua ou avenida. </span>
+
+</div>
+
+<!-- NUMERO -->
+
+<div class="field">
+
+<label for="number">
+Número *
+</label>
+
+<input
+id="number"
+name="number"
+type="text"
+placeholder="Número"
+autocomplete="address-line2">
+
+<span class="error-message"
+id="numberError">
+Digite o número do endereço. </span>
+
+</div>
+
+<!-- COMPLEMENTO -->
+
+<div class="field">
+
+<label for="complement">
+Complemento
+</label>
+
+<input
+id="complement"
+name="complement"
+type="text"
+placeholder="Apartamento, bloco, casa..."
+autocomplete="address-line2">
+
+</div>
+
+<!-- BAIRRO -->
+
+<div class="field">
+
+<label for="neighborhood">
+Bairro *
+</label>
+
+<input
+id="neighborhood"
+name="neighborhood"
+type="text"
+placeholder="Seu bairro"
+autocomplete="address-level3">
+
+<span class="error-message"
+id="neighborhoodError">
+Digite seu bairro. </span>
+
+</div>
+
+<!-- CIDADE -->
+
+<div class="field">
+
+<label for="city">
+Cidade *
+</label>
+
+<input
+id="city"
+name="city"
+type="text"
+placeholder="Sua cidade"
+autocomplete="address-level2">
+
+<span class="error-message"
+id="cityError">
+Digite sua cidade. </span>
+
 </div>
 
 </div>
@@ -1792,76 +1347,65 @@ Cartão de débito
 <div class="order-summary">
 
 <div class="summary-row">
-
-<span>
-Itens
-</span>
-
+<span>Itens</span>
 <strong id="summaryItems">
 0
 </strong>
-
 </div>
 
 <div class="summary-row">
-
-<span>
-Frete
-</span>
-
-<strong>
-Grátis
-</strong>
-
+<span>Frete</span>
+<strong>Grátis</strong>
 </div>
 
-<div class="summary-row summary-total">
-
-<span>
-Total
-</span>
-
+<div class="summary-total summary-row">
+<span>Total</span>
 <span id="summaryTotal">
 R$ 0,00
 </span>
+</div>
 
 </div>
+
+<div class="validation-box"
+id="validationBox">
+
+<strong>⚠️ Verifique seus dados</strong>
+
+<span id="validationText">
+Preencha todos os campos obrigatórios.
+</span>
 
 </div>
 
 <p class="secure-note">
-
 🔒 Seus dados são usados para preparar o pedido. Os dados completos do cartão não são coletados por este formulário; o pagamento com cartão deve ser concluído através de um gateway de pagamento seguro.
-
 </p>
 
 <button
 class="finalize"
-type="submit"
+id="finalizeButton"
+type="submit">
 
->
+Confirmar pedido
 
-Confirmar pedido </button>
+</button>
 
 <button
 class="back-cart"
 type="button"
-onclick="closeCheckout();openCart()"
+onclick="closeCheckout();openCart()">
 
->
+← Voltar ao carrinho
 
-← Voltar ao carrinho </button>
+</button>
 
 </form>
 
 </div>
 
-<!-- SUCESSO -->
-
-<div
-class="success"
-id="successArea"
->
+<div class="success"
+id="successArea">
 
 <div class="success-icon">
 ✅
@@ -1873,12 +1417,9 @@ Pedido preparado!
 
 <p id="successText"></p>
 
-<button
-onclick="closeAllModals()"
-
->
-
-Voltar para a loja </button>
+<button onclick="closeAllModals()">
+Voltar para a loja
+</button>
 
 </div>
 
@@ -1888,8 +1429,6 @@ Voltar para a loja </button>
 
 <script>
 
-/* PRODUTOS */
-
 const products=[
 
 {
@@ -1898,10 +1437,9 @@ name:"Power Bank Turbo 20000mAh 66W Premium",
 cat:"Acessórios",
 price:149.90,
 old:199.90,
-discount:"25% OFF",
+icon:"⚡",
 image:"https://down-br.img.susercontent.com/file/cn-11134207-820l4-mr74v4q13tae09.webp",
-stars:"★★★★★",
-rating:"4,9 (127)"
+stars:"★★★★★"
 },
 
 {
@@ -1910,10 +1448,9 @@ name:"Fone De Ouvido Bluetooth Sem Fio Estéreo",
 cat:"Áudio",
 price:79.90,
 old:99.90,
-discount:"20% OFF",
+icon:"🎶",
 image:"https://down-br.img.susercontent.com/file/br-11134207-820lp-mq4lwphung8w0b.webp",
-stars:"★★★★★",
-rating:"4,8 (94)"
+stars:"★★★★★"
 },
 
 {
@@ -1922,19 +1459,17 @@ name:"Smartwatch 6 Em 1 Tela AMOLED 2.02",
 cat:"Acessórios",
 price:99.90,
 old:149.90,
-discount:"33% OFF",
+icon:"⌚",
 image:"https://down-br.img.susercontent.com/file/br-11134207-81z1k-mebnptt1m48y0c.webp",
-stars:"★★★★☆",
-rating:"4,7 (81)"
+stars:"★★★★☆"
 }
 
 ];
 
-let cart=[];
 
+let cart=[];
 let current="Todos";
 
-/* FORMATAÇÃO */
 
 function money(value){
 
@@ -1948,7 +1483,6 @@ currency:"BRL"
 
 }
 
-/* CARRINHO LOCAL */
 
 function saveCart(){
 
@@ -1959,6 +1493,7 @@ JSON.stringify(cart)
 
 }
 
+
 function loadCart(){
 
 try{
@@ -1968,9 +1503,7 @@ JSON.parse(
 localStorage.getItem("velorian_cart")
 )||[];
 
-}
-
-catch(e){
+}catch(e){
 
 cart=[];
 
@@ -1980,29 +1513,25 @@ updateCartCount();
 
 }
 
-/* RENDER PRODUTOS */
 
 function render(){
 
-const searchElement=
-document.getElementById("search");
+const searchInput=document.getElementById("search");
 
 const q=
-searchElement
-?
-searchElement.value.toLowerCase().trim()
-:"";
+searchInput.value
+.toLowerCase()
+.trim();
+
 
 const list=
 products.filter(p=>
 
 (current==="Todos"||p.cat===current)&&
-
-p.name
-.toLowerCase()
-.includes(q)
+p.name.toLowerCase().includes(q)
 
 );
+
 
 document.getElementById("grid").innerHTML=
 
@@ -2011,29 +1540,20 @@ list.map(p=>`
 <article class="product">
 
 <span class="discount">
-${p.discount}
+OFERTA
 </span>
 
-<button
-class="favorite"
-onclick="favoriteProduct(${p.id})"
-aria-label="Favoritar produto"
->
-♡
-</button>
-
-<div class="product-image">
+<div class="pic">
 
 <img
 src="${p.image}"
 alt="${p.name}"
 loading="lazy"
-onerror="this.style.display='none'"
->
+onerror="this.style.display='none';this.parentElement.innerHTML='${p.icon}'">
 
 </div>
 
-<div class="product-info">
+<div class="info">
 
 <span class="tag">
 ${p.cat}
@@ -2044,52 +1564,26 @@ ${p.name}
 </h3>
 
 <div class="stars">
-
 ${p.stars}
-
-<span class="rating">
-${p.rating}
-</span>
-
 </div>
 
-<div class="price-area">
+<div class="price">
+
+${money(p.price)}
 
 <span class="old">
 ${money(p.old)}
 </span>
 
-<div class="price">
-${money(p.price)}
 </div>
-
-<div class="installments">
-💳 Até 3x de ${money(p.price/3)} sem juros
-</div>
-
-</div>
-
-<div class="free-shipping">
-🚚 FRETE GRÁTIS
-</div>
-
-<div class="product-buttons">
 
 <button
 class="add"
-onclick="addToCart(${p.id})"
->
-🛒 Adicionar
-</button>
+onclick="addToCart(${p.id})">
 
-<button
-class="buy-now"
-onclick="buyNow(${p.id})"
->
-Comprar agora
-</button>
+Adicionar ao carrinho
 
-</div>
+</button>
 
 </div>
 
@@ -2098,57 +1592,39 @@ Comprar agora
 `).join("")
 
 ||
-
 "<p>Nenhum produto encontrado.</p>";
 
 }
 
-/* FAVORITO */
-
-function favoriteProduct(id){
-
-const product=
-products.find(p=>p.id===id);
-
-if(!product)return;
-
-showToast(
-`${product.name} adicionado aos favoritos! ❤️`
-);
-
-}
-
-/* ADICIONAR AO CARRINHO */
 
 function addToCart(id){
 
 const item=
 cart.find(x=>x.id===id);
 
+
 if(item){
 
 item.qty++;
 
-}
-
-else{
+}else{
 
 const p=
 products.find(x=>x.id===id);
-
-if(!p)return;
 
 cart.push({
 
 id:p.id,
 name:p.name,
 price:p.price,
-icon:p.image,
+icon:p.icon,
+image:p.image,
 qty:1
 
 });
 
 }
+
 
 saveCart();
 
@@ -2156,23 +1632,23 @@ updateCartCount();
 
 renderCart();
 
-showToast(
-"Produto adicionado ao carrinho!"
+
+const t=
+document.getElementById("toast");
+
+t.textContent=
+"Produto adicionado ao carrinho!";
+
+t.classList.add("show");
+
+
+setTimeout(
+()=>t.classList.remove("show"),
+1800
 );
 
 }
 
-/* COMPRAR AGORA */
-
-function buyNow(id){
-
-addToCart(id);
-
-openCart();
-
-}
-
-/* CONTADOR */
 
 function updateCartCount(){
 
@@ -2182,13 +1658,11 @@ cart.reduce(
 0
 );
 
-document.getElementById(
-"count"
-).textContent=total;
+document.getElementById("count")
+.textContent=total;
 
 }
 
-/* TOTAL */
 
 function cartTotal(){
 
@@ -2200,7 +1674,6 @@ sum+(item.price*item.qty),
 
 }
 
-/* RENDER CARRINHO */
 
 function renderCart(){
 
@@ -2209,6 +1682,7 @@ document.getElementById("cartItems");
 
 const btn=
 document.getElementById("checkoutBtn");
+
 
 if(!cart.length){
 
@@ -2230,9 +1704,7 @@ Adicione produtos para continuar sua compra.
 
 btn.disabled=true;
 
-}
-
-else{
+}else{
 
 area.innerHTML=
 
@@ -2243,9 +1715,9 @@ cart.map(item=>`
 <div class="cart-icon">
 
 <img
-src="${item.icon}"
+src="${item.image}"
 alt="${item.name}"
->
+onerror="this.style.display='none';this.parentElement.innerHTML='${item.icon}'">
 
 </div>
 
@@ -2261,9 +1733,7 @@ ${money(item.price*item.qty)}
 
 <div class="qty">
 
-<button
-onclick="changeQty(${item.id},-1)"
->
+<button onclick="changeQty(${item.id},-1)">
 −
 </button>
 
@@ -2271,17 +1741,16 @@ onclick="changeQty(${item.id},-1)"
 ${item.qty}
 </span>
 
-<button
-onclick="changeQty(${item.id},1)"
->
+<button onclick="changeQty(${item.id},1)">
 +
 </button>
 
 <button
 class="remove"
-onclick="removeFromCart(${item.id})"
->
+onclick="removeFromCart(${item.id})">
+
 Remover
+
 </button>
 
 </div>
@@ -2296,14 +1765,13 @@ btn.disabled=false;
 
 }
 
-document.getElementById(
-"cartTotal"
-).textContent=
+
+document.getElementById("cartTotal")
+.textContent=
 money(cartTotal());
 
 }
 
-/* ALTERAR QUANTIDADE */
 
 function changeQty(id,delta){
 
@@ -2314,14 +1782,14 @@ if(!item)return;
 
 item.qty+=delta;
 
+
 if(item.qty<=0){
 
 cart=
-cart.filter(
-x=>x.id!==id
-);
+cart.filter(x=>x.id!==id);
 
 }
+
 
 saveCart();
 
@@ -2331,14 +1799,11 @@ renderCart();
 
 }
 
-/* REMOVER */
 
 function removeFromCart(id){
 
 cart=
-cart.filter(
-x=>x.id!==id
-);
+cart.filter(x=>x.id!==id);
 
 saveCart();
 
@@ -2348,7 +1813,6 @@ renderCart();
 
 }
 
-/* ABRIR CARRINHO */
 
 function openCart(){
 
@@ -2363,7 +1827,6 @@ document.body
 
 }
 
-/* FECHAR CARRINHO */
 
 function closeCart(e){
 
@@ -2381,7 +1844,6 @@ document.body
 
 }
 
-/* CHECKOUT */
 
 function openCheckout(){
 
@@ -2408,7 +1870,6 @@ document.body
 
 }
 
-/* FECHAR CHECKOUT */
 
 function closeCheckout(e){
 
@@ -2426,24 +1887,496 @@ document.body
 
 }
 
-/* RESUMO */
 
 function updateCheckoutSummary(){
 
-document.getElementById(
-"summaryItems"
-).textContent=
+document.getElementById("summaryItems")
+.textContent=
 cart.reduce(
 (s,i)=>s+i.qty,
 0
 )+" item(ns)";
 
-document.getElementById(
-"summaryTotal"
-).textContent=
+
+document.getElementById("summaryTotal")
+.textContent=
 money(cartTotal());
 
 }
+
+
+/* MÁSCARA DE TELEFONE */
+
+document
+.getElementById("phone")
+.addEventListener("input",function(){
+
+let value=
+this.value.replace(/\D/g,"");
+
+if(value.length>11)
+value=value.substring(0,11);
+
+
+if(value.length<=10){
+
+value=
+value.replace(
+/^(\d{2})(\d{4})(\d{0,4}).*/,
+"($1) $2-$3"
+);
+
+}else{
+
+value=
+value.replace(
+/^(\d{2})(\d{5})(\d{0,4}).*/,
+"($1) $2-$3"
+);
+
+}
+
+this.value=value;
+
+});
+
+
+/* MÁSCARA DE CEP */
+
+document
+.getElementById("cep")
+.addEventListener("input",function(){
+
+let value=
+this.value.replace(/\D/g,"");
+
+if(value.length>8)
+value=value.substring(0,8);
+
+if(value.length>5){
+
+value=
+value.substring(0,5)
++"-"+
+value.substring(5);
+
+}
+
+this.value=value;
+
+});
+
+
+/* BUSCA CEP */
+
+document
+.getElementById("cep")
+.addEventListener("blur",async function(){
+
+const cep=
+this.value.replace(/\D/g,"");
+
+if(cep.length!==8)return;
+
+
+try{
+
+const response=
+await fetch(
+`https://viacep.com.br/ws/${cep}/json/`
+);
+
+const data=
+await response.json();
+
+
+if(data.erro){
+
+showFieldError(
+"cep",
+"CEP não encontrado."
+);
+
+return;
+
+}
+
+
+document.getElementById("street")
+.value=
+data.logradouro||"";
+
+
+document.getElementById("neighborhood")
+.value=
+data.bairro||"";
+
+
+document.getElementById("city")
+.value=
+data.localidade||"";
+
+
+document.getElementById("state")
+.value=
+data.uf||"";
+
+
+clearFieldError("cep");
+
+}catch(error){
+
+console.log(
+"Não foi possível consultar o CEP."
+);
+
+}
+
+});
+
+
+/* ERROS */
+
+function showFieldError(id,message){
+
+const field=
+document.getElementById(id);
+
+const error=
+document.getElementById(id+"Error");
+
+if(field)
+field.classList.add("error");
+
+if(error){
+
+error.textContent=message;
+error.classList.add("show");
+
+}
+
+}
+
+
+function clearFieldError(id){
+
+const field=
+document.getElementById(id);
+
+const error=
+document.getElementById(id+"Error");
+
+if(field)
+field.classList.remove("error");
+
+if(error)
+error.classList.remove("show");
+
+}
+
+
+/* VALIDAÇÃO DO CHECKOUT */
+
+function validateCheckout(){
+
+let valid=true;
+
+let errors=[];
+
+
+/* NOME */
+
+const name=
+document
+.getElementById("fullName")
+.value.trim();
+
+if(name.length<3){
+
+showFieldError(
+"fullName",
+"Digite seu nome completo."
+);
+
+valid=false;
+
+errors.push("Nome completo");
+
+}else{
+
+clearFieldError("fullName");
+
+}
+
+
+/* TELEFONE */
+
+const phone=
+document
+.getElementById("phone")
+.value.replace(/\D/g,"");
+
+
+if(phone.length<10){
+
+showFieldError(
+"phone",
+"Digite um telefone válido."
+);
+
+valid=false;
+
+errors.push("Telefone");
+
+}else{
+
+clearFieldError("phone");
+
+}
+
+
+/* CEP */
+
+const cep=
+document
+.getElementById("cep")
+.value.replace(/\D/g,"");
+
+
+if(cep.length!==8){
+
+showFieldError(
+"cep",
+"Digite um CEP válido."
+);
+
+valid=false;
+
+errors.push("CEP");
+
+}else{
+
+clearFieldError("cep");
+
+}
+
+
+/* ESTADO */
+
+const state=
+document
+.getElementById("state")
+.value;
+
+
+if(!state){
+
+showFieldError(
+"state",
+"Selecione o estado."
+);
+
+valid=false;
+
+errors.push("Estado");
+
+}else{
+
+clearFieldError("state");
+
+}
+
+
+/* RUA */
+
+const street=
+document
+.getElementById("street")
+.value.trim();
+
+
+if(street.length<3){
+
+showFieldError(
+"street",
+"Digite sua rua ou avenida."
+);
+
+valid=false;
+
+errors.push("Rua");
+
+}else{
+
+clearFieldError("street");
+
+}
+
+
+/* NÚMERO */
+
+const number=
+document
+.getElementById("number")
+.value.trim();
+
+
+if(!number){
+
+showFieldError(
+"number",
+"Digite o número do endereço."
+);
+
+valid=false;
+
+errors.push("Número");
+
+}else{
+
+clearFieldError("number");
+
+}
+
+
+/* BAIRRO */
+
+const neighborhood=
+document
+.getElementById("neighborhood")
+.value.trim();
+
+
+if(neighborhood.length<2){
+
+showFieldError(
+"neighborhood",
+"Digite seu bairro."
+);
+
+valid=false;
+
+errors.push("Bairro");
+
+}else{
+
+clearFieldError("neighborhood");
+
+}
+
+
+/* CIDADE */
+
+const city=
+document
+.getElementById("city")
+.value.trim();
+
+
+if(city.length<2){
+
+showFieldError(
+"city",
+"Digite sua cidade."
+);
+
+valid=false;
+
+errors.push("Cidade");
+
+}else{
+
+clearFieldError("city");
+
+}
+
+
+/* PAGAMENTO */
+
+const payment=
+document
+.getElementById("payment")
+.value;
+
+
+if(!payment){
+
+showFieldError(
+"payment",
+"Selecione uma forma de pagamento."
+);
+
+valid=false;
+
+errors.push("Forma de pagamento");
+
+}else{
+
+clearFieldError("payment");
+
+}
+
+
+/* MENSAGEM */
+
+const box=
+document.getElementById("validationBox");
+
+const text=
+document.getElementById("validationText");
+
+
+if(!valid){
+
+box.classList.add("show");
+
+text.textContent=
+"Preencha corretamente: "+
+errors.join(", ")+
+".";
+
+}else{
+
+box.classList.remove("show");
+
+}
+
+
+return valid;
+
+}
+
+
+/* LIMPAR ERRO AO DIGITAR */
+
+[
+"fullName",
+"phone",
+"cep",
+"street",
+"number",
+"neighborhood",
+"city",
+"state",
+"payment"
+].forEach(id=>{
+
+document
+.getElementById(id)
+.addEventListener(
+"input",
+()=>clearFieldError(id)
+);
+
+document
+.getElementById(id)
+.addEventListener(
+"change",
+()=>clearFieldError(id)
+);
+
+});
+
 
 /* FINALIZAR */
 
@@ -2451,29 +2384,88 @@ function finishOrder(event){
 
 event.preventDefault();
 
-if(!cart.length)return;
+
+if(!cart.length){
+
+alert(
+"Seu carrinho está vazio."
+);
+
+return;
+
+}
+
+
+if(!validateCheckout()){
+
+const firstError=
+document.querySelector(
+".field input.error,.field select.error"
+);
+
+if(firstError){
+
+firstError.focus();
+
+firstError.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+}
+
+return;
+
+}
+
 
 const data=
 new FormData(event.target);
 
+
 const name=
 data.get("fullName").trim();
-
-const address=
-data.get("address").trim();
 
 const phone=
 data.get("phone").trim();
 
+const cep=
+data.get("cep").trim();
+
+const street=
+data.get("street").trim();
+
+const number=
+data.get("number").trim();
+
+const complement=
+data.get("complement").trim();
+
+const neighborhood=
+data.get("neighborhood").trim();
+
+const city=
+data.get("city").trim();
+
+const state=
+data.get("state").trim();
+
 const payment=
 data.get("payment");
 
+
 const items=
 cart
-.map(
-i=>`${i.qty}x ${i.name}`
-)
+.map(i=>`${i.qty}x ${i.name}`)
 .join(", ");
+
+
+const fullAddress=
+`${street}, ${number}`+
+(complement?
+` - ${complement}`:"")+
+`, ${neighborhood}, ${city} - ${state}, CEP ${cep}`;
+
 
 const orderText=
 
@@ -2481,7 +2473,7 @@ const orderText=
 
 `*Cliente:* ${encodeURIComponent(name)}%0A`+
 
-`*Endereço:* ${encodeURIComponent(address)}%0A`+
+`*Endereço:* ${encodeURIComponent(fullAddress)}%0A`+
 
 `*Telefone:* ${encodeURIComponent(phone)}%0A`+
 
@@ -2491,25 +2483,28 @@ const orderText=
 
 `*Total:* ${encodeURIComponent(money(cartTotal()))}`;
 
+
 /*
-
-Número do WhatsApp da loja.
-
+Número de WhatsApp da loja.
 */
 
 const whatsapp=
 "5571992346351";
 
+
 const whatsappUrl=
 `https://wa.me/${whatsapp}?text=${orderText}`;
+
 
 document
 .getElementById("checkoutFormArea")
 .style.display="none";
 
+
 document
 .getElementById("successArea")
 .classList.add("show");
+
 
 document
 .getElementById("successText")
@@ -2517,10 +2512,12 @@ document
 
 `Obrigado, <strong>${escapeHtml(name)}</strong>! Seu pedido foi preparado com pagamento em <strong>${escapeHtml(payment)}</strong>.<br><br>`+
 
-`Clique no botão abaixo para enviar os dados do pedido pelo WhatsApp e continuar o atendimento.`;
+`Confira os dados e clique no botão abaixo para enviar o pedido pelo WhatsApp.`;
+
 
 const success=
 document.getElementById("successArea");
+
 
 success
 .querySelector("button")
@@ -2530,6 +2527,7 @@ window.open(
 whatsappUrl,
 "_blank"
 );
+
 
 cart=[];
 
@@ -2543,25 +2541,26 @@ closeAllModals();
 
 }
 
+
 /* SEGURANÇA HTML */
 
 function escapeHtml(text){
 
 return text.replace(
 /[&<>"']/g,
-m=>
-({
+m=>({
+
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
+
 }[m])
 );
 
 }
 
-/* FECHAR MODAIS */
 
 function closeAllModals(){
 
@@ -2569,38 +2568,63 @@ document
 .getElementById("cartOverlay")
 .classList.remove("show");
 
+
 document
 .getElementById("checkoutOverlay")
 .classList.remove("show");
 
+
 document.body
 .classList.remove("modal-open");
+
 
 document
 .getElementById("checkoutFormArea")
 .style.display="block";
 
+
 document
 .getElementById("successArea")
 .classList.remove("show");
+
 
 document
 .getElementById("checkoutForm")
 .reset();
 
+
+document
+.querySelectorAll(".error")
+.forEach(el=>
+el.classList.remove("error")
+);
+
+
+document
+.querySelectorAll(".error-message")
+.forEach(el=>
+el.classList.remove("show")
+);
+
+
+document
+.getElementById("validationBox")
+.classList.remove("show");
+
 }
 
-/* CATEGORIAS */
 
 function category(c,el){
 
 current=c;
 
+
 document
 .querySelectorAll(".filter")
-.forEach(
-x=>x.classList.remove("active")
+.forEach(x=>
+x.classList.remove("active")
 );
+
 
 el.classList.add("active");
 
@@ -2608,11 +2632,11 @@ render();
 
 }
 
-/* BUSCA */
 
 function filterProducts(){
 
 render();
+
 
 document
 .getElementById("produtos")
@@ -2622,25 +2646,6 @@ behavior:"smooth"
 
 }
 
-/* TOAST */
-
-function showToast(message){
-
-const t=
-document.getElementById("toast");
-
-t.textContent=message;
-
-t.classList.add("show");
-
-setTimeout(
-()=>t.classList.remove("show"),
-2000
-);
-
-}
-
-/* PESQUISA */
 
 document
 .getElementById("search")
@@ -2649,7 +2654,6 @@ document
 render
 );
 
-/* INICIALIZAÇÃO */
 
 loadCart();
 
