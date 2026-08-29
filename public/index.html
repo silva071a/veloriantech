@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>VelorianTech — Eletrônicos</title>
 
 <style>
@@ -13,10 +13,11 @@
   --text:#101828;
   --muted:#667085;
   --primary:#635bff;
-  --primary2:#7c3aed;
+  --primary-dark:#5046e5;
   --border:#e4e7ec;
   --green:#12b76a;
   --danger:#ef4444;
+  --dark:#111827;
 }
 
 *{
@@ -80,6 +81,7 @@ header{
   font-size:24px;
   font-weight:900;
   letter-spacing:-1px;
+  white-space:nowrap;
 }
 
 .logo span{
@@ -122,6 +124,10 @@ header{
   font-size:14px;
 }
 
+.navlinks a:hover{
+  color:var(--primary);
+}
+
 .cart{
   position:relative;
   font-size:21px;
@@ -150,7 +156,14 @@ header{
 }
 
 .hero-box{
-  background:linear-gradient(120deg,#111827,#312e81 65%,#635bff);
+  background:
+    linear-gradient(
+      120deg,
+      #111827,
+      #312e81 65%,
+      #635bff
+    );
+
   border-radius:24px;
   min-height:360px;
   padding:55px;
@@ -210,7 +223,11 @@ header{
   display:inline-block;
 }
 
-/* SEÇÃO */
+.cta:hover{
+  transform:translateY(-2px);
+}
+
+/* SEÇÕES */
 
 .section{
   max-width:1200px;
@@ -230,8 +247,6 @@ header{
   letter-spacing:-1px;
 }
 
-/* FILTROS */
-
 .filters{
   display:flex;
   gap:8px;
@@ -247,6 +262,11 @@ header{
   color:#475467;
 }
 
+.filter:hover{
+  border-color:var(--primary);
+  color:var(--primary);
+}
+
 .filter.active{
   background:#111827;
   color:#fff;
@@ -258,7 +278,7 @@ header{
 .products{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  gap:20px;
 }
 
 .product{
@@ -266,20 +286,20 @@ header{
   border:1px solid var(--border);
   border-radius:18px;
   overflow:hidden;
-  transition:.25s ease;
+  transition:.25s;
   position:relative;
 }
 
 .product:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 40px rgba(16,24,40,.12);
+  transform:translateY(-5px);
+  box-shadow:0 15px 35px rgba(16,24,40,.12);
 }
 
 /* IMAGEM DO PRODUTO */
 
 .pic{
-  height:280px;
-  background:linear-gradient(145deg,#f8fafc,#eef2f7);
+  height:260px;
+  background:#f8fafc;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -291,16 +311,12 @@ header{
   width:100%;
   height:100%;
   object-fit:contain;
-  padding:18px;
-  transition:transform .35s ease;
+  padding:12px;
+  transition:.35s;
 }
 
 .product:hover .pic img{
-  transform:scale(1.07);
-}
-
-.pic.no-image{
-  font-size:90px;
+  transform:scale(1.06);
 }
 
 /* INFORMAÇÕES */
@@ -318,9 +334,9 @@ header{
 
 .product h3{
   font-size:16px;
+  line-height:1.4;
   margin:7px 0 8px;
-  line-height:1.35;
-  min-height:43px;
+  min-height:45px;
 }
 
 .stars{
@@ -329,7 +345,7 @@ header{
 }
 
 .price{
-  font-size:23px;
+  font-size:22px;
   font-weight:900;
   margin:10px 0 3px;
 }
@@ -342,10 +358,11 @@ header{
   font-weight:400;
 }
 
-.installment{
+.pix{
+  color:var(--green);
   font-size:12px;
-  color:var(--muted);
-  margin-bottom:13px;
+  font-weight:700;
+  margin-bottom:12px;
 }
 
 .add{
@@ -373,6 +390,19 @@ header{
   border-radius:8px;
   font-size:11px;
   font-weight:800;
+}
+
+.free{
+  position:absolute;
+  z-index:2;
+  top:12px;
+  right:12px;
+  background:#111827;
+  color:white;
+  padding:6px 9px;
+  border-radius:8px;
+  font-size:10px;
+  font-weight:700;
 }
 
 /* VANTAGENS */
@@ -430,6 +460,10 @@ footer{
   margin:7px 0;
 }
 
+.footer a:hover{
+  color:white;
+}
+
 .copy{
   border-top:1px solid #344054;
   text-align:center;
@@ -459,7 +493,7 @@ footer{
   transform:none;
 }
 
-/* OVERLAYS */
+/* OVERLAY */
 
 .overlay{
   position:fixed;
@@ -522,8 +556,8 @@ footer{
 }
 
 .cart-icon{
-  width:64px;
-  height:64px;
+  width:70px;
+  height:70px;
   border-radius:12px;
   background:#f2f4f7;
   display:flex;
@@ -609,6 +643,10 @@ footer{
   padding:14px;
   border-radius:10px;
   font-weight:800;
+}
+
+.checkout-btn:hover{
+  background:var(--primary-dark);
 }
 
 .checkout-btn:disabled{
@@ -797,14 +835,6 @@ footer{
 
 @media(max-width:600px){
 
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .features{
-    grid-template-columns:1fr;
-  }
-
   .form-grid{
     grid-template-columns:1fr;
   }
@@ -817,8 +847,16 @@ footer{
     max-height:96vh;
   }
 
-  .payment-options{
+  .products{
     grid-template-columns:1fr;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .pic{
+    height:280px;
   }
 }
 
@@ -844,44 +882,58 @@ footer{
     min-height:330px;
   }
 
-  .pic{
-    height:300px;
+  .footer{
+    grid-template-columns:1fr;
   }
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="top">
-  🚚 Frete grátis acima de R$ 49,90 • Pagamento seguro
+🚚 Frete grátis acima de R$ 49,90 • Pagamento seguro
 </div>
 
 <header>
+
 <nav class="nav">
 
 <a class="logo" href="#">
-  Velorian<span>Tech</span>
+Velorian<span>Tech</span>
 </a>
 
 <div class="search">
-  <input id="search" placeholder="Buscar produtos..." autocomplete="off">
-  <button onclick="filterProducts()">⌕</button>
+
+<input
+id="search"
+placeholder="Buscar produtos..."
+autocomplete="off"
+>
+
+<button onclick="filterProducts()">⌕</button>
+
 </div>
 
 <div class="navlinks">
-  <a href="#produtos">Produtos</a>
-  <a href="#vantagens">Vantagens</a>
-  <a href="#contato">Contato</a>
+
+<a href="#produtos">Produtos</a>
+<a href="#vantagens">Vantagens</a>
+<a href="#contato">Contato</a>
+
 </div>
 
-<button class="cart" onclick="openCart()" aria-label="Abrir carrinho">
-  🛒
-  <span class="badge" id="count">0</span>
+<button
+class="cart"
+onclick="openCart()"
+aria-label="Abrir carrinho"
+>
+🛒
+<span class="badge" id="count">0</span>
 </button>
 
 </nav>
+
 </header>
 
 <main>
@@ -914,85 +966,146 @@ Comprar agora →
 
 </section>
 
+
 <section class="section" id="produtos">
 
 <div class="section-head">
 
 <div>
-<h2>Produtos em destaque</h2>
+
+<h2>
+Produtos em destaque
+</h2>
+
 <p style="color:#667085;margin-top:5px">
 Escolha seus favoritos
 </p>
+
 </div>
 
 </div>
+
 
 <div class="filters">
 
-<button class="filter active" onclick="category('Todos',this)">
+<button
+class="filter active"
+onclick="category('Todos',this)"
+>
 Todos
 </button>
 
-<button class="filter" onclick="category('Celulares',this)">
+<button
+class="filter"
+onclick="category('Celulares',this)"
+>
 Celulares
 </button>
 
-<button class="filter" onclick="category('Informática',this)">
+<button
+class="filter"
+onclick="category('Informática',this)"
+>
 Informática
 </button>
 
-<button class="filter" onclick="category('Áudio',this)">
+<button
+class="filter"
+onclick="category('Áudio',this)"
+>
 Áudio
 </button>
 
-<button class="filter" onclick="category('Acessórios',this)">
+<button
+class="filter"
+onclick="category('Acessórios',this)"
+>
 Acessórios
 </button>
 
 </div>
 
-<div class="products" id="grid"></div>
+
+<div
+class="products"
+id="grid"
+></div>
 
 </section>
 
-<section class="section" id="vantagens">
+
+<section
+class="section"
+id="vantagens"
+>
 
 <div class="section-head">
-<h2>Por que comprar na VelorianTech?</h2>
+
+<h2>
+Por que comprar na VelorianTech?
+</h2>
+
 </div>
 
 <div class="features">
 
 <div class="feature">
+
 🔒
-<b>Compra segura</b>
+
+<b>
+Compra segura
+</b>
+
 <p>
 Seus dados protegidos em todo o processo.
 </p>
+
 </div>
 
+
 <div class="feature">
+
 🚚
-<b>Frete grátis</b>
+
+<b>
+Frete grátis
+</b>
+
 <p>
 Ofertas com envio grátis conforme as condições da loja.
 </p>
+
 </div>
 
+
 <div class="feature">
+
 💳
-<b>Pagamento facilitado</b>
+
+<b>
+Pagamento facilitado
+</b>
+
 <p>
 Pix, cartão de crédito ou débito.
 </p>
+
 </div>
 
+
 <div class="feature">
+
 🛡️
-<b>Produtos selecionados</b>
+
+<b>
+Produtos selecionados
+</b>
+
 <p>
 Qualidade e confiança em cada compra.
 </p>
+
 </div>
 
 </div>
@@ -1001,11 +1114,13 @@ Qualidade e confiança em cada compra.
 
 </main>
 
+
 <footer id="contato">
 
 <div class="footer">
 
 <div>
+
 <h3 class="logo">
 Velorian<span>Tech</span>
 </h3>
@@ -1013,74 +1128,147 @@ Velorian<span>Tech</span>
 <p>
 Sua loja online de eletrônicos e tecnologia.
 </p>
+
 </div>
 
+
 <div>
+
 <h3>Loja</h3>
-<a href="#produtos">Produtos</a>
-<a href="#produtos">Ofertas</a>
-<a href="#produtos">Lançamentos</a>
+
+<a href="#produtos">
+Produtos
+</a>
+
+<a href="#produtos">
+Ofertas
+</a>
+
+<a href="#produtos">
+Lançamentos
+</a>
+
 </div>
+
 
 <div>
-<h3>Atendimento</h3>
-<p>Seg–Sex: 9h às 18h</p>
-<p>WhatsApp: (71) 99234-6351</p>
-<p>acaua8767@gmail.com</p>
+
+<h3>
+Atendimento
+</h3>
+
+<p>
+Seg–Sex: 9h às 18h
+</p>
+
+<p>
+WhatsApp: (71) 99234-6351
+</p>
+
+<p>
+acaua8767@gmail.com
+</p>
+
 </div>
+
 
 <div>
-<h3>Redes sociais</h3>
-<a href="#">Instagram</a>
-<a href="#">TikTok</a>
-<a href="#">Facebook</a>
+
+<h3>
+Redes sociais
+</h3>
+
+<a href="#">
+Instagram
+</a>
+
+<a href="#">
+TikTok
+</a>
+
+<a href="#">
+Facebook
+</a>
+
 </div>
 
 </div>
+
 
 <div class="copy">
+
 © 2026 VelorianTech. Todos os direitos reservados.
+
 </div>
 
 </footer>
 
-<div class="toast" id="toast">
+
+<div
+class="toast"
+id="toast"
+>
 Produto adicionado ao carrinho!
 </div>
 
+
 <!-- CARRINHO -->
 
-<div class="overlay" id="cartOverlay" onclick="closeCart(event)">
+<div
+class="overlay"
+id="cartOverlay"
+onclick="closeCart(event)"
+>
 
-<aside class="cart-panel" onclick="event.stopPropagation()">
+<aside
+class="cart-panel"
+onclick="event.stopPropagation()"
+>
 
 <div class="panel-head">
 
-<h2>🛒 Seu carrinho</h2>
+<h2>
+🛒 Seu carrinho
+</h2>
 
-<button class="close" onclick="closeCart()">
+<button
+class="close"
+onclick="closeCart()"
+>
 ×
 </button>
 
 </div>
 
-<div class="cart-items" id="cartItems"></div>
+
+<div
+class="cart-items"
+id="cartItems"
+></div>
+
 
 <div class="cart-footer">
 
 <div class="total">
-<span>Total</span>
-<span id="cartTotal">R$ 0,00</span>
+
+<span>
+Total
+</span>
+
+<span id="cartTotal">
+R$ 0,00
+</span>
+
 </div>
+
 
 <button
 class="checkout-btn"
 id="checkoutBtn"
 onclick="openCheckout()"
-
 >
-
-Ir para o checkout → </button>
+Ir para o checkout →
+</button>
 
 </div>
 
@@ -1088,23 +1276,40 @@ Ir para o checkout → </button>
 
 </div>
 
+
 <!-- CHECKOUT -->
 
-<div class="overlay" id="checkoutOverlay" onclick="closeCheckout(event)">
+<div
+class="overlay"
+id="checkoutOverlay"
+onclick="closeCheckout(event)"
+>
 
-<section class="checkout-panel" onclick="event.stopPropagation()">
+<section
+class="checkout-panel"
+onclick="event.stopPropagation()"
+>
 
 <div class="panel-head">
 
-<h2>Finalizar compra</h2>
+<h2>
+Finalizar compra
+</h2>
 
-<button class="close" onclick="closeCheckout()">
+<button
+class="close"
+onclick="closeCheckout()"
+>
 ×
 </button>
 
 </div>
 
-<div class="checkout-content" id="checkoutFormArea">
+
+<div
+class="checkout-content"
+id="checkoutFormArea"
+>
 
 <h3>
 Dados para entrega
@@ -1114,9 +1319,14 @@ Dados para entrega
 Preencha seus dados para enviar o pedido.
 </p>
 
-<form id="checkoutForm" onsubmit="finishOrder(event)">
+
+<form
+id="checkoutForm"
+onsubmit="finishOrder(event)"
+>
 
 <div class="form-grid">
+
 
 <div class="field full">
 
@@ -1130,10 +1340,10 @@ name="fullName"
 type="text"
 placeholder="Digite seu nome completo"
 required
-
 >
 
 </div>
+
 
 <div class="field full">
 
@@ -1147,10 +1357,10 @@ name="address"
 type="text"
 placeholder="Rua, número, bairro, cidade e CEP"
 required
-
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1164,10 +1374,10 @@ name="phone"
 type="tel"
 placeholder="(00) 00000-0000"
 required
-
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1175,7 +1385,11 @@ required
 Forma de pagamento *
 </label>
 
-<select id="payment" name="payment" required>
+<select
+id="payment"
+name="payment"
+required
+>
 
 <option value="">
 Selecione
@@ -1199,49 +1413,83 @@ Cartão de débito
 
 </div>
 
+
 <div class="order-summary">
 
 <div class="summary-row">
-<span>Itens</span>
-<strong id="summaryItems">0</strong>
+
+<span>
+Itens
+</span>
+
+<strong id="summaryItems">
+0
+</strong>
+
 </div>
+
 
 <div class="summary-row">
-<span>Frete</span>
-<strong>Grátis</strong>
+
+<span>
+Frete
+</span>
+
+<strong>
+Grátis
+</strong>
+
 </div>
 
+
 <div class="summary-row summary-total">
-<span>Total</span>
+
+<span>
+Total
+</span>
+
 <span id="summaryTotal">
 R$ 0,00
 </span>
+
 </div>
 
 </div>
+
 
 <p class="secure-note">
-🔒 Seus dados são usados para preparar o pedido. Os dados completos do cartão não são coletados por este formulário; o pagamento com cartão deve ser concluído através de um gateway de pagamento seguro.
+
+🔒 Seus dados são usados para preparar o pedido.
+Os dados completos do cartão não são coletados por este formulário.
+
 </p>
 
-<button class="finalize" type="submit">
+
+<button
+class="finalize"
+type="submit"
+>
 Confirmar pedido
 </button>
+
 
 <button
 class="back-cart"
 type="button"
 onclick="closeCheckout();openCart()"
-
 >
-
-← Voltar ao carrinho </button>
+← Voltar ao carrinho
+</button>
 
 </form>
 
 </div>
 
-<div class="success" id="successArea">
+
+<div
+class="success"
+id="successArea"
+>
 
 <div class="success-icon">
 ✅
@@ -1253,8 +1501,8 @@ Pedido preparado!
 
 <p id="successText"></p>
 
-<button onclick="closeAllModals()">
-Voltar para a loja
+<button>
+Enviar pedido pelo WhatsApp
 </button>
 
 </div>
@@ -1263,51 +1511,92 @@ Voltar para a loja
 
 </div>
 
+
 <script>
 
-/* PRODUTOS */
+/* =========================
+   PRODUTOS
+========================= */
 
-const products=[
+const products = [
 
 {
 id:1,
-name:"Power Bank Turbo 20000mAh 66W Premium",
-cat:"Acessórios",
-price:149.90,
-old:199.90,
-icon:"⚡",
-stars:"★★★★★",
-image:""
+
+name:
+"Power Bank Turbo 20000mAh 66W Premium",
+
+cat:
+"Acessórios",
+
+price:
+149.90,
+
+old:
+199.90,
+
+image:
+"https://down-br.img.susercontent.com/file/cn-11134207-820l4-mr74v4q13tae09.webp",
+
+stars:
+"★★★★★"
 },
 
 {
 id:2,
-name:"Fone De Ouvido Bluetooth Sem Fio Estéreo",
-cat:"Áudio",
-price:79.90,
-old:99.90,
-icon:"🎶",
-stars:"★★★★★",
-image:"https://down-br.img.susercontent.com/file/br-11134207-81z1k-mebnptt1m48y0c@resize_w450_nl.webp"
+
+name:
+"Fone De Ouvido Bluetooth Sem Fio Estéreo",
+
+cat:
+"Áudio",
+
+price:
+79.90,
+
+old:
+99.90,
+
+image:
+"https://down-br.img.susercontent.com/file/br-11134207-81z1k-mebnptt1m48y0c.webp",
+
+stars:
+"★★★★★"
 },
 
 {
 id:3,
-name:"Smartwatch 6 Em 1 Tela AMOLED 2.02",
-cat:"Acessórios",
-price:99.90,
-old:149.90,
-icon:"⌚",
-stars:"★★★★☆",
-image:"https://down-br.img.susercontent.com/file/br-11134207-820lp-mq4lwphung8w0b@resize_w450_nl.webp"
+
+name:
+"Smartwatch 6 Em 1 Tela AMOLED 2.02",
+
+cat:
+"Acessórios",
+
+price:
+99.90,
+
+old:
+149.90,
+
+image:
+"https://down-br.img.susercontent.com/file/br-11134207-820lp-mq4lwphung8w0b.webp",
+
+stars:
+"★★★★☆"
 }
 
 ];
 
+
 let cart=[];
+
 let current="Todos";
 
-/* DINHEIRO */
+
+/* =========================
+   FORMATAÇÃO
+========================= */
 
 function money(value){
 
@@ -1321,7 +1610,10 @@ currency:"BRL"
 
 }
 
-/* CARRINHO */
+
+/* =========================
+   CARRINHO LOCAL
+========================= */
 
 function saveCart(){
 
@@ -1331,6 +1623,7 @@ JSON.stringify(cart)
 );
 
 }
+
 
 function loadCart(){
 
@@ -1353,7 +1646,10 @@ updateCartCount();
 
 }
 
-/* RENDER PRODUTOS */
+
+/* =========================
+   RENDER PRODUTOS
+========================= */
 
 function render(){
 
@@ -1364,18 +1660,23 @@ document
 .toLowerCase()
 .trim();
 
+
 const list=
 products.filter(p=>
-(
-current==="Todos" ||
-p.cat===current
-)&&
+
+(current==="Todos"||p.cat===current)
+
+&&
+
 p.name
 .toLowerCase()
 .includes(q)
+
 );
 
+
 document.getElementById("grid").innerHTML=
+
 list.map(p=>`
 
 <article class="product">
@@ -1384,17 +1685,21 @@ list.map(p=>`
 OFERTA
 </span>
 
-<div class="pic ${p.image?"":"no-image"}">
+<span class="free">
+FRETE GRÁTIS
+</span>
 
-${
-p.image
-?
-`<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='${p.icon}'">`
-:
-p.icon
-}
+
+<div class="pic">
+
+<img
+src="${p.image}"
+alt="${p.name}"
+loading="lazy"
+>
 
 </div>
+
 
 <div class="info">
 
@@ -1402,16 +1707,18 @@ p.icon
 ${p.cat}
 </span>
 
+
 <h3>
 ${p.name}
 </h3>
+
 
 <div class="stars">
 ${p.stars}
 </div>
 
-<div class="price">
 
+<div class="price">
 ${money(p.price)}
 
 <span class="old">
@@ -1420,9 +1727,11 @@ ${money(p.old)}
 
 </div>
 
-<div class="installment">
-ou até 12x no cartão
+
+<div class="pix">
+💚 Pagamento via Pix
 </div>
+
 
 <button
 class="add"
@@ -1443,12 +1752,16 @@ Adicionar ao carrinho
 
 }
 
-/* ADICIONAR */
+
+/* =========================
+   ADICIONAR AO CARRINHO
+========================= */
 
 function addToCart(id){
 
 const item=
 cart.find(x=>x.id===id);
+
 
 if(item){
 
@@ -1461,24 +1774,30 @@ else{
 const p=
 products.find(x=>x.id===id);
 
+
 cart.push({
 
 id:p.id,
+
 name:p.name,
+
 price:p.price,
-icon:p.icon,
+
 image:p.image,
+
 qty:1
 
 });
 
 }
 
+
 saveCart();
 
 updateCartCount();
 
 renderCart();
+
 
 const t=
 document.getElementById("toast");
@@ -1488,6 +1807,7 @@ t.textContent=
 
 t.classList.add("show");
 
+
 setTimeout(
 ()=>t.classList.remove("show"),
 1800
@@ -1495,7 +1815,10 @@ setTimeout(
 
 }
 
-/* CONTADOR */
+
+/* =========================
+   CONTADOR
+========================= */
 
 function updateCartCount(){
 
@@ -1505,12 +1828,16 @@ cart.reduce(
 0
 );
 
-document.getElementById("count")
-.textContent=total;
+document.getElementById(
+"count"
+).textContent=total;
 
 }
 
-/* TOTAL */
+
+/* =========================
+   TOTAL
+========================= */
 
 function cartTotal(){
 
@@ -1522,7 +1849,10 @@ sum+(item.price*item.qty),
 
 }
 
-/* RENDER CARRINHO */
+
+/* =========================
+   RENDER CARRINHO
+========================= */
 
 function renderCart(){
 
@@ -1531,6 +1861,7 @@ document.getElementById("cartItems");
 
 const btn=
 document.getElementById("checkoutBtn");
+
 
 if(!cart.length){
 
@@ -1557,21 +1888,21 @@ btn.disabled=true;
 else{
 
 area.innerHTML=
+
 cart.map(item=>`
 
 <div class="cart-item">
 
+
 <div class="cart-icon">
 
-${
-item.image
-?
-`<img src="${item.image}" alt="${item.name}">`
-:
-item.icon
-}
+<img
+src="${item.image}"
+alt="${item.name}"
+>
 
 </div>
+
 
 <div class="cart-info">
 
@@ -1579,9 +1910,13 @@ item.icon
 ${item.name}
 </b>
 
+
 <div class="cart-price">
+
 ${money(item.price*item.qty)}
+
 </div>
+
 
 <div class="qty">
 
@@ -1591,15 +1926,18 @@ onclick="changeQty(${item.id},-1)"
 −
 </button>
 
+
 <span>
 ${item.qty}
 </span>
+
 
 <button
 onclick="changeQty(${item.id},1)"
 >
 +
 </button>
+
 
 <button
 class="remove"
@@ -1620,12 +1958,18 @@ btn.disabled=false;
 
 }
 
-document.getElementById("cartTotal")
-.textContent=money(cartTotal());
+
+document.getElementById(
+"cartTotal"
+).textContent=
+money(cartTotal());
 
 }
 
-/* QUANTIDADE */
+
+/* =========================
+   ALTERAR QUANTIDADE
+========================= */
 
 function changeQty(id,delta){
 
@@ -1634,14 +1978,19 @@ cart.find(x=>x.id===id);
 
 if(!item)return;
 
+
 item.qty+=delta;
+
 
 if(item.qty<=0){
 
 cart=
-cart.filter(x=>x.id!==id);
+cart.filter(
+x=>x.id!==id
+);
 
 }
+
 
 saveCart();
 
@@ -1651,12 +2000,17 @@ renderCart();
 
 }
 
-/* REMOVER */
+
+/* =========================
+   REMOVER
+========================= */
 
 function removeFromCart(id){
 
 cart=
-cart.filter(x=>x.id!==id);
+cart.filter(
+x=>x.id!==id
+);
 
 saveCart();
 
@@ -1666,7 +2020,10 @@ renderCart();
 
 }
 
-/* ABRIR CARRINHO */
+
+/* =========================
+   ABRIR CARRINHO
+========================= */
 
 function openCart(){
 
@@ -1676,11 +2033,16 @@ document
 .getElementById("cartOverlay")
 .classList.add("show");
 
-document.body.classList.add("modal-open");
+document
+.body
+.classList.add("modal-open");
 
 }
 
-/* FECHAR CARRINHO */
+
+/* =========================
+   FECHAR CARRINHO
+========================= */
 
 function closeCart(e){
 
@@ -1689,39 +2051,57 @@ e &&
 e.target!==document.getElementById("cartOverlay")
 )return;
 
+
 document
 .getElementById("cartOverlay")
 .classList.remove("show");
 
-document.body.classList.remove("modal-open");
+document
+.body
+.classList.remove("modal-open");
 
 }
 
-/* CHECKOUT */
+
+/* =========================
+   CHECKOUT
+========================= */
 
 function openCheckout(){
 
 if(!cart.length)return;
 
+
 closeCart();
 
 updateCheckoutSummary();
+
 
 document
 .getElementById("checkoutFormArea")
 .style.display="block";
 
+
 document
 .getElementById("successArea")
 .classList.remove("show");
+
 
 document
 .getElementById("checkoutOverlay")
 .classList.add("show");
 
-document.body.classList.add("modal-open");
+
+document
+.body
+.classList.add("modal-open");
 
 }
+
+
+/* =========================
+   FECHAR CHECKOUT
+========================= */
 
 function closeCheckout(e){
 
@@ -1730,60 +2110,85 @@ e &&
 e.target!==document.getElementById("checkoutOverlay")
 )return;
 
+
 document
 .getElementById("checkoutOverlay")
 .classList.remove("show");
 
-document.body.classList.remove("modal-open");
+document
+.body
+.classList.remove("modal-open");
 
 }
 
-/* RESUMO */
+
+/* =========================
+   RESUMO
+========================= */
 
 function updateCheckoutSummary(){
 
-document
-.getElementById("summaryItems")
-.textContent=
+document.getElementById(
+"summaryItems"
+).textContent=
+
 cart.reduce(
 (s,i)=>s+i.qty,
 0
 )+" item(ns)";
 
-document
-.getElementById("summaryTotal")
-.textContent=
+
+document.getElementById(
+"summaryTotal"
+).textContent=
 money(cartTotal());
 
 }
 
-/* FINALIZAR */
+
+/* =========================
+   FINALIZAR PEDIDO
+========================= */
 
 function finishOrder(event){
 
 event.preventDefault();
 
+
 if(!cart.length)return;
+
 
 const data=
 new FormData(event.target);
 
+
 const name=
 data.get("fullName").trim();
+
 
 const address=
 data.get("address").trim();
 
+
 const phone=
 data.get("phone").trim();
+
 
 const payment=
 data.get("payment");
 
+
 const items=
 cart
-.map(i=>`${i.qty}x ${i.name}`)
+.map(
+i=>`${i.qty}x ${i.name}`
+)
 .join(", ");
+
+
+const total=
+money(cartTotal());
+
 
 const orderText=
 
@@ -1799,36 +2204,47 @@ const orderText=
 
 `*Produtos:* ${encodeURIComponent(items)}%0A`+
 
-`*Total:* ${encodeURIComponent(money(cartTotal()))}`;
+`*Total:* ${encodeURIComponent(total)}`;
+
 
 /*
-Número do WhatsApp da loja.
+   WhatsApp da VelorianTech
 */
 
 const whatsapp=
 "5571992346351";
 
+
 const whatsappUrl=
 `https://wa.me/${whatsapp}?text=${orderText}`;
+
 
 document
 .getElementById("checkoutFormArea")
 .style.display="none";
 
+
 document
 .getElementById("successArea")
 .classList.add("show");
+
 
 document
 .getElementById("successText")
 .innerHTML=
 
-`Obrigado, <strong>${escapeHtml(name)}</strong>! Seu pedido foi preparado com pagamento em <strong>${escapeHtml(payment)}</strong>.<br><br>`+
+`Obrigado, <strong>${escapeHtml(name)}</strong>!<br><br>`+
 
-`Clique no botão abaixo para enviar os dados do pedido pelo WhatsApp e continuar o atendimento.`;
+`Seu pedido no valor de <strong>${total}</strong> foi preparado.`+
+
+`<br><br>`+
+
+`Clique abaixo para enviar os dados do pedido pelo WhatsApp.`;
+
 
 const success=
 document.getElementById("successArea");
+
 
 success
 .querySelector("button")
@@ -1838,6 +2254,7 @@ window.open(
 whatsappUrl,
 "_blank"
 );
+
 
 cart=[];
 
@@ -1851,12 +2268,16 @@ closeAllModals();
 
 }
 
-/* SEGURANÇA HTML */
+
+/* =========================
+   SEGURANÇA HTML
+========================= */
 
 function escapeHtml(text){
 
 return text.replace(
 /[&<>"']/g,
+
 m=>({
 
 "&":"&amp;",
@@ -1866,11 +2287,15 @@ m=>({
 "'":"&#039;"
 
 }[m])
+
 );
 
 }
 
-/* FECHAR */
+
+/* =========================
+   FECHAR MODAIS
+========================= */
 
 function closeAllModals(){
 
@@ -1878,19 +2303,26 @@ document
 .getElementById("cartOverlay")
 .classList.remove("show");
 
+
 document
 .getElementById("checkoutOverlay")
 .classList.remove("show");
 
-document.body.classList.remove("modal-open");
+
+document
+.body
+.classList.remove("modal-open");
+
 
 document
 .getElementById("checkoutFormArea")
 .style.display="block";
 
+
 document
 .getElementById("successArea")
 .classList.remove("show");
+
 
 document
 .getElementById("checkoutForm")
@@ -1898,29 +2330,39 @@ document
 
 }
 
-/* CATEGORIA */
+
+/* =========================
+   CATEGORIAS
+========================= */
 
 function category(c,el){
 
 current=c;
 
+
 document
 .querySelectorAll(".filter")
-.forEach(x=>
-x.classList.remove("active")
+.forEach(
+x=>x.classList.remove("active")
 );
 
+
 el.classList.add("active");
+
 
 render();
 
 }
 
-/* BUSCA */
+
+/* =========================
+   BUSCA
+========================= */
 
 function filterProducts(){
 
 render();
+
 
 document
 .getElementById("produtos")
@@ -1930,12 +2372,18 @@ behavior:"smooth"
 
 }
 
+
+/* =========================
+   EVENTOS
+========================= */
+
 document
 .getElementById("search")
 .addEventListener(
 "input",
 render
 );
+
 
 loadCart();
 
