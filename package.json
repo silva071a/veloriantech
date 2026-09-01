@@ -1,16 +1,13 @@
 {
-"name": "veloriantech",
-"version": "1.0.0",
-"description": "Loja VelorianTech com Checkout Pro do Mercado Pago",
-"main": "server.js",
-"type": "module",
-"scripts": {
-"start": "node server.js",
-"dev": "node --watch server.js"
-},
-"dependencies": {
-"express": "^4.21.2",
-"dotenv": "^16.4.7",
-"mercadopago": "^3.5.1"
-}
+  "name": "veloriantech",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mercadopago": "^2.3.0"
+  }
 }
