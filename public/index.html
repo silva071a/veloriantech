@@ -3500,7 +3500,254 @@ part3+
    FINALIZAR PEDIDO
 ===================================================== */
 
-function finishOrder(event){
+async function finishOrder(event){
+
+  event.preventDefault();
+
+  if(!cart.length){
+
+    showToast(
+      "Seu carrinho está vazio."
+    );
+
+    return;
+
+  }
+
+  if(!validateCheckout())
+    return;
+
+  const finalizeButton =
+    document.querySelector(".finalize");
+
+  const originalText =
+    finalizeButton.textContent;
+
+  finalizeButton.disabled = true;
+  finalizeButton.textContent =
+    "Enviando pedido...";
+
+  try{
+
+    const form =
+      document.getElementById(
+        "checkoutForm"
+      );
+
+    const data =
+      new FormData(form);
+
+    const name =
+      String(
+        data.get("fullName") || ""
+      ).trim();
+
+    const phone =
+      String(
+        data.get("phone") || ""
+      ).trim();
+
+    const cep =
+      String(
+        data.get("cep") || ""
+      ).trim();
+
+    const state =
+      String(
+        data.get("state") || ""
+      );
+
+    const city =
+      String(
+        data.get("city") || ""
+      ).trim();
+
+    const neighborhood =
+      String(
+        data.get("neighborhood") || ""
+      ).trim();
+
+    const street =
+      String(
+        data.get("street") || ""
+      ).trim();
+
+    const number =
+      String(
+        data.get("number") || ""
+      ).trim();
+
+    const complement =
+      String(
+        data.get("complement") || ""
+      ).trim();
+
+    const payment =
+      String(
+        data.get("payment") || ""
+      );
+
+    const address =
+      `${street}, ${number}` +
+      `${complement ? " - " + complement : ""}` +
+      ` - ${neighborhood}` +
+      ` - ${city}/${state}` +
+      ` - CEP: ${cep}`;
+
+    /*
+      Envia o pedido para o servidor.
+    */
+
+    const response =
+      await fetch(
+        "/api/orders",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+
+            customer:{
+
+              name,
+
+              phone,
+
+              address
+
+            },
+
+            payment,
+
+            items:
+              cart.map(item => ({
+
+                id:
+                  item.id,
+
+                quantity:
+                  item.qty
+
+              }))
+
+          })
+
+        }
+      );
+
+    const result =
+      await response.json();
+
+    if(!response.ok){
+
+      throw new Error(
+        result.error ||
+        "Não foi possível registrar o pedido."
+      );
+
+    }
+
+    const order =
+      result.order;
+
+    const orderNumber =
+      order.id;
+
+    const items =
+      cart
+      .map(
+        item =>
+          `• ${item.qty}x ${item.name} — ${money(item.price * item.qty)}`
+      )
+      .join("\n");
+
+    const total =
+      cartTotal();
+
+    const message =
+`Olá, VelorianTech! 👋
+
+Quero finalizar um pedido.
+
+━━━━━━━━━━━━━━━━━━
+📦 PEDIDO: ${orderNumber}
+━━━━━━━━━━━━━━━━━━
+
+👤 CLIENTE
+${name}
+
+📱 TELEFONE
+${phone}
+
+📍 ENDEREÇO
+${address}
+
+💳 PAGAMENTO
+${payment}
+
+🛍️ PRODUTOS
+${items}
+
+💰 TOTAL
+${money(total)}
+
+Obrigado!`;
+
+    pendingWhatsAppUrl =
+      "https://wa.me/" +
+      WHATSAPP +
+      "?text=" +
+      encodeURIComponent(message);
+
+    document.getElementById(
+      "checkoutFormArea"
+    ).style.display = "none";
+
+    document
+      .getElementById("successArea")
+      .classList.add("show");
+
+    document.getElementById(
+      "successText"
+    ).innerHTML =
+
+      `Obrigado, <strong>${escapeHtml(name)}</strong>!<br><br>` +
+
+      `Seu pedido <strong>${escapeHtml(orderNumber)}</strong> foi registrado com sucesso.<br><br>` +
+
+      `Total: <strong>${money(total)}</strong><br>` +
+
+      `Pagamento: <strong>${escapeHtml(payment)}</strong>`;
+
+    showToast(
+      "✅ Pedido registrado com sucesso!"
+    );
+
+  }catch(error){
+
+    console.error(
+      "Erro ao enviar pedido:",
+      error
+    );
+
+    showToast(
+      "❌ Não foi possível registrar o pedido."
+    );
+
+  }finally{
+
+    finalizeButton.disabled = false;
+
+    finalizeButton.textContent =
+      originalText;
+
+  }
+
+}
 
 event.preventDefault();
 
