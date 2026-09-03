@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
 
@@ -23,6 +24,12 @@ const ORDERS_FILE = path.join(__dirname, 'orders.json');
 if (!process.env.MP_ACCESS_TOKEN) {
   console.warn(
     'MP_ACCESS_TOKEN não configurado. Configure a variável no Render antes de usar pagamentos reais.'
+  );
+}
+
+if (!process.env.ADMIN_USER || !process.env.ADMIN_PASSWORD) {
+  console.warn(
+    'ADMIN_USER e/ou ADMIN_PASSWORD não configurados.'
   );
 }
 
@@ -52,16 +59,167 @@ const allowedStatus = [
 ];
 
 /* =========================================
+   SESSÕES ADMINISTRATIVAS
+========================================= */
+
+const adminSessions = new Map();
+
+function createSession() {
+  const token = crypto.randomBytes(32).toString('hex');
+
+  adminSessions.set(token, {
+    createdAt: Date.now()
+  });
+
+  return token;
+}
+
+function getCookie(req, name) {
+  const cookies = req.headers.cookie;
+
+  if (!cookies) {
+    return null;
+  }
+
+  const parts = cookies.split(';');
+
+  for (const part of parts) {
+    const [key, ...valueParts] = part.trim().split('=');
+
+    if (key === name) {
+      return decodeURIComponent(valueParts.join('='));
+    }
+  }
+
+  return null;
+}
+
+function isAdminAuthenticated(req) {
+  const token = getCookie(req, 'admin_session');
+
+  if (!token) {
+    return false;
+  }
+
+  return adminSessions.has(token);
+}
+
+function requireAdmin(req, res, next) {
+  if (!isAdminAuthenticated(req)) {
+    return res.status(401).json({
+      error: 'Não autorizado.'
+    });
+  }
+
+  next();
+}
+
+/* =========================================
    MIDDLEWARE
 ========================================= */
 
 app.use(express.json());
 
-app.use(
-  express.static(
-    path.join(__dirname, 'public')
-  )
-);
+/* =========================================
+   LOGIN ADMINISTRATIVO
+========================================= */
+
+app.post('/api/admin/login', (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    const adminUser = process.env.ADMIN_USER;
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminUser || !adminPassword) {
+      return res.status(500).json({
+        error: 'Login administrativo não configurado no servidor.'
+      });
+    }
+
+    if (
+      username !== adminUser ||
+      password !== adminPassword
+    ) {
+      return res.status(401).json({
+        error: 'Usuário ou senha incorretos.'
+      });
+    }
+
+    const sessionToken = createSession();
+
+    res.setHeader(
+      'Set-Cookie',
+      `admin_session=${encodeURIComponent(sessionToken)}; HttpOnly; Path=/; SameSite=Lax; Max-Age=86400`
+    );
+
+    return res.json({
+      success: true
+    });
+
+  } catch (error) {
+    console.error('Erro no login administrativo:', error);
+
+    return res.status(500).json({
+      error: 'Erro interno no login.'
+    });
+  }
+});
+
+/* =========================================
+   VERIFICAR LOGIN
+========================================= */
+
+app.get('/api/admin/me', (req, res) => {
+  if (!isAdminAuthenticated(req)) {
+    return res.status(401).json({
+      authenticated: false
+    });
+  }
+
+  return res.json({
+    authenticated: true
+  });
+});
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+app.post('/api/admin/logout', (req, res) => {
+  const token = getCookie(req, 'admin_session');
+
+  if (token) {
+    adminSessions.delete(token);
+  }
+
+  res.setHeader(
+    'Set-Cookie',
+    'admin_session=; HttpOnly; Path=/; SameSite=Lax; Max-Age=0'
+  );
+
+  return res.json({
+    success: true
+  });
+});
+
+/* =========================================
+   PROTEGER ADMIN.HTML
+========================================= */
+
+app.get('/admin.html', (req, res) => {
+  if (!isAdminAuthenticated(req)) {
+    return res.redirect('/admin-login.html');
+  }
+
+  return res.sendFile(
+    path.join(
+      __dirname,
+      'public',
+      'admin.html'
+    )
+  );
+});
 
 /* =========================================
    ARQUIVO DE PEDIDOS
@@ -311,11 +469,12 @@ app.post(
 );
 
 /* =========================================
-   LISTAR PEDIDOS
+   LISTAR PEDIDOS — SOMENTE ADMIN
 ========================================= */
 
 app.get(
   '/api/orders',
+  requireAdmin,
   (req, res) => {
 
     try {
@@ -342,11 +501,12 @@ app.get(
 );
 
 /* =========================================
-   ALTERAR STATUS
+   ALTERAR STATUS — SOMENTE ADMIN
 ========================================= */
 
 app.patch(
   '/api/orders/:id/status',
+  requireAdmin,
   (req, res) => {
 
     try {
@@ -606,6 +766,16 @@ app.post(
 
     }
   }
+);
+
+/* =========================================
+   ARQUIVOS PÚBLICOS
+========================================= */
+
+app.use(
+  express.static(
+    path.join(__dirname, 'public')
+  )
 );
 
 /* =========================================
