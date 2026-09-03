@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -15,24 +14,25 @@
   --text:#f5f7ff;
   --muted:#9aa3b8;
   --primary:#7c5cff;
-  --success:#8df0be
+  --success:#8df0be;
+  --danger:#ff8f8f;
 }
 
 *{
-  box-sizing:border-box
+  box-sizing:border-box;
 }
 
 body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family:Arial,sans-serif
+  font-family:Arial,sans-serif;
 }
 
 header{
   background:#151824;
   border-bottom:1px solid var(--border);
-  padding:20px
+  padding:20px;
 }
 
 .top{
@@ -41,22 +41,22 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:12px
+  gap:12px;
 }
 
 h1{
   font-size:24px;
-  margin:0
+  margin:0;
 }
 
 .logo{
-  color:#a999ff
+  color:#a999ff;
 }
 
 .subtitle{
   color:var(--muted);
   margin-top:6px;
-  font-size:14px
+  font-size:14px;
 }
 
 button{
@@ -66,66 +66,183 @@ button{
   background:var(--primary);
   color:#fff;
   cursor:pointer;
-  font-weight:bold
+  font-weight:bold;
 }
 
 button:hover{
-  opacity:.9
+  opacity:.9;
 }
 
 .secondary{
-  background:#303647
+  background:#303647;
 }
 
 main{
   max-width:1200px;
   margin:30px auto;
-  padding:0 18px
+  padding:0 18px;
 }
+
+/* ==============================
+   ESTATÍSTICAS
+============================== */
 
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:15px;
-  margin-bottom:25px
+  margin-bottom:25px;
 }
 
 .stat{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:12px;
-  padding:18px
+  padding:18px;
 }
 
 .stat span{
   color:var(--muted);
-  font-size:13px
+  font-size:13px;
 }
 
 .stat strong{
   display:block;
-  font-size:28px;
-  margin-top:8px
+  font-size:26px;
+  margin-top:8px;
 }
+
+/* ==============================
+   DASHBOARD
+============================== */
+
+.dashboard{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-bottom:30px;
+}
+
+.dashboard-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:20px;
+}
+
+.dashboard-card h2{
+  margin:0;
+  font-size:17px;
+}
+
+.dashboard-value{
+  font-size:30px;
+  font-weight:bold;
+  margin-top:12px;
+  color:var(--success);
+}
+
+.dashboard-label{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
+}
+
+/* ==============================
+   GRÁFICO
+============================== */
+
+.chart-card{
+  grid-column:1 / -1;
+}
+
+.chart{
+  height:260px;
+  margin-top:25px;
+  display:flex;
+  align-items:flex-end;
+  gap:5px;
+  overflow-x:auto;
+  padding:10px 5px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.chart-bar-wrapper{
+  min-width:24px;
+  height:230px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  gap:6px;
+}
+
+.chart-bar{
+  width:18px;
+  min-height:3px;
+  background:var(--primary);
+  border-radius:5px 5px 0 0;
+  transition:.2s;
+  position:relative;
+}
+
+.chart-bar:hover{
+  opacity:.8;
+}
+
+.chart-day{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.chart-tooltip{
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%);
+  background:#0b0d12;
+  border:1px solid var(--border);
+  padding:6px 8px;
+  border-radius:6px;
+  font-size:11px;
+  white-space:nowrap;
+  display:none;
+  z-index:5;
+}
+
+.chart-bar:hover .chart-tooltip{
+  display:block;
+}
+
+.chart-empty{
+  width:100%;
+  text-align:center;
+  color:var(--muted);
+  padding:80px 20px;
+}
+
+/* ==============================
+   PEDIDOS
+============================== */
 
 .toolbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  margin-bottom:15px
+  margin-bottom:15px;
 }
 
 .orders{
   display:grid;
-  gap:14px
+  gap:14px;
 }
 
 .order{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:13px;
-  padding:20px
+  padding:20px;
 }
 
 .order-head{
@@ -135,18 +252,18 @@ main{
   align-items:flex-start;
   border-bottom:1px solid var(--border);
   padding-bottom:15px;
-  margin-bottom:15px
+  margin-bottom:15px;
 }
 
 .order-id{
   font-weight:bold;
-  color:#b8adff
+  color:#b8adff;
 }
 
 .date{
   color:var(--muted);
   font-size:13px;
-  margin-top:5px
+  margin-top:5px;
 }
 
 .status{
@@ -155,31 +272,31 @@ main{
   color:#fff;
   padding:9px;
   border-radius:8px;
-  cursor:pointer
+  cursor:pointer;
 }
 
 .info{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px
+  gap:20px;
 }
 
 .info h3{
   font-size:14px;
   margin:0 0 8px;
-  color:#b8adff
+  color:#b8adff;
 }
 
 .info p{
   margin:5px 0;
-  color:#d8dce7
+  color:#d8dce7;
 }
 
 .items{
   background:var(--card);
   padding:12px;
   border-radius:9px;
-  margin-top:14px
+  margin-top:14px;
 }
 
 .item{
@@ -187,19 +304,19 @@ main{
   justify-content:space-between;
   gap:15px;
   padding:7px 0;
-  border-bottom:1px solid var(--border)
+  border-bottom:1px solid var(--border);
 }
 
 .item:last-child{
-  border:0
+  border:0;
 }
 
 .item-name{
-  flex:1
+  flex:1;
 }
 
 .item-quantity{
-  color:var(--muted)
+  color:var(--muted);
 }
 
 .total{
@@ -207,7 +324,7 @@ main{
   font-weight:bold;
   margin-top:14px;
   text-align:right;
-  color:var(--success)
+  color:var(--success);
 }
 
 .empty{
@@ -216,49 +333,71 @@ main{
   padding:50px;
   background:var(--panel);
   border-radius:12px;
-  border:1px solid var(--border)
+  border:1px solid var(--border);
 }
 
 .error{
   text-align:center;
-  color:#ff8f8f;
+  color:var(--danger);
   padding:30px;
   background:var(--panel);
-  border-radius:12px
+  border-radius:12px;
 }
 
 .loading{
   text-align:center;
   color:var(--muted);
-  padding:50px
+  padding:50px;
+}
+
+/* ==============================
+   RESPONSIVO
+============================== */
+
+@media(max-width:900px){
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .dashboard{
+    grid-template-columns:1fr;
+  }
+
+  .chart-card{
+    grid-column:auto;
+  }
 }
 
 @media(max-width:700px){
 
   .stats{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:repeat(2,1fr);
   }
 
   .info{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .top,
   .toolbar{
     align-items:flex-start;
-    flex-direction:column
+    flex-direction:column;
   }
 
   .order-head{
-    flex-direction:column
+    flex-direction:column;
   }
 
   .status{
-    width:100%
+    width:100%;
+  }
+
+  .dashboard-value{
+    font-size:25px;
   }
 }
 </style>
-
 </head>
 
 <body>
@@ -297,10 +436,12 @@ Sair
 
 <main>
 
+<!-- ESTATÍSTICAS -->
+
 <div class="stats">
 
 <div class="stat">
-<span>Total</span>
+<span>Total de pedidos</span>
 <strong id="totalOrders">0</strong>
 </div>
 
@@ -321,6 +462,106 @@ Sair
 
 </div>
 
+
+<!-- DASHBOARD -->
+
+<div class="dashboard">
+
+<div class="dashboard-card">
+
+<h2>💰 Vendas totais</h2>
+
+<div
+class="dashboard-value"
+id="totalSales">
+R$ 0,00
+</div>
+
+<div class="dashboard-label">
+Total vendido desde o início
+</div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h2>📅 Vendas de hoje</h2>
+
+<div
+class="dashboard-value"
+id="todaySales">
+R$ 0,00
+</div>
+
+<div class="dashboard-label">
+Valor vendido hoje
+</div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h2>🗓️ Vendas deste mês</h2>
+
+<div
+class="dashboard-value"
+id="monthSales">
+R$ 0,00
+</div>
+
+<div class="dashboard-label">
+Valor vendido no mês atual
+</div>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h2>📦 Pedidos pagos/concluídos</h2>
+
+<div
+class="dashboard-value"
+id="validSalesOrders">
+0
+</div>
+
+<div class="dashboard-label">
+Pedidos que entram nas vendas
+</div>
+
+</div>
+
+
+<!-- GRÁFICO -->
+
+<div class="dashboard-card chart-card">
+
+<h2>📈 Vendas por dia</h2>
+
+<div class="dashboard-label">
+Movimentação das vendas neste mês
+</div>
+
+<div
+id="salesChart"
+class="chart">
+
+<div class="chart-empty">
+Carregando gráfico...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PEDIDOS -->
+
 <div class="toolbar">
 
 <h2 style="margin:0">
@@ -329,9 +570,11 @@ Pedidos recebidos
 
 <span
 id="lastUpdate"
-style="color:#9aa3b8;font-size:13px"> </span>
+style="color:#9aa3b8;font-size:13px">
+</span>
 
 </div>
+
 
 <div id="orders" class="orders">
 
@@ -342,6 +585,7 @@ Carregando...
 </div>
 
 </main>
+
 
 <script>
 
@@ -417,6 +661,267 @@ return false;
 
 
 /* =========================================
+   PEDIDO CONTA COMO VENDA?
+========================================= */
+
+function isValidSale(order){
+
+return order.status !== 'Cancelado';
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+function updateDashboard(orders){
+
+const validOrders =
+orders.filter(isValidSale);
+
+
+/* -------------------------
+   VENDAS TOTAIS
+------------------------- */
+
+const totalSales =
+validOrders.reduce(
+(sum, order) =>
+sum + Number(order.total || 0),
+0
+);
+
+
+/* -------------------------
+   DATA ATUAL
+------------------------- */
+
+const now = new Date();
+
+const todayYear =
+now.getFullYear();
+
+const todayMonth =
+now.getMonth();
+
+const todayDay =
+now.getDate();
+
+
+/* -------------------------
+   VENDAS DE HOJE
+------------------------- */
+
+const todaySales =
+validOrders.reduce(
+(sum, order) => {
+
+if(!order.created_at){
+return sum;
+}
+
+const date =
+new Date(order.created_at);
+
+if(
+date.getFullYear() === todayYear &&
+date.getMonth() === todayMonth &&
+date.getDate() === todayDay
+){
+
+return sum +
+Number(order.total || 0);
+
+}
+
+return sum;
+
+},
+0
+);
+
+
+/* -------------------------
+   VENDAS DO MÊS
+------------------------- */
+
+const monthOrders =
+validOrders.filter(order => {
+
+if(!order.created_at){
+return false;
+}
+
+const date =
+new Date(order.created_at);
+
+return(
+date.getFullYear() === todayYear &&
+date.getMonth() === todayMonth
+);
+
+});
+
+
+const monthSales =
+monthOrders.reduce(
+(sum, order) =>
+sum + Number(order.total || 0),
+0
+);
+
+
+/* -------------------------
+   ATUALIZAR CARDS
+------------------------- */
+
+document.getElementById(
+'totalSales'
+).textContent =
+money(totalSales);
+
+
+document.getElementById(
+'todaySales'
+).textContent =
+money(todaySales);
+
+
+document.getElementById(
+'monthSales'
+).textContent =
+money(monthSales);
+
+
+document.getElementById(
+'validSalesOrders'
+).textContent =
+validOrders.length;
+
+
+/* -------------------------
+   GRÁFICO
+------------------------- */
+
+createSalesChart(
+monthOrders,
+todayYear,
+todayMonth
+);
+
+}
+
+
+/* =========================================
+   CRIAR GRÁFICO
+========================================= */
+
+function createSalesChart(
+orders,
+year,
+month
+){
+
+const chart =
+document.getElementById(
+'salesChart'
+);
+
+
+const daysInMonth =
+new Date(
+year,
+month + 1,
+0
+).getDate();
+
+
+const dailySales =
+Array(daysInMonth).fill(0);
+
+
+orders.forEach(order => {
+
+if(!order.created_at){
+return;
+}
+
+const date =
+new Date(order.created_at);
+
+const day =
+date.getDate();
+
+if(day >= 1 && day <= daysInMonth){
+
+dailySales[day - 1] +=
+Number(order.total || 0);
+
+}
+
+});
+
+
+const maxSales =
+Math.max(...dailySales, 0);
+
+
+if(maxSales === 0){
+
+chart.innerHTML = `
+<div class="chart-empty">
+📊 Ainda não existem vendas neste mês.
+</div>
+`;
+
+return;
+
+}
+
+
+chart.innerHTML =
+dailySales.map(
+(value,index) => {
+
+const day =
+index + 1;
+
+const height =
+Math.max(
+(value / maxSales) * 200,
+3
+);
+
+return `
+
+<div class="chart-bar-wrapper">
+
+<div
+class="chart-bar"
+style="height:${height}px">
+
+<div class="chart-tooltip">
+Dia ${day}: ${money(value)}
+</div>
+
+</div>
+
+<div class="chart-day">
+${day}
+</div>
+
+</div>
+
+`;
+
+}
+).join('');
+
+}
+
+
+/* =========================================
    CARREGAR PEDIDOS
 ========================================= */
 
@@ -446,13 +951,19 @@ return;
 if(!response.ok){
 
 throw new Error(
-'Erro HTTP ' + response.status
+'Erro HTTP ' +
+response.status
 );
+
 }
 
 const orders =
 await response.json();
 
+
+/* -------------------------
+   ESTATÍSTICAS
+------------------------- */
 
 document.getElementById(
 'totalOrders'
@@ -464,7 +975,8 @@ document.getElementById(
 'newOrders'
 ).textContent =
 orders.filter(
-order => order.status === 'Novo'
+order =>
+order.status === 'Novo'
 ).length;
 
 
@@ -472,7 +984,8 @@ document.getElementById(
 'preparingOrders'
 ).textContent =
 orders.filter(
-order => order.status === 'Em preparação'
+order =>
+order.status === 'Em preparação'
 ).length;
 
 
@@ -480,16 +993,34 @@ document.getElementById(
 'completedOrders'
 ).textContent =
 orders.filter(
-order => order.status === 'Concluído'
+order =>
+order.status === 'Concluído'
 ).length;
 
+
+/* -------------------------
+   DASHBOARD
+------------------------- */
+
+updateDashboard(orders);
+
+
+/* -------------------------
+   ÚLTIMA ATUALIZAÇÃO
+------------------------- */
 
 document.getElementById(
 'lastUpdate'
 ).textContent =
 'Atualizado: ' +
-new Date().toLocaleTimeString('pt-BR');
+new Date().toLocaleTimeString(
+'pt-BR'
+);
 
+
+/* -------------------------
+   SEM PEDIDOS
+------------------------- */
 
 if(!orders.length){
 
@@ -499,8 +1030,13 @@ container.innerHTML =
 '</div>';
 
 return;
+
 }
 
+
+/* -------------------------
+   LISTA DE PEDIDOS
+------------------------- */
 
 container.innerHTML =
 orders.map(order => {
@@ -517,11 +1053,16 @@ items.map(item => {
 const subtotal =
 item.subtotal ??
 (
-Number(item.unit_price || 0) *
-Number(item.quantity || 0)
+Number(
+item.unit_price || 0
+) *
+Number(
+item.quantity || 0
+)
 );
 
 return `
+
 <div class="item">
 
 <span class="item-name">
@@ -537,6 +1078,7 @@ ${money(subtotal)}
 </strong>
 
 </div>
+
 `;
 
 }).join('');
@@ -555,11 +1097,17 @@ const statusOptions =
 statuses.map(status => {
 
 return `
+
 <option
 value="${esc(status)}"
-${order.status === status ? 'selected' : ''}>
+${order.status === status
+? 'selected'
+: ''}>
+
 ${esc(status)}
+
 </option>
+
 `;
 
 }).join('');
@@ -569,7 +1117,9 @@ const createdDate =
 order.created_at
 ? new Date(
 order.created_at
-).toLocaleString('pt-BR')
+).toLocaleString(
+'pt-BR'
+)
 : 'Data não informada';
 
 
@@ -612,16 +1162,22 @@ ${statusOptions}
 
 <p>
 <strong>
-${esc(order.customer?.name)}
+${esc(
+order.customer?.name
+)}
 </strong>
 </p>
 
 <p>
-📱 ${esc(order.customer?.phone)}
+📱 ${esc(
+order.customer?.phone
+)}
 </p>
 
 <p>
-📍 ${esc(order.customer?.address)}
+📍 ${esc(
+order.customer?.address
+)}
 </p>
 
 </div>
@@ -687,7 +1243,10 @@ container.innerHTML =
    ALTERAR STATUS
 ========================================= */
 
-async function updateStatus(id,status){
+async function updateStatus(
+id,
+status
+){
 
 try{
 
@@ -709,6 +1268,7 @@ headers:{
 body:JSON.stringify({
 status:status
 })
+
 }
 );
 
@@ -719,6 +1279,7 @@ window.location.href =
 '/admin-login.html';
 
 return;
+
 }
 
 
@@ -726,12 +1287,15 @@ if(!response.ok){
 
 const data =
 await response.json()
-.catch(() => ({}));
+.catch(
+() => ({})
+);
 
 throw new Error(
 data.error ||
 'Erro ao atualizar o status.'
 );
+
 }
 
 
@@ -799,6 +1363,12 @@ await verify();
 if(authenticated){
 
 await loadOrders();
+
+
+/*
+   Atualiza automaticamente
+   a cada 30 segundos
+*/
 
 setInterval(
 loadOrders,
