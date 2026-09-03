@@ -1519,7 +1519,21 @@ footer{
 <div
   class="products"
   id="grid"
-></div>
+>
+  <!-- Produtos de segurança: aparecem mesmo se o JavaScript demorar para iniciar -->
+  <article class="product">
+    <div class="pic">🔋</div>
+    <div class="info"><span class="tag">Acessórios</span><h3>Power Bank Turbo 20000mAh 66W Premium</h3><div class="stars">★★★★★</div><div class="price">R$ 149,90 <span class="old">R$ 199,90</span></div></div>
+  </article>
+  <article class="product">
+    <div class="pic">🎧</div>
+    <div class="info"><span class="tag">Áudio</span><h3>Fone De Ouvido Bluetooth Sem Fio Estéreo</h3><div class="stars">★★★★★</div><div class="price">R$ 79,90 <span class="old">R$ 99,90</span></div></div>
+  </article>
+  <article class="product">
+    <div class="pic">⌚</div>
+    <div class="info"><span class="tag">Acessórios</span><h3>Smartwatch 6 Em 1 Tela AMOLED 2.02</h3><div class="stars">★★★★☆</div><div class="price">R$ 99,90 <span class="old">R$ 149,90</span></div></div>
+  </article>
+</div>
 
 </section>
 
@@ -3749,136 +3763,6 @@ Obrigado!`;
 
 }
 
-event.preventDefault();
-
-if(!cart.length){
-
-showToast(
-"Seu carrinho está vazio."
-);
-
-return;
-
-}
-
-if(!validateCheckout())
-return;
-
-const form=
-document.getElementById(
-"checkoutForm"
-);
-
-const data=
-new FormData(form);
-
-const name=
-String(data.get("fullName")||"").trim();
-
-const phone=
-String(data.get("phone")||"").trim();
-
-const cep=
-String(data.get("cep")||"").trim();
-
-const state=
-String(data.get("state")||"");
-
-const city=
-String(data.get("city")||"").trim();
-
-const neighborhood=
-String(data.get("neighborhood")||"").trim();
-
-const street=
-String(data.get("street")||"").trim();
-
-const number=
-String(data.get("number")||"").trim();
-
-const complement=
-String(data.get("complement")||"").trim();
-
-const payment=
-String(data.get("payment")||"");
-
-const orderNumber=
-generateOrderNumber();
-
-const items=
-cart
-.map(
-item=>
-`• ${item.qty}x ${item.name} — ${money(item.price*item.qty)}`
-)
-.join("\n");
-
-const address=
-`${street}, ${number}`+
-`${complement?" - "+complement:""}`+
-` - ${neighborhood}`+
-` - ${city}/${state}`+
-` - CEP: ${cep}`;
-
-const total=
-cartTotal();
-
-const message=
-`Olá, VelorianTech! 👋
-
-Quero finalizar um pedido.
-
-━━━━━━━━━━━━━━━━━━
-📦 PEDIDO: ${orderNumber}
-━━━━━━━━━━━━━━━━━━
-
-👤 CLIENTE
-${name}
-
-📱 TELEFONE
-${phone}
-
-📍 ENDEREÇO
-${address}
-
-💳 PAGAMENTO
-${payment}
-
-🛍️ PRODUTOS
-${items}
-
-💰 TOTAL
-${money(total)}
-
-Obrigado!`;
-
-pendingWhatsAppUrl=
-"https://wa.me/"+
-WHATSAPP+
-"?text="+
-encodeURIComponent(message);
-
-document.getElementById(
-"checkoutFormArea"
-).style.display="none";
-
-document
-.getElementById("successArea")
-.classList.add("show");
-
-document.getElementById(
-"successText"
-).innerHTML=
-
-`Obrigado, <strong>${escapeHtml(name)}</strong>!<br><br>`+
-
-`Seu pedido <strong>${escapeHtml(orderNumber)}</strong> foi preparado.<br><br>`+
-
-`Total: <strong>${money(total)}</strong><br>`+
-
-`Pagamento: <strong>${escapeHtml(payment)}</strong>`;
-
-}
 
 /* =====================================================
    WHATSAPP
@@ -4535,24 +4419,31 @@ false
    INICIALIZAÇÃO
 ===================================================== */
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+function startVelorianTech(){
+  try{
+    loadCart();
+    loadFavorites();
 
-loadCart();
-loadFavorites();
+    /* Renderiza os produtos antes dos elementos extras. */
+    render();
+    renderCart();
+    renderFavorites();
 
-updateCartCount();
-updateFavoritesCount();
+    updateCartCount();
+    updateFavoritesCount();
 
-render();
-renderCart();
-renderFavorites();
-
-setupEvents();
-
+    setupEvents();
+  }catch(error){
+    console.error("Erro ao iniciar a VelorianTech:", error);
+    /* Os cards de segurança no HTML continuam visíveis. */
+  }
 }
-);
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", startVelorianTech, { once:true });
+}else{
+  startVelorianTech();
+}
 
 </script>
 
