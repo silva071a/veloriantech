@@ -1,984 +1,152 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
-
->
-
-<title>VelorianTech — Painel de Pedidos</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VelorianTech — Painel Administrativo</title>
 <style>
-
 :root{
-  --bg:#f5f7fb;
-  --card:#fff;
-  --text:#101828;
-  --muted:#667085;
-  --primary:#635bff;
-  --border:#e4e7ec;
-  --green:#12b76a;
-  --danger:#ef4444;
-  --warning:#f79009;
-  --dark:#111827;
-  --shadow:0 10px 35px rgba(16,24,40,.08);
+  --bg:#0f1117; --panel:#181b25; --card:#202431; --border:#303647;
+  --text:#f5f7ff; --muted:#9aa3b8; --primary:#7c5cff;
+  --success:#25c981; --danger:#ef5350; --warning:#f5b942;
 }
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-button,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-  border:0;
-}
-
-/* HEADER */
-
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
-}
-
-.header{
-  max-width:1200px;
-  margin:auto;
-  min-height:72px;
-  padding:0 20px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.logo{
-  font-size:24px;
-  font-weight:900;
-}
-
-.logo span{
-  color:var(--primary);
-}
-
-.refresh{
-  background:var(--primary);
-  color:#fff;
-  padding:11px 16px;
-  border-radius:9px;
-  font-weight:800;
-}
-
-.refresh:hover{
-  opacity:.9;
-}
-
-/* MAIN */
-
-main{
-  max-width:1200px;
-  margin:30px auto;
-  padding:0 20px;
-}
-
-.title{
-  margin-bottom:20px;
-}
-
-.title h1{
-  font-size:30px;
-  margin-bottom:5px;
-}
-
-.title p{
-  color:var(--muted);
-}
-
-/* CARDS */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:25px;
-}
-
-.stat{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  box-shadow:0 4px 15px rgba(16,24,40,.04);
-}
-
-.stat-icon{
-  font-size:24px;
-}
-
-.stat-number{
-  font-size:26px;
-  font-weight:900;
-  margin-top:8px;
-}
-
-.stat-label{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:3px;
-}
-
-/* PEDIDOS */
-
-.orders{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-}
-
-.order{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 4px 15px rgba(16,24,40,.04);
-}
-
-.order-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:15px;
-}
-
-.order-number{
-  font-size:18px;
-  font-weight:900;
-}
-
-.date{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:4px;
-}
-
-.status{
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:800;
-  background:#f2f4f7;
-}
-
-.status.novo{
-  background:#eef4ff;
-  color:#175cd3;
-}
-
-.status.preparacao{
-  background:#fff6ed;
-  color:#c4320a;
-}
-
-.status.enviado{
-  background:#f4f3ff;
-  color:#5925dc;
-}
-
-.status.concluido{
-  background:#ecfdf3;
-  color:#027a48;
-}
-
-.status.cancelado{
-  background:#fff1f2;
-  color:#b42318;
-}
-
-.order-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.info-box{
-  background:#f8fafc;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:14px;
-}
-
-.info-box h3{
-  font-size:13px;
-  margin-bottom:10px;
-}
-
-.info-box p{
-  font-size:13px;
-  color:#475467;
-  margin:5px 0;
-}
-
-.items{
-  margin-top:10px;
-}
-
-.item{
-  padding:8px 0;
-  border-bottom:1px solid var(--border);
-  font-size:13px;
-}
-
-.item:last-child{
-  border-bottom:0;
-}
-
-.total{
-  font-size:20px;
-  font-weight:900;
-  margin-top:12px;
-}
-
-/* AÇÕES */
-
-.actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:15px;
-  flex-wrap:wrap;
-}
-
-.actions select{
-  padding:10px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  background:#fff;
-}
-
-.save-status{
-  background:#111827;
-  color:#fff;
-  padding:10px 14px;
-  border-radius:9px;
-  font-weight:700;
-}
-
-.whatsapp{
-  background:#12b76a;
-  color:#fff;
-  padding:10px 14px;
-  border-radius:9px;
-  font-weight:700;
-}
-
-.whatsapp:hover{
-  opacity:.9;
-}
-
-/* VAZIO */
-
-.empty{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:50px 20px;
-  text-align:center;
-  color:var(--muted);
-}
-
-.empty-icon{
-  font-size:45px;
-  margin-bottom:10px;
-}
-
-/* ERRO */
-
-.error{
-  background:#fff1f2;
-  border:1px solid #fecdca;
-  color:#b42318;
-  padding:15px;
-  border-radius:10px;
-  margin-bottom:20px;
-  display:none;
-}
-
-.error.show{
-  display:block;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:900px){
-
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-@media(max-width:650px){
-
-  .header{
-    padding:0 14px;
-  }
-
-  .logo{
-    font-size:19px;
-  }
-
-  .header .refresh{
-    font-size:12px;
-    padding:9px 11px;
-  }
-
-  main{
-    padding:0 14px;
-    margin-top:20px;
-  }
-
-  .title h1{
-    font-size:24px;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .stat{
-    padding:15px;
-  }
-
-  .stat-number{
-    font-size:22px;
-  }
-
-  .order-grid{
-    grid-template-columns:1fr;
-  }
-
-  .order-head{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-}
-
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{background:#151824;border-bottom:1px solid var(--border);padding:20px}
+.top{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+h1{font-size:24px;margin:0}.logo{color:#a999ff}.subtitle{color:var(--muted);margin-top:6px;font-size:14px}
+button,select{font:inherit}
+button{border:0;border-radius:9px;padding:11px 16px;background:var(--primary);color:white;cursor:pointer;font-weight:bold}
+button:hover{filter:brightness(1.1)}
+main{max-width:1200px;margin:30px auto;padding:0 18px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:25px}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+.stat span{color:var(--muted);font-size:13px}.stat strong{display:block;font-size:28px;margin-top:8px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.orders{display:grid;gap:14px}
+.order{background:var(--panel);border:1px solid var(--border);border-radius:13px;padding:20px}
+.order-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:15px;margin-bottom:15px}
+.order-id{font-weight:bold;color:#b8adff}.date{color:var(--muted);font-size:13px;margin-top:5px}
+.status{border:1px solid var(--border);background:var(--card);color:white;padding:9px;border-radius:8px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.info h3{font-size:14px;margin:0 0 8px;color:#b8adff}
+.info p{margin:5px 0;color:#d8dce7}
+.items{background:var(--card);padding:12px;border-radius:9px;margin-top:14px}
+.item{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)}
+.item:last-child{border:0}.total{font-size:20px;font-weight:bold;margin-top:14px;text-align:right;color:#8df0be}
+.empty{text-align:center;color:var(--muted);padding:50px;background:var(--panel);border-radius:12px}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.info{grid-template-columns:1fr}.top,.toolbar{align-items:flex-start;flex-direction:column}}
 </style>
-
 </head>
-
 <body>
-
 <header>
-
-<div class="header">
-
-<div class="logo">
-Velorian<span>Tech</span>
-</div>
-
-<button
-class="refresh"
-id="refreshButton"
-
->
-
-🔄 Atualizar pedidos </button>
-
-</div>
-
+  <div class="top">
+    <div>
+      <h1>Velorian<span class="logo">Tech</span> — Administração</h1>
+      <div class="subtitle">Gerenciamento de pedidos</div>
+    </div>
+    <button onclick="loadOrders()">↻ Atualizar</button>
+  </div>
 </header>
 
 <main>
+  <div class="stats">
+    <div class="stat"><span>Total de pedidos</span><strong id="totalOrders">0</strong></div>
+    <div class="stat"><span>Novos</span><strong id="newOrders">0</strong></div>
+    <div class="stat"><span>Em preparação</span><strong id="preparingOrders">0</strong></div>
+    <div class="stat"><span>Concluídos</span><strong id="completedOrders">0</strong></div>
+  </div>
 
-<div class="title">
+  <div class="toolbar">
+    <h2 style="margin:0">Pedidos recebidos</h2>
+    <span id="lastUpdate" style="color:#9aa3b8;font-size:13px"></span>
+  </div>
 
-<h1>
-📦 Painel de pedidos
-</h1>
-
-<p>
-Gerencie os pedidos realizados na VelorianTech.
-</p>
-
-</div>
-
-<div
-  class="error"
-  id="error"
-></div>
-
-<div class="stats">
-
-<div class="stat">
-
-<div class="stat-icon">
-📦
-</div>
-
-<div
-  class="stat-number"
-  id="totalOrders"
->
-0
-</div>
-
-<div class="stat-label">
-Total de pedidos
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-🆕
-</div>
-
-<div
-  class="stat-number"
-  id="newOrders"
->
-0
-</div>
-
-<div class="stat-label">
-Pedidos novos
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-🚚
-</div>
-
-<div
-  class="stat-number"
-  id="shippedOrders"
->
-0
-</div>
-
-<div class="stat-label">
-Pedidos enviados
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-icon">
-💰
-</div>
-
-<div
-  class="stat-number"
-  id="totalSales"
->
-R$ 0,00
-</div>
-
-<div class="stat-label">
-Valor total
-</div>
-
-</div>
-
-</div>
-
-<div
-  class="orders"
-  id="orders"
-></div>
-
+  <div id="orders" class="orders"><div class="empty">Carregando pedidos...</div></div>
 </main>
 
 <script>
-
-const WHATSAPP =
-"5571992346351";
-
-function money(value){
-
-return Number(value).toLocaleString(
-"pt-BR",
-{
-  style:"currency",
-  currency:"BRL"
-}
-);
-
-}
-
-function escapeHtml(text){
-
-return String(text).replace(
-/[&<>"']/g,
-m=>({
-
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#039;"
-
-}[m])
-);
-
-}
-
-function statusClass(status){
-
-switch(status){
-
-case "Em preparação":
-return "preparacao";
-
-case "Enviado":
-return "enviado";
-
-case "Concluído":
-return "concluido";
-
-case "Cancelado":
-return "cancelado";
-
-default:
-return "novo";
-
-}
-
-}
-
-function formatDate(date){
-
-return new Date(date).toLocaleString(
-"pt-BR",
-{
-  dateStyle:"short",
-  timeStyle:"short"
-}
-);
-
-}
-
-function whatsappUrl(order){
-
-const items =
-order.items
-.map(
-item =>
-`• ${item.quantity}x ${item.title} — ${money(item.subtotal)}`
-)
-.join("\n");
-
-const message =
-`Olá, ${order.customer.name}! 👋
-
-Aqui é da VelorianTech.
-
-Estamos entrando em contato sobre o seu pedido ${order.id}.
-
-📦 Pedido:
-${items}
-
-💰 Total:
-${money(order.total)}
-
-📍 Endereço:
-${order.customer.address}
-
-📊 Status:
-${order.status}`;
-
-return (
-"https://wa.me/" +
-order.customer.phone.replace(/\D/g,"") +
-"?text=" +
-encodeURIComponent(message)
-);
-
-}
-
-function renderStats(orders){
-
-document.getElementById(
-"totalOrders"
-).textContent =
-orders.length;
-
-document.getElementById(
-"newOrders"
-).textContent =
-orders.filter(
-order=>order.status==="Novo"
-).length;
-
-document.getElementById(
-"shippedOrders"
-).textContent =
-orders.filter(
-order=>order.status==="Enviado"
-).length;
-
-const total =
-orders.reduce(
-(sum,order)=>
-sum+Number(order.total||0),
-0
-);
-
-document.getElementById(
-"totalSales"
-).textContent =
-money(total);
-
-}
-
-function renderOrders(orders){
-
-const container =
-document.getElementById(
-"orders"
-);
-
-if(!orders.length){
-
-container.innerHTML = `
-
-<div class="empty">
-
-<div class="empty-icon">
-📭
-</div>
-
-<strong>
-Nenhum pedido recebido ainda.
-</strong>
-
-<p style="margin-top:7px">
-Os pedidos aparecerão aqui automaticamente.
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-container.innerHTML =
-orders.map(order=>`
-
-<article class="order">
-
-<div class="order-head">
-
-<div>
-
-<div class="order-number">
-📦 ${escapeHtml(order.id)}
-</div>
-
-<div class="date">
-${formatDate(order.created_at)}
-</div>
-
-</div>
-
-<div class="status ${statusClass(order.status)}">
-${escapeHtml(order.status)}
-</div>
-
-</div>
-
-<div class="order-grid">
-
-<div class="info-box">
-
-<h3>
-👤 Cliente
-</h3>
-
-<p>
-<strong>Nome:</strong>
-${escapeHtml(order.customer.name)}
-</p>
-
-<p>
-<strong>Telefone:</strong>
-${escapeHtml(order.customer.phone)}
-</p>
-
-<p>
-<strong>Pagamento:</strong>
-${escapeHtml(order.payment)}
-</p>
-
-</div>
-
-<div class="info-box">
-
-<h3>
-📍 Entrega
-</h3>
-
-<p>
-${escapeHtml(order.customer.address)}
-</p>
-
-</div>
-
-</div>
-
-<div class="info-box" style="margin-top:15px">
-
-<h3>
-🛒 Produtos
-</h3>
-
-<div class="items">
-
-${order.items.map(item=>`
-
-<div class="item">
-
-${item.quantity}x
-${escapeHtml(item.title)}
-
-<strong style="float:right">
-${money(item.subtotal)}
-</strong>
-
-</div>
-
-`).join("")}
-
-</div>
-
-<div class="total">
-
-Total:
-${money(order.total)}
-
-</div>
-
-</div>
-
-<div class="actions">
-
-<select
-  data-status="${escapeHtml(order.id)}"
->
-
-${[
-  "Novo",
-  "Em preparação",
-  "Enviado",
-  "Concluído",
-  "Cancelado"
-].map(status=>`
-
-<option
-  value="${escapeHtml(status)}"
-  ${order.status===status?"selected":""}
->
-${escapeHtml(status)}
-</option>
-
-`).join("")}
-
-</select>
-
-<button
-  class="save-status"
-  data-save="${escapeHtml(order.id)}"
->
-💾 Salvar status
-</button>
-
-<a
-  class="whatsapp"
-  href="${whatsappUrl(order)}"
-  target="_blank"
-  rel="noopener noreferrer"
->
-💬 WhatsApp
-</a>
-
-</div>
-
-</article>
-
-`).join("");
-
-}
+const money = value => Number(value || 0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+}[c]));
 
 async function loadOrders(){
+  const container=document.getElementById('orders');
+  try{
+    const response=await fetch('/api/orders');
+    if(!response.ok) throw new Error('Erro ao buscar pedidos');
+    const orders=await response.json();
 
-const error =
-document.getElementById(
-"error"
-);
+    document.getElementById('totalOrders').textContent=orders.length;
+    document.getElementById('newOrders').textContent=orders.filter(o=>o.status==='Novo').length;
+    document.getElementById('preparingOrders').textContent=orders.filter(o=>o.status==='Em preparação').length;
+    document.getElementById('completedOrders').textContent=orders.filter(o=>o.status==='Concluído').length;
+    document.getElementById('lastUpdate').textContent='Atualizado: '+new Date().toLocaleTimeString('pt-BR');
 
-error.classList.remove("show");
+    if(!orders.length){
+      container.innerHTML='<div class="empty">📦 Ainda não existem pedidos.</div>';
+      return;
+    }
 
-try{
-
-const response =
-await fetch(
-"/api/orders",
-{
-  cache:"no-store"
-}
-);
-
-if(!response.ok){
-
-throw new Error(
-"Não foi possível carregar os pedidos."
-);
-
-}
-
-const orders =
-await response.json();
-
-renderStats(orders);
-renderOrders(orders);
-
-}catch(errorObject){
-
-console.error(errorObject);
-
-error.textContent =
-"❌ Não foi possível carregar os pedidos. Verifique se o servidor está funcionando.";
-
-error.classList.add("show");
-
-}
-
-}
-
-async function updateStatus(id){
-
-const select =
-document.querySelector(
-`select[data-status="${CSS.escape(id)}"]`
-);
-
-if(!select)
-return;
-
-const status =
-select.value;
-
-try{
-
-const response =
-await fetch(
-`/api/orders/${encodeURIComponent(id)}/status`,
-{
-  method:"PATCH",
-
-  headers:{
-    "Content-Type":
-      "application/json"
-  },
-
-  body:JSON.stringify({
-    status
-  })
-}
-);
-
-const result =
-await response.json();
-
-if(!response.ok){
-
-throw new Error(
-result.error ||
-"Não foi possível alterar o status."
-);
-
+    container.innerHTML=orders.map(order=>{
+      const date=order.created_at ? new Date(order.created_at).toLocaleString('pt-BR') : 'Data não informada';
+      const items=(order.items||[]).map(item=>`
+        <div class="item">
+          <span>${escapeHTML(item.title)} × ${item.quantity}</span>
+          <strong>${money(item.subtotal ?? item.unit_price*item.quantity)}</strong>
+        </div>`).join('');
+      return `
+      <article class="order">
+        <div class="order-head">
+          <div>
+            <div class="order-id">${escapeHTML(order.id)}</div>
+            <div class="date">${date}</div>
+          </div>
+          <select class="status" onchange="updateStatus('${escapeHTML(order.id)}',this.value)">
+            ${['Novo','Em preparação','Enviado','Concluído','Cancelado'].map(s=>
+              `<option ${order.status===s?'selected':''}>${s}</option>`).join('')}
+          </select>
+        </div>
+        <div class="info">
+          <div>
+            <h3>CLIENTE</h3>
+            <p><strong>${escapeHTML(order.customer?.name)}</strong></p>
+            <p>📱 ${escapeHTML(order.customer?.phone)}</p>
+            <p>📍 ${escapeHTML(order.customer?.address)}</p>
+          </div>
+          <div>
+            <h3>PAGAMENTO</h3>
+            <p>${escapeHTML(order.payment || 'Não informado')}</p>
+          </div>
+        </div>
+        <div class="items">${items}</div>
+        <div class="total">Total: ${money(order.total)}</div>
+      </article>`;
+    }).join('');
+  }catch(error){
+    console.error(error);
+    container.innerHTML='<div class="empty">❌ Não foi possível carregar os pedidos. Verifique se o servidor está funcionando.</div>';
+  }
 }
 
-await loadOrders();
-
-}catch(error){
-
-alert(
-"Erro: " +
-error.message
-);
-
+async function updateStatus(id,status){
+  try{
+    const response=await fetch(`/api/orders/${encodeURIComponent(id)}/status`,{
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({status})
+    });
+    if(!response.ok) throw new Error('Erro ao atualizar');
+    await loadOrders();
+  }catch(error){
+    alert('Não foi possível atualizar o status do pedido.');
+    loadOrders();
+  }
 }
-
-}
-
-document
-.getElementById("refreshButton")
-.addEventListener(
-"click",
-loadOrders
-);
-
-document
-.getElementById("orders")
-.addEventListener(
-"click",
-event=>{
-
-const button =
-event.target.closest(
-"[data-save]"
-);
-
-if(!button)
-return;
-
-updateStatus(
-button.dataset.save
-);
-
-}
-);
 
 loadOrders();
-
-setInterval(
-loadOrders,
-30000
-);
-
+setInterval(loadOrders,30000);
 </script>
-
 </body>
-
 </html>
