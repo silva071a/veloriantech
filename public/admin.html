@@ -3,7 +3,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VelorianTech — Administração</title>
 
 <style>
@@ -141,7 +141,6 @@ main{
 .order-id{
   font-weight:bold;
   color:#b8adff;
-  font-size:16px;
 }
 
 .date{
@@ -187,7 +186,7 @@ main{
   display:flex;
   justify-content:space-between;
   gap:15px;
-  padding:8px 0;
+  padding:7px 0;
   border-bottom:1px solid var(--border);
 }
 
@@ -226,7 +225,6 @@ main{
   padding:30px;
   background:var(--panel);
   border-radius:12px;
-  border:1px solid #5a3030;
 }
 
 .loading{
@@ -340,7 +338,7 @@ main{
 
 ```
 <div class="loading">
-  Carregando pedidos...
+  Carregando...
 </div>
 ```
 
@@ -350,28 +348,29 @@ main{
 
 <script>
 
-const money = value =>
-  Number(value || 0).toLocaleString(
+const money = value => {
+  return Number(value || 0).toLocaleString(
     'pt-BR',
     {
       style:'currency',
       currency:'BRL'
     }
   );
+};
 
 
-const esc = value =>
-  String(value ?? '')
-    .replace(
-      /[&<>"']/g,
-      character => ({
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#039;'
-      })[character]
-    );
+const esc = value => {
+  return String(value ?? '').replace(
+    /[&<>"']/g,
+    character => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#039;'
+    })[character]
+  );
+};
 
 
 /* =========================================
@@ -409,7 +408,7 @@ async function verify(){
   }catch(error){
 
     console.error(
-      'Erro ao verificar autenticação:',
+      'Erro ao verificar login:',
       error
     );
 
@@ -433,9 +432,12 @@ async function loadOrders(){
   try{
 
     const response =
-      await fetch('/api/orders', {
-        credentials:'same-origin'
-      });
+      await fetch(
+        '/api/orders',
+        {
+          credentials:'same-origin'
+        }
+      );
 
     if(response.status === 401){
 
@@ -463,7 +465,6 @@ async function loadOrders(){
     ).textContent =
       orders.length;
 
-
     document.getElementById(
       'newOrders'
     ).textContent =
@@ -471,14 +472,12 @@ async function loadOrders(){
         order => order.status === 'Novo'
       ).length;
 
-
     document.getElementById(
       'preparingOrders'
     ).textContent =
       orders.filter(
         order => order.status === 'Em preparação'
       ).length;
-
 
     document.getElementById(
       'completedOrders'
@@ -495,21 +494,20 @@ async function loadOrders(){
       new Date().toLocaleTimeString('pt-BR');
 
 
-    /* SEM PEDIDOS */
+    /* NENHUM PEDIDO */
 
     if(!orders.length){
 
-      container.innerHTML = `
-        <div class="empty">
-          📦 Ainda não existem pedidos.
-        </div>
-      `;
+      container.innerHTML =
+        '<div class="empty">' +
+        '📦 Ainda não existem pedidos.' +
+        '</div>';
 
       return;
     }
 
 
-    /* RENDERIZAR PEDIDOS */
+    /* PEDIDOS */
 
     container.innerHTML =
       orders.map(order => {
@@ -529,7 +527,6 @@ async function loadOrders(){
                 Number(item.unit_price || 0) *
                 Number(item.quantity || 0)
               );
-
 
             return `
               <div class="item">
@@ -562,13 +559,17 @@ async function loadOrders(){
 
 
         const statusOptions =
-          statuses.map(status => `
-            <option
-              value="${esc(status)}"
-              ${order.status === status ? 'selected' : ''}>
-              ${esc(status)}
-            </option>
-          `).join('');
+          statuses.map(status => {
+
+            return `
+              <option
+                value="${esc(status)}"
+                ${order.status === status ? 'selected' : ''}>
+                ${esc(status)}
+              </option>
+            `;
+
+          }).join('');
 
 
         const createdDate =
@@ -596,7 +597,6 @@ async function loadOrders(){
                 </div>
 
               </div>
-
 
               <select
                 class="status"
@@ -646,19 +646,6 @@ async function loadOrders(){
                   )}
                 </p>
 
-                ${
-                  order.updated_at
-                    ? `
-                      <p style="color:#9aa3b8;font-size:12px">
-                        Última alteração:
-                        ${new Date(
-                          order.updated_at
-                        ).toLocaleString('pt-BR')}
-                      </p>
-                    `
-                    : ''
-                }
-
               </div>
 
             </div>
@@ -666,11 +653,12 @@ async function loadOrders(){
 
             <div class="items">
 
-              ${itemHTML || `
-                <div class="item">
-                  Nenhum produto informado.
-                </div>
-              `}
+              ${
+                itemHTML ||
+                '<div class="item">' +
+                'Nenhum produto informado.' +
+                '</div>'
+              }
 
             </div>
 
@@ -693,16 +681,12 @@ async function loadOrders(){
       error
     );
 
-    container.innerHTML = `
-      <div class="error">
-        ❌ Erro ao carregar os pedidos.
-        <br><br>
-        Verifique sua conexão e tente novamente.
-      </div>
-    `;
+    container.innerHTML =
+      '<div class="error">' +
+      '❌ Erro ao carregar os pedidos.' +
+      '</div>';
 
   }
-
 }
 
 
@@ -710,7 +694,7 @@ async function loadOrders(){
    ALTERAR STATUS
 ========================================= */
 
-async function updateStatus(id, status){
+async function updateStatus(id,status){
 
   try{
 
@@ -730,7 +714,7 @@ async function updateStatus(id, status){
           },
 
           body:JSON.stringify({
-            status
+            status:status
           })
         }
       );
@@ -753,13 +737,12 @@ async function updateStatus(id, status){
 
       throw new Error(
         data.error ||
-        'Não foi possível atualizar o pedido.'
+        'Erro ao atualizar o status.'
       );
     }
 
 
     await loadOrders();
-
 
   }catch(error){
 
@@ -775,7 +758,6 @@ async function updateStatus(id, status){
 
     await loadOrders();
   }
-
 }
 
 
@@ -810,7 +792,7 @@ async function logout(){
 
 
 /* =========================================
-   INICIALIZAÇÃO
+   INICIAR
 ========================================= */
 
 (async function(){
